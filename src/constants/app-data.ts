@@ -52,4 +52,13 @@ export const NEWS_DATA: ITopic[] = [
     topic_read_time: "2 min",
     topic_catergory: "Cyber Security",
   },
+  {
+    topic_id: 5,
+    topic_title: "CSMA New",
+    topic_short_description:
+      "New Simplifying Cybersecurity: Seqrite unveils refreshed brand identity",
+    topic_saved_date: "March 8, 2024",
+    topic_read_time: "10 min",
+    topic_catergory: "Cyber Security",
+  },
 ];

@@ -18,6 +18,7 @@
             background-color: var(--topic-tile-background-color);
             box-sizing: border-box;
             grid-gap: 0.5rem;
+            height: max-content;
             display: grid;
             .topic-details {
                 display: grid;
@@ -34,13 +35,19 @@
                 .topic-title-content {
                     height: 100%;
                     box-sizing: border-box;
-                    display: grid;
+                    display: flex;
+                    flex-flow: column;
                     grid-gap: 4px;
+                    justify-content: center;
                     .topic-title {
                         font-size: 0.75rem;
                         font-weight: 500;
                         line-height: 0.9rem;
                         color: var(--topic-tile-title);
+                        display: -webkit-box;
+                        -webkit-line-clamp: 1;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
                     }
                     .topic-content {
                         font-size: 0.825rem;
@@ -62,6 +69,7 @@
                 justify-content: space-between;
                 padding: 0 0.25rem;
                 grid-template-columns: auto auto;
+                height: 18px;
                 .saved-date-read-time {
                     font-size: 0.625rem;
                     font-weight: 500;

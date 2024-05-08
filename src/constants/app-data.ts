@@ -5,7 +5,7 @@ export const NEWS_DATA: ITopic[] = [
     topic_id: 1,
     topic_title: "The Verge Threat",
     topic_short_description:
-      "Now Google’s Bard AI can talk & respond to visual prompts",
+      "8th April - Threat Intelligence Report Check point research",
     topic_saved_date: "Jul 13, 2023",
     topic_read_time: "2 min",
     topic_catergory: "Cyber Security",
@@ -42,6 +42,14 @@ export const NEWS_DATA: ITopic[] = [
       "Simplifying Cybersecurity: Seqrite unveils refreshed brand identity",
     topic_saved_date: "March 8, 2024",
     topic_read_time: "10 min",
+    topic_catergory: "Cyber Security",
+  },
+  {
+    topic_id: 6,
+    topic_title: "Automotive World",
+    topic_short_description: "The evolving mobility cyber security landscape",
+    topic_saved_date: "Jul 13, 2023",
+    topic_read_time: "2 min",
     topic_catergory: "Cyber Security",
   },
 ];

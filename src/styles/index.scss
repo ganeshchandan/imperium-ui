@@ -27,16 +27,16 @@ body,
       display: grid;
       align-items: flex-end;
       color: #fff;
-      padding: 0 1.5rem 0.625rem 1.5rem;
+      padding: 0 1.25rem 0.5rem 1.25rem;
       .category-name-image {
         height: 42px;
         display: grid;
         grid-template-columns: auto 19px;
         align-items: center;
         .category-name {
-          font-size: 1rem;
+          font-size: 1.063rem;
           font-weight: 600;
-          line-height: 1rem;
+          line-height: normal;
         }
       }
     }

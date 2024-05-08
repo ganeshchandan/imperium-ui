@@ -1,6 +1,6 @@
 * {
     .topic-list {
-        padding: 0 1.5rem;
+        padding: 0 1.25rem;
         width: 100%;
         box-sizing: border-box;
         display: grid;
@@ -26,7 +26,7 @@
                 box-sizing: border-box;
                 grid-gap: 0.5rem;
                 .topic-image {
-                    height: 100%;
+                    height: 62px;
                     box-sizing: border-box;
                     > img {
                         width: 100%;

@@ -23,11 +23,10 @@ body,
     width: 100%;
     background-color: var(--app-background-color);
     .app-header {
-      height: 70px;
       display: grid;
       align-items: flex-end;
       color: #fff;
-      padding: 0 1.25rem 0.5rem 1.25rem;
+      padding: 1.125rem 1.25rem 0.5rem 1.25rem;
       .category-name-image {
         height: 42px;
         display: grid;

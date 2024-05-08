@@ -7,7 +7,5 @@ export const updateSW = registerSW({
       updateSW();
     }
   },
-  onOfflineReady() {
-    alert("here onOfflineReady");
-  },
+  onOfflineReady() {},
 });

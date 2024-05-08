@@ -1,0 +1,74 @@
+* {
+    .topic-list {
+        padding: 0 1.5rem;
+        width: 100%;
+        box-sizing: border-box;
+        display: grid;
+        grid-gap: 1rem;
+        height: calc(100% - 80px);
+        overflow: auto;
+
+        .topic-tile {
+            &:last-child {
+                margin-bottom: 1rem;
+            }
+            width: 100%;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            background-color: var(--topic-tile-background-color);
+            box-sizing: border-box;
+            grid-gap: 0.5rem;
+            display: grid;
+            .topic-details {
+                display: grid;
+                grid-template-columns: 80px auto;
+                box-sizing: border-box;
+                grid-gap: 0.5rem;
+                .topic-image {
+                    height: 100%;
+                    box-sizing: border-box;
+                    > img {
+                        width: 100%;
+                    }
+                }
+                .topic-title-content {
+                    height: 100%;
+                    box-sizing: border-box;
+                    display: grid;
+                    grid-gap: 4px;
+                    .topic-title {
+                        font-size: 0.75rem;
+                        font-weight: 500;
+                        line-height: 0.9rem;
+                        color: var(--topic-tile-title);
+                    }
+                    .topic-content {
+                        font-size: 0.825rem;
+                        font-weight: 400;
+                        line-height: normal;
+                        color: var(--topic-tile-content);
+                        overflow: hidden;
+                        // text-overflow: ellipsis;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                    }
+                }
+            }
+            .topic-metadata {
+                box-sizing: border-box;
+                display: grid;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 0.25rem;
+                grid-template-columns: auto auto;
+                .saved-date-read-time {
+                    font-size: 0.625rem;
+                    font-weight: 500;
+                    line-height: 0.75rem;
+                    color: var(--saved-date-read-time);
+                }
+            }
+        }
+    }
+}

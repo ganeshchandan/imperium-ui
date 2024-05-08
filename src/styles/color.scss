@@ -1,0 +1,12 @@
+$blue: #162143;
+$blue_01: #192757;
+$blue_02: #516094;
+$white_01: #e8e8e8;
+
+* {
+    --app-background-color: #{$blue};
+    --topic-tile-background-color: #{$blue_01};
+    --saved-date-read-time: #{$blue_02};
+    --topic-tile-title: #{$blue_02};
+    --topic-tile-content: #{$white_01};
+}

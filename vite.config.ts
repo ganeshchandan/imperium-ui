@@ -18,9 +18,9 @@ export default defineConfig({
       },
       includeAssets: ["vite.svg", "logo192.png", "logo512.png"],
       manifest: {
-        name: "My Awesome App",
-        short_name: "MyApp",
-        description: "My Awesome App description",
+        name: "Imperium",
+        short_name: "Imperium",
+        description: "",
         theme_color: "#ffffff",
         icons: [
           {

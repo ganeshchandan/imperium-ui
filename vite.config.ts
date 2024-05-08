@@ -22,6 +22,8 @@ export default defineConfig({
         short_name: "Imperium",
         description: "",
         theme_color: "#ffffff",
+        start_url: "/?fullscreen=true",
+        display: "fullscreen",
         icons: [
           {
             src: "logo192.png",

@@ -2,11 +2,20 @@ $blue: #162143;
 $blue_01: #192757;
 $blue_02: #516094;
 $white_01: #e8e8e8;
+$white_02: #d9d9d9;
+$white: #fff;
+$purple: #ff409a;
 
 * {
     --app-background-color: #{$blue};
+    --app-name-color: #{$white};
+    --app-tag-name-color: #{$purple};
     --topic-tile-background-color: #{$blue_01};
     --saved-date-read-time: #{$blue_02};
     --topic-tile-title: #{$blue_02};
     --topic-tile-content: #{$white_01};
+    --selected-topic-title: #{$white};
+    --selected-topic-saved-date: #{$blue_02};
+    --selected-topic-description: #{$white_02};
+    --selected-topic-icon-text: #{$white};
 }

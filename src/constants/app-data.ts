@@ -53,7 +53,7 @@ export const NEWS_DATA: ITopic[] = [
     topic_catergory: "Cyber Security",
   },
   {
-    topic_id: 5,
+    topic_id: 7,
     topic_title: "CSMA New",
     topic_short_description:
       "New Simplifying Cybersecurity: Seqrite unveils refreshed brand identity",

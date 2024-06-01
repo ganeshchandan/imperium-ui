@@ -4,6 +4,7 @@ import FavoriteIcon from "../../assets/favorite.svg";
 import { TOPIC_IMAGE } from "../../constants";
 import { ITopic } from "../../type";
 import { setSelectedTopic } from "../../reducers/topicSlice";
+import { formatDescription } from "../../utils/app";
 
 const TopicTile = ({ topic }: { topic: ITopic }) => {
   const dispatch = useDispatch();
@@ -34,7 +35,9 @@ const TopicTile = ({ topic }: { topic: ITopic }) => {
         </div>
         <div className="topic-title-content">
           <div className="topic-title">{topic_title}</div>
-          <div className="topic-content">{topic_short_description}</div>
+          <div className="topic-content">
+            {formatDescription(topic_short_description)}
+          </div>
         </div>
       </div>
       <div className="topic-metadata">

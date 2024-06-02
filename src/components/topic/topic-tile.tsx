@@ -5,9 +5,11 @@ import { TOPIC_IMAGE } from "../../constants";
 import { ITopic } from "../../type";
 import { setSelectedTopic } from "../../reducers/topicSlice";
 import { formatDescription } from "../../utils/app";
+import { useRef } from "react";
 
 const TopicTile = ({ topic }: { topic: ITopic }) => {
   const dispatch = useDispatch();
+  const topicTileRef = useRef({ isViewScrolling: false });
 
   const {
     topic_title,
@@ -17,7 +19,14 @@ const TopicTile = ({ topic }: { topic: ITopic }) => {
   } = topic;
 
   const handleTopicSelect = () => {
-    dispatch(setSelectedTopic({ isSelected: true, ...topic }));
+    if (!topicTileRef.current.isViewScrolling) {
+      dispatch(setSelectedTopic({ isSelected: true, ...topic }));
+    }
+    topicTileRef.current.isViewScrolling = false;
+  };
+
+  const handleTouchMove = () => {
+    topicTileRef.current.isViewScrolling = true;
   };
 
   return (
@@ -25,6 +34,7 @@ const TopicTile = ({ topic }: { topic: ITopic }) => {
       className="topic-tile"
       onClick={handleTopicSelect}
       onTouchEnd={handleTopicSelect}
+      onTouchMove={handleTouchMove}
     >
       <div className="topic-details">
         <div className="topic-image">

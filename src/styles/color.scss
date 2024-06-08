@@ -1,6 +1,7 @@
 $blue: #162143;
 $blue_01: #192757;
 $blue_02: #516094;
+$bule_03: #2a59e0;
 $white_01: #e8e8e8;
 $white_02: #d9d9d9;
 $white: #fff;
@@ -18,4 +19,8 @@ $purple: #ff409a;
     --selected-topic-saved-date: #{$blue_02};
     --selected-topic-description: #{$white_02};
     --selected-topic-icon-text: #{$white};
+    --category-pill-selected-background: #{$bule_03};
+    --category-pill-selected-text: #{$white};
+    --category-pill-text: #{$bule_03};
+    --category-pill-border-color: #{$bule_03};
 }

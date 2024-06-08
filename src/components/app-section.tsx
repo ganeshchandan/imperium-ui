@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
-import TopicList from "./topic/topic-list";
+import TopicList from "./topic/list";
 import SelectedTopic from "./topic/selected-topic";
 
 const AppSection = () => {

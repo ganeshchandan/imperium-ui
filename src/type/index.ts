@@ -4,7 +4,7 @@ export interface ITopic {
   topic_short_description: string;
   topic_saved_date: string;
   topic_read_time: string;
-  topic_catergory: string;
+  topic_category: string;
   topic_image: string;
 }
 

@@ -1,10 +1,10 @@
 import { useDispatch } from "react-redux";
-import { TOPIC_IMAGES } from "../../assets";
-import FavoriteIcon from "../../assets/favorite.svg";
-import { TOPIC_IMAGE } from "../../constants";
-import { ITopic } from "../../type";
-import { setSelectedTopic } from "../../reducers/topicSlice";
-import { formatDescription } from "../../utils/app";
+import { TOPIC_IMAGES } from "../../../assets";
+import FavoriteIcon from "../../../assets/favorite.svg";
+import { TOPIC_IMAGE } from "../../../constants";
+import { ITopic } from "../../../type";
+import { setSelectedTopic } from "../../../reducers/topicSlice";
+import { formatDescription } from "../../../utils/app";
 import { useRef } from "react";
 
 const TopicTile = ({ topic }: { topic: ITopic }) => {

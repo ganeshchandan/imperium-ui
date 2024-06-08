@@ -2,7 +2,7 @@ interface IIconWithName {
   name: string;
   imageUrl: string;
   imageAlt: string;
-  className: string;
+  className?: string;
 }
 
 const IconWithName = ({

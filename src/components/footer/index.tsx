@@ -1,44 +1,23 @@
-import { useDispatch } from "react-redux";
-import { setSelectedTopicCategory } from "../../reducers/topicSlice";
-import Menu from "../../assets/menu.svg";
-import { EMPTY_STRING } from "../../constants";
+import { FC, useState } from "react";
+import CategoryMenu from "./category-menu";
+import CategoryList from "./category-list";
 
 interface IAppFooter {
   categoryies: string[];
   selectedTopicCategory: string;
 }
 
-const AppFooter = ({ categoryies, selectedTopicCategory }: IAppFooter) => {
-  const dispatch = useDispatch();
+const AppFooter: FC<IAppFooter> = ({ categoryies, selectedTopicCategory }) => {
+  const [showMenu, setShowMenu] = useState(false);
 
-  const handleSelectedTopicCategory = (
-    event: React.SyntheticEvent<HTMLDivElement>
-  ) => {
-    const { categoryname = EMPTY_STRING } = (event.target as HTMLDivElement)
-      .dataset;
-    dispatch(setSelectedTopicCategory(categoryname));
-  };
   return (
     <div className="topic-list-footer">
-      <div className="categories-pill">
-        {categoryies.map((topicCategory) => (
-          <div
-            key={topicCategory}
-            className={`category-pill ${
-              selectedTopicCategory === topicCategory
-                ? "category-pill-selected"
-                : EMPTY_STRING
-            }`}
-            onClick={handleSelectedTopicCategory}
-            data-categoryname={topicCategory}
-          >
-            {topicCategory}
-          </div>
-        ))}
-      </div>
-      <div className="footer-menu">
-        <img src={Menu} alt="menu" />
-      </div>
+      <CategoryList
+        categoryies={categoryies}
+        selectedTopicCategory={selectedTopicCategory}
+        setShowMenu={setShowMenu}
+      />
+      <CategoryMenu setShowMenu={setShowMenu} showMenu={showMenu} />
     </div>
   );
 };

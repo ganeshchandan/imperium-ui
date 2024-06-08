@@ -1,0 +1,19 @@
+* {
+    .radio-button {
+        border-radius: 50%;
+        border: 1.5px solid var(--radio-button-bg-border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        aspect-ratio: 1;
+        &.selected {
+            .selection-icon {
+                width: 55%;
+                height: 55%;
+                background: var(--radio-button-bg-border);
+                border-radius: 50%;
+            }
+        }
+    }
+}

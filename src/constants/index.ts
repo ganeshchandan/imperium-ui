@@ -7,3 +7,14 @@ export const MENU = "Menu";
 export const FILTER = "Filter";
 export const CLOSE = "Close";
 export const USER = "User";
+export const CATEGORY_TAB = "category";
+export const FILTERBY_TAB = "filterBy";
+export const RELEVANCE_TAB = "relevance";
+
+export const FILTER_POPUP_TABS = [
+  { name: "Category", value: CATEGORY_TAB },
+  { name: "Filter by", value: FILTERBY_TAB },
+  { name: "Relevance", value: RELEVANCE_TAB },
+];
+
+export const FILTER_BY_LIST = ["Recent", "Latest", "Bookmarked (4)"];

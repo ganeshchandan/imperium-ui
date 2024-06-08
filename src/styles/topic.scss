@@ -60,9 +60,6 @@
                 -webkit-overflow-scrolling: touch;
 
                 .topic-tile {
-                    // &:last-child {
-                    //     margin-bottom: 1rem;
-                    // }
                     width: 100%;
                     padding: 0.5rem;
                     border-radius: 0.5rem;
@@ -71,7 +68,6 @@
                     grid-gap: 0.5rem;
                     height: max-content;
                     display: grid;
-                    // transition: all 0.5s ease-in-out;
                     transform: translateY(30px);
                     opacity: 0;
                     animation-fill-mode: forwards;
@@ -136,97 +132,6 @@
                             font-weight: 500;
                             line-height: 0.75rem;
                             color: var(--saved-date-read-time);
-                        }
-                    }
-                }
-            }
-            .topic-list-footer {
-                position: absolute;
-                width: 100%;
-                background: var(--app-footer-background);
-                bottom: 0px;
-                box-sizing: border-box;
-                display: grid;
-                grid-template-columns: 100% 100%;
-                align-items: center;
-                .categories-pill-list {
-                    padding: 1rem 0.875rem 1.5rem 0.875rem;
-                    box-sizing: border-box;
-                    display: grid;
-                    align-items: center;
-                    justify-content: space-between;
-                    grid-template-columns: 5fr 1fr;
-                    grid-gap: 0.825rem;
-                    .categories-pill {
-                        display: flex;
-                        grid-gap: 0.625rem;
-                        overflow: auto;
-                        .category-pill {
-                            flex-shrink: 0;
-                            display: grid;
-                            align-items: center;
-                            justify-content: center;
-                            height: 2.5rem;
-                            padding: 0 1rem;
-                            font-size: 0.625rem;
-                            border: 1px solid var(--category-pill-border-color);
-                            box-sizing: border-box;
-                            border-radius: 21px;
-                            font-weight: 400;
-                            color: var(--category-pill-text);
-                            transition: all 0.5s ease-in-out;
-                            &.category-pill-selected {
-                                background-color: var(--category-pill-selected-background);
-                                color: var(--category-pill-selected-text);
-                            }
-                        }
-                    }
-                    .footer-menu {
-                        height: 3.25rem;
-                        width: 3.25rem;
-                        border-radius: 50%;
-                        background: linear-gradient(127.68deg, #ff409a 14.19%, #c438ef 101.67%);
-                        display: grid;
-                        align-items: center;
-                        justify-content: center;
-                    }
-                }
-                .footer-category-menus-container {
-                    padding: 1rem 0.813rem 1.5rem 0.813rem;
-                    box-sizing: border-box;
-                    transform: translateX(0px);
-                    transition: all 1s ease-in-out;
-                    // background: inherit;
-                    &.show-menu {
-                        transform: translateX(-100%);
-                    }
-                    .footer-category-menus {
-                        display: flex;
-                        grid-template-columns: repeat(5, 1fr);
-                        padding: 0.438rem 1.5rem;
-                        box-sizing: border-box;
-                        border-radius: 2.688rem;
-                        background: linear-gradient(
-                            90deg,
-                            #192757 0%,
-                            #1b2756 69.6%,
-                            #2c2754 78.09%,
-                            #512a6f 86.95%,
-                            #d63bd7 98.79%,
-                            #712d82 101.81%
-                        );
-                        align-items: center;
-                        justify-content: space-between;
-
-                        .footer-category-icon {
-                            // width: 2.563rem;
-                            color: var(--footer-action-icon-label);
-                            font-family: Poppins;
-                            font-size: 0.688rem;
-                            font-weight: 400;
-                            height: 100%;
-                            display: grid;
-                            justify-items: center;
                         }
                     }
                 }

@@ -6,7 +6,7 @@ $white_01: #e8e8e8;
 $white_02: #d9d9d9;
 $white: #fff;
 $purple: #ff409a;
-
+$gray_1: #303131;
 * {
     --app-background-color: #{$blue};
     --app-name-color: #{$white};
@@ -24,5 +24,22 @@ $purple: #ff409a;
     --category-pill-text: #{$bule_03};
     --category-pill-border-color: #{$bule_03};
     --app-footer-background: #{$blue};
-    --footer-action-icon-label: #{$blue_02};
+    --footer-menu-icon-label: #{$blue_02};
+    --footer-menu-background: linear-gradient(
+        90deg,
+        #192757 0%,
+        #1b2756 69.6%,
+        #2c2754 78.09%,
+        #512a6f 86.95%,
+        #d63bd7 98.79%,
+        #712d82 101.81%
+    );
+
+    --filter-popup-background: linear-gradient(180deg, #b0ebf8 0%, #ffffff 100%);
+    --filter-popup-tab-color: #{$gray_1};
+    --filter-popup-tab-selected-color: #{$bule_03};
+    --filter-popup-tab-selected-after: linear-gradient(127.68deg, #ff409a 14.19%, #c438ef 76.92%);
+
+    --radio-button-bg-border: #{$bule_03};
+    --list-text-color: #{$gray_1};
 }

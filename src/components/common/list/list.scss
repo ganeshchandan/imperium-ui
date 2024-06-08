@@ -1,0 +1,14 @@
+* {
+    .lists {
+        width: 100%;
+        .list-item {
+            display: flex;
+            align-items: center;
+            color: var(--list-text-color);
+            font-size: 1.125rem;
+            font-weight: 400;
+            grid-gap: 1.125rem;
+            padding: 1rem 0;
+        }
+    }
+}

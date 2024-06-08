@@ -1,0 +1,85 @@
+* {
+    .topic-list-footer {
+        position: absolute;
+        width: 100%;
+        background: var(--app-footer-background);
+        bottom: 0px;
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: 100% 100%;
+        align-items: center;
+        .categories-pill-list {
+            padding: 1rem 0.875rem 1.5rem 0.875rem;
+            box-sizing: border-box;
+            display: grid;
+            align-items: center;
+            justify-content: space-between;
+            grid-template-columns: 5fr 1fr;
+            grid-gap: 0.825rem;
+            .categories-pill {
+                display: flex;
+                grid-gap: 0.625rem;
+                overflow: auto;
+                .category-pill {
+                    flex-shrink: 0;
+                    display: grid;
+                    align-items: center;
+                    justify-content: center;
+                    height: 2.5rem;
+                    padding: 0 1rem;
+                    font-size: 0.625rem;
+                    border: 1px solid var(--category-pill-border-color);
+                    box-sizing: border-box;
+                    border-radius: 21px;
+                    font-weight: 400;
+                    color: var(--category-pill-text);
+                    transition: all 0.5s ease-in-out;
+                    &.category-pill-selected {
+                        background-color: var(--category-pill-selected-background);
+                        color: var(--category-pill-selected-text);
+                    }
+                }
+            }
+            .footer-menu {
+                height: 3.25rem;
+                width: 3.25rem;
+                border-radius: 50%;
+                background: linear-gradient(127.68deg, #ff409a 14.19%, #c438ef 101.67%);
+                display: grid;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+        .footer-category-menus-container {
+            padding: 1rem 0.813rem 1.5rem 0.813rem;
+            box-sizing: border-box;
+            transform: translateX(0px);
+            transition: all 1s ease-in-out;
+            &.show-menu {
+                transform: translateX(-100%);
+            }
+            .footer-category-menus {
+                display: flex;
+                grid-template-columns: repeat(5, 1fr);
+                padding: 0.438rem 1.5rem;
+                box-sizing: border-box;
+                border-radius: 2.688rem;
+                background: var(--footer-menu-background);
+                align-items: center;
+                justify-content: space-between;
+
+                .footer-category-icon {
+                    // width: 2.563rem;
+                    color: var(--footer-menu-icon-label);
+                    font-family: Poppins;
+                    font-size: 0.688rem;
+                    font-weight: 400;
+                    height: 100%;
+                    display: grid;
+                    justify-items: center;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

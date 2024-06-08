@@ -1,5 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { ITopic, ISelectedTopic } from "../type";
+import { FILTER_BY_LIST } from "../constants";
 
 export interface TopicState {
   selectedTopicCategory: string;
@@ -7,6 +8,9 @@ export interface TopicState {
   topics: ITopic[];
   selectedTopic: ISelectedTopic;
   categoryies: string[];
+  selectedCategory: string[];
+  filterByList: string[];
+  selectedFilterBy: string[];
 }
 
 const initialState: TopicState = {
@@ -24,6 +28,9 @@ const initialState: TopicState = {
     topic_category: "",
     topic_image: "",
   },
+  filterByList: FILTER_BY_LIST,
+  selectedFilterBy: ["Recent"],
+  selectedCategory: [],
 };
 
 export const topicSlice = createSlice({
@@ -45,11 +52,22 @@ export const topicSlice = createSlice({
     setSelectedTopicCategory: (state, action: PayloadAction<string>) => {
       state.selectedTopicCategory = action.payload;
     },
+    setFilterBy: (state, action: PayloadAction<string[]>) => {
+      state.selectedFilterBy = action.payload;
+    },
+    setSelectedCategory: (state, action: PayloadAction<string[]>) => {
+      state.selectedCategory = action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { loadTopcis, setSelectedTopic, setSelectedTopicCategory } =
-  topicSlice.actions;
+export const {
+  loadTopcis,
+  setSelectedTopic,
+  setSelectedTopicCategory,
+  setFilterBy,
+  setSelectedCategory,
+} = topicSlice.actions;
 
 export default topicSlice.reducer;

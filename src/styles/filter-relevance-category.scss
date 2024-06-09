@@ -28,6 +28,7 @@
             }
             .category-filter-by {
                 padding: 1.75rem 2.5rem 0 2.5rem;
+                padding: 1.25rem 2.5rem 0 2.5rem;
                 overflow: auto;
             }
             .relevance {
@@ -42,6 +43,7 @@
                     width: 100%;
                     display: flex;
                     padding-top: 1.188rem;
+                    padding-top: 0.75rem;
                     grid-gap: 0.75rem;
                     flex-wrap: wrap;
                     .relevance-category {

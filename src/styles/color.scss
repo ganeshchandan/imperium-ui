@@ -9,6 +9,7 @@ $purple: #ff409a;
 $gray_1: #303131;
 $gray_2: #717171;
 $gray_3: #737373;
+$gray_4: #8e8e8e;
 
 * {
     --app-background-color: #{$blue};
@@ -49,6 +50,7 @@ $gray_3: #737373;
     --relevance-category-color: #{$bule_03};
     --relevance-selected-category-color: #{$white};
     --relevance-selected-category-bg: #{$bule_03};
+    --relevance-disabled-color: #{$gray_4};
 
     --relevance-info-text-color: #{$gray_3};
 }

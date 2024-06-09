@@ -48,16 +48,15 @@
                 }
             }
             .topic-list {
-                padding: 0 1.25rem 5.75rem 1.25rem;
+                padding: 0 1.25rem 1rem 1.25rem;
                 width: 100%;
                 box-sizing: border-box;
                 display: flex;
                 grid-gap: 1rem;
-                height: calc(100% - 80px);
+                height: calc(100% - 9.375rem);
                 overflow: auto;
                 flex-flow: column;
                 transition: all 0.5s ease-in-out;
-                -webkit-overflow-scrolling: touch;
 
                 .topic-tile {
                     width: 100%;

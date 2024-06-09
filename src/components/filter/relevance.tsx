@@ -20,19 +20,24 @@ const Relevance: FC<IFilterByCategory> = ({
     handleSelected(selectedItem);
   };
 
-  const renderCategories = () =>
-    listItems.map((category) => (
-      <div
-        className={`relevance-category ${
-          updatedSelectedItems.includes(category) ? "selected-category" : ""
-        }`}
-        key={category}
-        onClick={onSelect}
-        data-itemvalue={category}
-      >
-        {category}
-      </div>
-    ));
+  const renderCategories = () => {
+    const isSelectionDisabled = updatedSelectedItems.length >= 3;
+    return listItems.map((category) => {
+      const isSelected = updatedSelectedItems.includes(category);
+      return (
+        <div
+          className={`relevance-category ${
+            isSelectionDisabled && !isSelected ? "disabled-category" : ""
+          } ${isSelected ? "selected-category" : ""}`}
+          key={category}
+          onClick={onSelect}
+          data-itemvalue={category}
+        >
+          {category}
+        </div>
+      );
+    });
+  };
 
   return (
     <>

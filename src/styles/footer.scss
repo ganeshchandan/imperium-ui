@@ -41,13 +41,18 @@
                 }
             }
             .footer-menu {
-                height: 3.25rem;
-                width: 3.25rem;
-                border-radius: 50%;
-                background: linear-gradient(127.68deg, #ff409a 14.19%, #c438ef 101.67%);
-                display: grid;
+                display: flex;
                 align-items: center;
-                justify-content: center;
+                justify-content: flex-end;
+                .footer-menu-icon {
+                    height: 3.25rem;
+                    width: 3.25rem;
+                    border-radius: 50%;
+                    background: linear-gradient(127.68deg, #ff409a 14.19%, #c438ef 101.67%);
+                    display: grid;
+                    align-items: center;
+                    justify-content: center;
+                }
             }
         }
         .footer-category-menus-container {

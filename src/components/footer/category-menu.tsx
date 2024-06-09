@@ -6,6 +6,8 @@ import UserIcon from "../../assets/user-icon.svg";
 import IconWithName from "../common/icon-with-name";
 import { FILTER, SEARCH, MENU, CLOSE, USER } from "../../constants";
 import { FC } from "react";
+import { useDispatch } from "react-redux";
+import { setShowFilter } from "../../reducers/filter";
 
 interface ICategoryMenu {
   showMenu: boolean;
@@ -13,8 +15,13 @@ interface ICategoryMenu {
 }
 
 const CategoryMenu: FC<ICategoryMenu> = ({ showMenu, setShowMenu }) => {
+  const dispatch = useDispatch();
   const handleShowMenu = () => {
     setShowMenu((showMenu) => !showMenu);
+  };
+
+  const handleFilterClick = () => {
+    dispatch(setShowFilter(true));
   };
 
   return (
@@ -41,6 +48,7 @@ const CategoryMenu: FC<ICategoryMenu> = ({ showMenu, setShowMenu }) => {
           imageUrl={Filter}
           imageAlt={FILTER}
           className="footer-category-icon"
+          onClick={handleFilterClick}
         />
         <div className="footer-category-icon">
           <img src={UserIcon} alt={USER}></img>

@@ -1,6 +1,4 @@
 import { useDispatch } from "react-redux";
-import { TOPIC_IMAGES } from "../../../assets";
-import { TOPIC_IMAGE } from "../../../constants";
 import { setSelectedTopic } from "../../../reducers/topic";
 import { ISelectedTopic } from "../../../type";
 import ActionBar from "./action-bar";
@@ -25,7 +23,7 @@ const SelectedTopic = ({
   return (
     <div className="selected-topic">
       <div className="selected-topic-image">
-        <img src={topic_image || TOPIC_IMAGES[`${TOPIC_IMAGE}1`]} alt="Topic" />
+        <img src={topic_image} alt="Topic" />
       </div>
       <div className="selected-topic-content">
         <div className="topic-title">{topic_title}</div>

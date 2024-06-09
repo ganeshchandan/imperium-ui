@@ -5,11 +5,15 @@
         height: 50%;
         border-radius: 30px;
         background: var(--filter-popup-background);
-        bottom: 0px;
         padding: 1.625rem 0;
         box-sizing: border-box;
         display: grid;
         grid-template-rows: 2.5rem calc(100% - 6.563rem) 4.063rem;
+        bottom: -50%;
+        transition: all 1s ease-in-out;
+        &.show-filter-popup {
+            bottom: 0px;
+        }
         .filter-relevance-tabs {
             width: 100%;
             padding: 0 2.5rem;
@@ -17,6 +21,7 @@
         }
         .category-filter-by {
             padding: 1.75rem 2.5rem 0 2.5rem;
+            overflow: auto;
         }
         .relevance {
             padding: 0.5rem 2.5rem 0 2.5rem;
@@ -41,6 +46,10 @@
                     font-weight: 400;
                     color: var(--relevance-category-color);
                     cursor: pointer;
+                    &.disabled-category {
+                        color: var(--relevance-disabled-color);
+                        border-color: var(--relevance-disabled-color);
+                    }
                     &.selected-category {
                         font-weight: 500;
                         color: var(--relevance-selected-category-color);

@@ -2,17 +2,17 @@ import { FC } from "react";
 import Menu from "../../assets/menu.svg";
 import { EMPTY_STRING } from "../../constants";
 import { useDispatch } from "react-redux";
-import { setSelectedTopicCategory } from "../../reducers/topic";
+import { setSelectedCategory } from "../../reducers/filter";
 
 interface ICategoryList {
   categories: string[];
-  selectedTopicCategory: string;
+  selectedCategory: string[];
   setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const CategoryList: FC<ICategoryList> = ({
   categories,
-  selectedTopicCategory,
+  selectedCategory,
   setShowMenu,
 }) => {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ const CategoryList: FC<ICategoryList> = ({
   ) => {
     const { categoryname = EMPTY_STRING } = (event.target as HTMLDivElement)
       .dataset;
-    dispatch(setSelectedTopicCategory(categoryname));
+    dispatch(setSelectedCategory([categoryname]));
   };
 
   const handleShowMenu = () => {
@@ -36,7 +36,7 @@ const CategoryList: FC<ICategoryList> = ({
           <div
             key={topicCategory}
             className={`category-pill ${
-              selectedTopicCategory === topicCategory
+              selectedCategory.includes(topicCategory)
                 ? "category-pill-selected"
                 : EMPTY_STRING
             }`}
@@ -48,7 +48,9 @@ const CategoryList: FC<ICategoryList> = ({
         ))}
       </div>
       <div className="footer-menu" onClick={handleShowMenu}>
-        <img src={Menu} alt="menu" />
+        <div className="footer-menu-icon">
+          <img src={Menu} alt="menu" />
+        </div>
       </div>
     </div>
   );

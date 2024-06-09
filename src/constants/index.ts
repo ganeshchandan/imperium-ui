@@ -20,4 +20,4 @@ export const FILTER_POPUP_TABS = [
   { name: "Relevance", value: RELEVANCE_TAB },
 ];
 
-export const FILTER_BY_LIST = ["Recent", "Latest", "Bookmarked (4)"];
+export const FILTER_BY_LIST = ["Recent", "Latest", "Bookmarked (0)"];

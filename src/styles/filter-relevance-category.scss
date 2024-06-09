@@ -9,7 +9,7 @@
         padding: 1.625rem 0;
         box-sizing: border-box;
         display: grid;
-        grid-template-rows: 2.5rem calc(100% - 6.875rem) 4.375rem;
+        grid-template-rows: 2.5rem calc(100% - 6.563rem) 4.063rem;
         .filter-relevance-tabs {
             width: 100%;
             padding: 0 2.5rem;
@@ -17,6 +17,56 @@
         }
         .category-filter-by {
             padding: 1.75rem 2.5rem 0 2.5rem;
+        }
+        .relevance {
+            padding: 0.5rem 2.5rem 0 2.5rem;
+            .info-text {
+                font-size: 0.75rem;
+                font-style: italic;
+                font-weight: 400;
+                color: var(--relevance-info-text-color);
+            }
+            .relevance-categories {
+                width: 100%;
+                display: flex;
+                padding-top: 1.188rem;
+                grid-gap: 0.75rem;
+                flex-wrap: wrap;
+                .relevance-category {
+                    padding: 0.313rem 0.75rem;
+                    border-radius: 70px;
+                    border: 1px solid var(--relevance-category-color);
+                    width: max-content;
+                    font-size: 0.875rem;
+                    font-weight: 400;
+                    color: var(--relevance-category-color);
+                    cursor: pointer;
+                    &.selected-category {
+                        font-weight: 500;
+                        color: var(--relevance-selected-category-color);
+                        background: var(--relevance-selected-category-bg);
+                    }
+                }
+            }
+        }
+        .filter-relevance-actions {
+            padding: 0 1.625rem;
+            box-sizing: border-box;
+            display: grid;
+            align-items: flex-end;
+            justify-content: space-between;
+            grid-template-columns: 2fr 1fr 1fr;
+            .filter-relevance-action {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                &:first-child {
+                    justify-content: flex-start;
+                    .custom-button {
+                        padding-left: 0px;
+                    }
+                }
+            }
         }
     }
 }

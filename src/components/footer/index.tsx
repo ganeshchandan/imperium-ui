@@ -3,17 +3,17 @@ import CategoryMenu from "./category-menu";
 import CategoryList from "./category-list";
 
 interface IAppFooter {
-  categoryies: string[];
+  categories: string[];
   selectedTopicCategory: string;
 }
 
-const AppFooter: FC<IAppFooter> = ({ categoryies, selectedTopicCategory }) => {
+const AppFooter: FC<IAppFooter> = ({ categories, selectedTopicCategory }) => {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
     <div className="topic-list-footer">
       <CategoryList
-        categoryies={categoryies}
+        categories={categories}
         selectedTopicCategory={selectedTopicCategory}
         setShowMenu={setShowMenu}
       />

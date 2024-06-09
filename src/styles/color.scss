@@ -7,6 +7,9 @@ $white_02: #d9d9d9;
 $white: #fff;
 $purple: #ff409a;
 $gray_1: #303131;
+$gray_2: #717171;
+$gray_3: #737373;
+
 * {
     --app-background-color: #{$blue};
     --app-name-color: #{$white};
@@ -42,4 +45,10 @@ $gray_1: #303131;
 
     --radio-button-bg-border: #{$bule_03};
     --list-text-color: #{$gray_1};
+
+    --relevance-category-color: #{$bule_03};
+    --relevance-selected-category-color: #{$white};
+    --relevance-selected-category-bg: #{$bule_03};
+
+    --relevance-info-text-color: #{$gray_3};
 }

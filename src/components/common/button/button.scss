@@ -1,0 +1,35 @@
+@import "../../../styles/color.scss";
+* {
+    --primary-button-text-color: #{$gray_1};
+    --secondary-button-text-color: #{$white};
+    --secondary-button-disabled-background: #{$gray_2};
+    --secondary-button-background: linear-gradient(
+        137.43deg,
+        #ff409a 3.69%,
+        #f03eaf 36.74%,
+        #cd39e2 83.99%,
+        #8512a8 106.66%
+    );
+
+    .custom-button {
+        font-size: 1.125rem;
+        padding: 0.75rem 1.5rem;
+        border-radius: 3rem;
+        cursor: pointer;
+        &.primary {
+            font-weight: 400;
+            color: var(--primary-button-text-color);
+            border: none;
+            background: transparent;
+        }
+        &.secondary {
+            border: none;
+            font-weight: 600;
+            color: var(--secondary-button-text-color);
+            background: var(--secondary-button-background);
+            &.disabled {
+                background: var(--secondary-button-disabled-background);
+            }
+        }
+    }
+}

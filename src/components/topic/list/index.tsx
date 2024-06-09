@@ -6,7 +6,7 @@ import AppFooter from "../../footer";
 import TopicListheader from "./header";
 
 const TopicList = () => {
-  const { topics, selectedTopicCategory, categoryies } = useSelector(
+  const { topics, selectedTopicCategory, categories } = useSelector(
     (state: RootState) => state.topic
   );
 
@@ -25,7 +25,7 @@ const TopicList = () => {
       <TopicListheader selectedTopicCategory={selectedTopicCategory} />
       <div className="topic-list">{renderTopicLsit()}</div>
       <AppFooter
-        categoryies={categoryies}
+        categories={categories}
         selectedTopicCategory={selectedTopicCategory}
       />
     </div>

@@ -21,7 +21,14 @@ const List: FC<IList> = ({
     const { itemvalue = EMPTY_STRING } = (event.target as HTMLDivElement)
       .dataset;
     if (isMultipleSelection) {
-      onSelect([...selectedItem, itemvalue]);
+      const updatedSelectedItem = [...selectedItem];
+      const indexOf = updatedSelectedItem.indexOf(itemvalue);
+      if (indexOf < 0) {
+        updatedSelectedItem.push(itemvalue);
+      } else {
+        updatedSelectedItem.splice(indexOf, 1);
+      }
+      onSelect(updatedSelectedItem);
     } else {
       onSelect([itemvalue]);
     }

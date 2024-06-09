@@ -10,6 +10,9 @@ export const USER = "User";
 export const CATEGORY_TAB = "category";
 export const FILTERBY_TAB = "filterBy";
 export const RELEVANCE_TAB = "relevance";
+export const CANCEL = "CANCEL";
+export const RESET = "RESET";
+export const APPLY = "APPLY";
 
 export const FILTER_POPUP_TABS = [
   { name: "Category", value: CATEGORY_TAB },

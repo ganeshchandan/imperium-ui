@@ -5,13 +5,13 @@ import { useDispatch } from "react-redux";
 import { setSelectedTopicCategory } from "../../reducers/topicSlice";
 
 interface ICategoryList {
-  categoryies: string[];
+  categories: string[];
   selectedTopicCategory: string;
   setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const CategoryList: FC<ICategoryList> = ({
-  categoryies,
+  categories,
   selectedTopicCategory,
   setShowMenu,
 }) => {
@@ -32,7 +32,7 @@ const CategoryList: FC<ICategoryList> = ({
   return (
     <div className="categories-pill-list">
       <div className="categories-pill">
-        {categoryies.map((topicCategory) => (
+        {categories.map((topicCategory) => (
           <div
             key={topicCategory}
             className={`category-pill ${

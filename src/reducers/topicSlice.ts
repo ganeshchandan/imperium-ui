@@ -7,17 +7,18 @@ export interface TopicState {
   isLoading: boolean;
   topics: ITopic[];
   selectedTopic: ISelectedTopic;
-  categoryies: string[];
+  categories: string[];
   selectedCategory: string[];
   filterByList: string[];
   selectedFilterBy: string[];
+  selectedRelevance: string[];
 }
 
 const initialState: TopicState = {
   selectedTopicCategory: "Cyber Security",
   isLoading: true,
   topics: [],
-  categoryies: [],
+  categories: [],
   selectedTopic: {
     isSelected: false,
     topic_id: 0,
@@ -31,6 +32,7 @@ const initialState: TopicState = {
   filterByList: FILTER_BY_LIST,
   selectedFilterBy: ["Recent"],
   selectedCategory: [],
+  selectedRelevance: [],
 };
 
 export const topicSlice = createSlice({
@@ -39,12 +41,12 @@ export const topicSlice = createSlice({
   reducers: {
     loadTopcis: (
       state,
-      action: PayloadAction<{ categoryies: string[]; topics: ITopic[] }>
+      action: PayloadAction<{ categories: string[]; topics: ITopic[] }>
     ) => {
-      const { topics, categoryies } = action.payload;
+      const { topics, categories } = action.payload;
       state.isLoading = false;
       state.topics = topics;
-      state.categoryies = categoryies;
+      state.categories = categories;
     },
     setSelectedTopic: (state, action: PayloadAction<ISelectedTopic>) => {
       state.selectedTopic = action.payload;
@@ -58,6 +60,9 @@ export const topicSlice = createSlice({
     setSelectedCategory: (state, action: PayloadAction<string[]>) => {
       state.selectedCategory = action.payload;
     },
+    setSelectedRelevance: (state, action: PayloadAction<string[]>) => {
+      state.selectedRelevance = action.payload;
+    },
   },
 });
 
@@ -68,6 +73,7 @@ export const {
   setSelectedTopicCategory,
   setFilterBy,
   setSelectedCategory,
+  setSelectedRelevance,
 } = topicSlice.actions;
 
 export default topicSlice.reducer;

@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { setSelectedTopic } from "../../../reducers/topic";
 import { ISelectedTopic } from "../../../type";
 import ActionBar from "./action-bar";
+import { formatDescription } from "../../../utils/app";
 
 const SelectedTopic = ({
   selectedTopic,
@@ -22,13 +23,17 @@ const SelectedTopic = ({
 
   return (
     <div className="selected-topic">
-      <div className="selected-topic-image">
-        <img src={topic_image} alt="Topic" />
-      </div>
       <div className="selected-topic-content">
-        <div className="topic-title">{topic_title}</div>
-        <div className="topic_saved_date">{topic_saved_date}</div>
-        <div className="topic_description">{topic_short_description}</div>
+        <div className="selected-topic-image">
+          <img src={topic_image} alt="Topic" />
+        </div>
+        <div className="selected-topic-description">
+          <div className="topic-title">{topic_title}</div>
+          <div className="topic-saved-date">{topic_saved_date}</div>
+          <div className="topic-description">
+            {formatDescription(topic_short_description)}
+          </div>
+        </div>
       </div>
       <ActionBar backToTopicList={backToTopicList} />
     </div>

@@ -43,9 +43,6 @@ export const topicSlice = createSlice({
     setSelectedTopic: (state, action: PayloadAction<ISelectedTopic>) => {
       state.selectedTopic = action.payload;
     },
-    // setSelectedTopicCategory: (state, action: PayloadAction<string>) => {
-    //   state.selectedTopicCategory = action.payload;
-    // },
   },
 });
 

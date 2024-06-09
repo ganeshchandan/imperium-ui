@@ -20,6 +20,18 @@ const List: FC<IList> = ({
   const handleSelected = (event: SyntheticEvent<HTMLDivElement>) => {
     const { itemvalue = EMPTY_STRING } = (event.target as HTMLDivElement)
       .dataset;
+    updateListValue(itemvalue);
+  };
+
+  const handleRadioCheckbox = (
+    event: SyntheticEvent<HTMLDivElement>,
+    itemvalue: string
+  ) => {
+    event.stopPropagation();
+    updateListValue(itemvalue);
+  };
+
+  const updateListValue = (itemvalue: string) => {
     if (isMultipleSelection) {
       const updatedSelectedItem = [...selectedItem];
       const indexOf = updatedSelectedItem.indexOf(itemvalue);
@@ -47,14 +59,19 @@ const List: FC<IList> = ({
             <Checkbox
               isSelected={selectedItem.includes(item)}
               size="1.375rem"
+              onClick={(event: SyntheticEvent<HTMLDivElement>) =>
+                handleRadioCheckbox(event, item)
+              }
             />
           ) : (
             <RadioButton
               isSelected={selectedItem.includes(item)}
               size="1.25rem"
+              onClick={(event: SyntheticEvent<HTMLDivElement>) =>
+                handleRadioCheckbox(event, item)
+              }
             />
           )}
-
           {item}
         </div>
       ))}

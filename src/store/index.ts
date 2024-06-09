@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import topicReducer from "../reducers/topicSlice";
+import topicReducer from "../reducers/topic";
+import filterReducer from "../reducers/filter";
 
 export const store = configureStore({
   reducer: {
     topic: topicReducer,
+    filter: filterReducer,
   },
 });
 

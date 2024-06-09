@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { getTopicLists } from "../actions/topic";
-import { loadTopcis } from "../reducers/topicSlice";
+import { loadTopcis } from "../reducers/topic";
 import { useDispatch, useSelector } from "react-redux";
 import AppSection from "./app-section";
 import AppLoader from "./common/app-loader";

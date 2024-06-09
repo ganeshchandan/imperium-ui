@@ -3,7 +3,7 @@ import { TOPIC_IMAGES } from "../../../assets";
 import FavoriteIcon from "../../../assets/favorite.svg";
 import { TOPIC_IMAGE } from "../../../constants";
 import { ITopic } from "../../../type";
-import { setSelectedTopic } from "../../../reducers/topicSlice";
+import { setSelectedTopic } from "../../../reducers/topic";
 import { formatDescription } from "../../../utils/app";
 import { useRef } from "react";
 

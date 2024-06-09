@@ -2,7 +2,7 @@ import { FC } from "react";
 import Menu from "../../assets/menu.svg";
 import { EMPTY_STRING } from "../../constants";
 import { useDispatch } from "react-redux";
-import { setSelectedTopicCategory } from "../../reducers/topicSlice";
+import { setSelectedTopicCategory } from "../../reducers/topic";
 
 interface ICategoryList {
   categories: string[];

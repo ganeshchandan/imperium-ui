@@ -8,10 +8,7 @@ export interface TopicState {
   topics: ITopic[];
   selectedTopic: ISelectedTopic;
   categories: string[];
-  selectedCategory: string[];
   filterByList: string[];
-  selectedFilterBy: string[];
-  selectedRelevance: string[];
 }
 
 const initialState: TopicState = {
@@ -30,9 +27,6 @@ const initialState: TopicState = {
     topic_image: "",
   },
   filterByList: FILTER_BY_LIST,
-  selectedFilterBy: ["Recent"],
-  selectedCategory: [],
-  selectedRelevance: [],
 };
 
 export const topicSlice = createSlice({
@@ -54,26 +48,11 @@ export const topicSlice = createSlice({
     setSelectedTopicCategory: (state, action: PayloadAction<string>) => {
       state.selectedTopicCategory = action.payload;
     },
-    setFilterBy: (state, action: PayloadAction<string[]>) => {
-      state.selectedFilterBy = action.payload;
-    },
-    setSelectedCategory: (state, action: PayloadAction<string[]>) => {
-      state.selectedCategory = action.payload;
-    },
-    setSelectedRelevance: (state, action: PayloadAction<string[]>) => {
-      state.selectedRelevance = action.payload;
-    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const {
-  loadTopcis,
-  setSelectedTopic,
-  setSelectedTopicCategory,
-  setFilterBy,
-  setSelectedCategory,
-  setSelectedRelevance,
-} = topicSlice.actions;
+export const { loadTopcis, setSelectedTopic, setSelectedTopicCategory } =
+  topicSlice.actions;
 
 export default topicSlice.reducer;

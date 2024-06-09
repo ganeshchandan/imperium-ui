@@ -4,7 +4,7 @@ import {
   setSelectedCategory,
   setFilterBy,
   setSelectedRelevance,
-} from "../../../reducers/topicSlice";
+} from "../../../reducers/filter";
 import { RootState } from "../../../store";
 import { FC } from "react";
 import Relevance from "../relevance";
@@ -23,13 +23,13 @@ const FilterRelevanceContent: FC<IFilterRelevanceContent> = ({
 }) => {
   const dispatch = useDispatch();
 
-  const {
-    filterByList,
-    selectedFilterBy,
-    categories,
-    selectedCategory,
-    selectedRelevance,
-  } = useSelector((state: RootState) => state.topic);
+  const { filterByList, categories } = useSelector(
+    (state: RootState) => state.topic
+  );
+
+  const { selectedFilterBy, selectedCategory, selectedRelevance } = useSelector(
+    (state: RootState) => state.filter
+  );
 
   const handleFilterBySelected = (selectedItem: string[]) =>
     dispatch(setFilterBy(selectedItem));

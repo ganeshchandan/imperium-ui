@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { TOPIC_IMAGES } from "../../../assets";
 import { TOPIC_IMAGE } from "../../../constants";
-import { setSelectedTopic } from "../../../reducers/topicSlice";
+import { setSelectedTopic } from "../../../reducers/topic";
 import { ISelectedTopic } from "../../../type";
 import ActionBar from "./action-bar";
 

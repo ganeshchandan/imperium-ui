@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import TopicList from "./topic/list";
 import SelectedTopic from "./topic/selected-topic";
-import FilterRelevanceCategory from "./filter-relevance";
+import Filter from "./filter";
 
 const AppSection = () => {
   const selectedTopic = useSelector(
@@ -18,7 +18,7 @@ const AppSection = () => {
     >
       <TopicList />
       <SelectedTopic selectedTopic={selectedTopic} />
-      <FilterRelevanceCategory />
+      <Filter />
     </div>
   );
 };

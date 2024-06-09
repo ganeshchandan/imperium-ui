@@ -3,7 +3,7 @@ import { RELEVANCE_TAB } from "../../constants";
 import FilterRelevanceTabs from "./tabs";
 import FilterRelevanceContent from "./content";
 
-const FilterRelevanceCategory = () => {
+const Filter = () => {
   const [selectedTab, setSelectedTab] = useState(RELEVANCE_TAB);
 
   return (
@@ -17,4 +17,4 @@ const FilterRelevanceCategory = () => {
   );
 };
 
-export default FilterRelevanceCategory;
+export default Filter;

@@ -33,7 +33,7 @@ export const filterSlice = createSlice({
     },
     setSelectedRelevance: (state, action: PayloadAction<string[]>) => {
       state.selectedFilterBy = [];
-      // state.selectedCategory = [];
+      state.selectedCategory = [];
       state.selectedRelevance = action.payload;
     },
   },

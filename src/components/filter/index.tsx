@@ -20,20 +20,27 @@ const Filter = () => {
   };
 
   return (
-    <div
-      className={`filter-popup-container ${
-        showFilter ? "show-filter-popup" : ""
-      }`}
-      onClick={handleOutsideClick}
-    >
-      <div className="filter-relevance-category" onClick={handlePopupClick}>
+    <>
+      <div
+        className={`filter-popup-container ${
+          showFilter ? "show-filter-popup" : ""
+        }`}
+        onClick={handleOutsideClick}
+      ></div>
+      <div
+        className={`filter-relevance-category ${
+          showFilter ? "show-filter-popup" : ""
+        }`}
+        onClick={handlePopupClick}
+      >
+        <div className="filter-popup-drawer"></div>
         <FilterRelevanceTabs
           selectedTab={selectedTab}
           setSelectedTab={setSelectedTab}
         />
         <FilterRelevanceContent selectedTab={selectedTab} />
       </div>
-    </div>
+    </>
   );
 };
 

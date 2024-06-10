@@ -1,23 +1,24 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import CategoryMenu from "./category-menu";
 import CategoryList from "./category-list";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 
 interface IAppFooter {
   categories: string[];
-  selectedCategory: string[];
+  selectedRelevance: string[];
 }
 
-const AppFooter: FC<IAppFooter> = ({ categories, selectedCategory }) => {
-  const [showMenu, setShowMenu] = useState(false);
+const AppFooter: FC<IAppFooter> = ({ categories, selectedRelevance }) => {
+  const showMenu = useSelector((state: RootState) => state.filter.showMenu);
 
   return (
     <div className="topic-list-footer">
       <CategoryList
         categories={categories}
-        selectedCategory={selectedCategory}
-        setShowMenu={setShowMenu}
+        selectedRelevance={selectedRelevance}
       />
-      <CategoryMenu setShowMenu={setShowMenu} showMenu={showMenu} />
+      <CategoryMenu showMenu={showMenu} />
     </div>
   );
 };

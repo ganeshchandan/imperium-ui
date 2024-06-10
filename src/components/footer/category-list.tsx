@@ -2,19 +2,14 @@ import { FC } from "react";
 import Menu from "../../assets/menu.svg";
 import { EMPTY_STRING } from "../../constants";
 import { useDispatch } from "react-redux";
-import { setSelectedCategory } from "../../reducers/filter";
+import { setSelectedRelevance, setShowMenu } from "../../reducers/filter";
 
 interface ICategoryList {
   categories: string[];
-  selectedCategory: string[];
-  setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
+  selectedRelevance: string[];
 }
 
-const CategoryList: FC<ICategoryList> = ({
-  categories,
-  selectedCategory,
-  setShowMenu,
-}) => {
+const CategoryList: FC<ICategoryList> = ({ categories, selectedRelevance }) => {
   const dispatch = useDispatch();
 
   const handleSelectedTopicCategory = (
@@ -22,11 +17,15 @@ const CategoryList: FC<ICategoryList> = ({
   ) => {
     const { categoryname = EMPTY_STRING } = (event.target as HTMLDivElement)
       .dataset;
-    dispatch(setSelectedCategory([categoryname]));
+    dispatch(
+      setSelectedRelevance(
+        selectedRelevance.includes(categoryname) ? [] : [categoryname]
+      )
+    );
   };
 
   const handleShowMenu = () => {
-    setShowMenu((showMenu) => !showMenu);
+    dispatch(setShowMenu(true));
   };
 
   return (
@@ -36,7 +35,7 @@ const CategoryList: FC<ICategoryList> = ({
           <div
             key={topicCategory}
             className={`category-pill ${
-              selectedCategory.includes(topicCategory)
+              selectedRelevance.includes(topicCategory)
                 ? "category-pill-selected"
                 : EMPTY_STRING
             }`}

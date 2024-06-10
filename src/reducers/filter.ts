@@ -4,14 +4,18 @@ export interface FilterState {
   showFilter: boolean;
   selectedCategory: string[];
   selectedFilterBy: string[];
-  selectedRelevance: string[];
+  relevanceList: string[];
+  selectedRelavance: string[];
+  showMenu: boolean;
 }
 
 const initialState: FilterState = {
   showFilter: false,
   selectedFilterBy: ["Recent"],
   selectedCategory: ["Cyber Security"],
-  selectedRelevance: [],
+  relevanceList: [],
+  selectedRelavance: [],
+  showMenu: false,
 };
 
 export const filterSlice = createSlice({
@@ -22,19 +26,23 @@ export const filterSlice = createSlice({
       state.showFilter = action.payload;
     },
     setFilterBy: (state, action: PayloadAction<string[]>) => {
-      // state.selectedCategory = [];
-      state.selectedRelevance = [];
       state.selectedFilterBy = action.payload;
+      state.showMenu = false;
     },
     setSelectedCategory: (state, action: PayloadAction<string[]>) => {
       state.selectedFilterBy = [];
-      state.selectedRelevance = [];
       state.selectedCategory = action.payload;
+      state.showMenu = false;
+    },
+    setRelevanceList: (state, action: PayloadAction<string[]>) => {
+      state.relevanceList = action.payload;
+      state.showMenu = false;
     },
     setSelectedRelevance: (state, action: PayloadAction<string[]>) => {
-      state.selectedFilterBy = [];
-      state.selectedCategory = [];
-      state.selectedRelevance = action.payload;
+      state.selectedRelavance = action.payload;
+    },
+    setShowMenu: (state, action: PayloadAction<boolean>) => {
+      state.showMenu = action.payload;
     },
   },
 });
@@ -44,7 +52,9 @@ export const {
   setShowFilter,
   setFilterBy,
   setSelectedCategory,
+  setRelevanceList,
   setSelectedRelevance,
+  setShowMenu,
 } = filterSlice.actions;
 
 export default filterSlice.reducer;

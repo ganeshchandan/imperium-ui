@@ -7,17 +7,16 @@ import IconWithName from "../common/icon-with-name";
 import { FILTER, SEARCH, MENU, CLOSE, USER } from "../../constants";
 import { FC } from "react";
 import { useDispatch } from "react-redux";
-import { setShowFilter } from "../../reducers/filter";
+import { setShowFilter, setShowMenu } from "../../reducers/filter";
 
 interface ICategoryMenu {
   showMenu: boolean;
-  setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const CategoryMenu: FC<ICategoryMenu> = ({ showMenu, setShowMenu }) => {
+const CategoryMenu: FC<ICategoryMenu> = ({ showMenu }) => {
   const dispatch = useDispatch();
   const handleShowMenu = () => {
-    setShowMenu((showMenu) => !showMenu);
+    dispatch(setShowMenu(!showMenu));
   };
 
   const handleFilterClick = () => {

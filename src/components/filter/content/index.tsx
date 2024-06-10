@@ -3,7 +3,7 @@ import { CATEGORY_TAB, FILTERBY_TAB, RELEVANCE_TAB } from "../../../constants";
 import {
   setSelectedCategory,
   setFilterBy,
-  setSelectedRelevance,
+  setRelevanceList,
 } from "../../../reducers/filter";
 import { RootState } from "../../../store";
 import { FC } from "react";
@@ -27,7 +27,7 @@ const FilterRelevanceContent: FC<IFilterRelevanceContent> = ({
     (state: RootState) => state.topic
   );
 
-  const { selectedFilterBy, selectedCategory, selectedRelevance } = useSelector(
+  const { selectedFilterBy, selectedCategory, relevanceList } = useSelector(
     (state: RootState) => state.filter
   );
 
@@ -38,7 +38,7 @@ const FilterRelevanceContent: FC<IFilterRelevanceContent> = ({
     dispatch(setSelectedCategory(selectedItem));
 
   const handleSelectedRelevance = (selectedItem: string[]) =>
-    dispatch(setSelectedRelevance(selectedItem));
+    dispatch(setRelevanceList(selectedItem));
 
   const renderTabContent = () => {
     switch (selectedTab) {
@@ -65,7 +65,7 @@ const FilterRelevanceContent: FC<IFilterRelevanceContent> = ({
           <RelevanceHoc
             isMultipleSelection={false}
             listItems={categories}
-            selectedItems={selectedRelevance}
+            selectedItems={relevanceList}
             handleSelected={handleSelectedRelevance}
           />
         );

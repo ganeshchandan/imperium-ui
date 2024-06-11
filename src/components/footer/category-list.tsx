@@ -1,8 +1,8 @@
 import { FC } from "react";
-import Menu from "../../assets/menu.svg";
 import { EMPTY_STRING } from "../../constants";
 import { useDispatch } from "react-redux";
-import { setSelectedRelevance, setShowMenu } from "../../reducers/filter";
+import { setSelectedRelevance } from "../../reducers/filter";
+import Footermenu from "./menu";
 
 interface ICategoryList {
   categories: string[];
@@ -24,10 +24,6 @@ const CategoryList: FC<ICategoryList> = ({ categories, selectedRelevance }) => {
     );
   };
 
-  const handleShowMenu = () => {
-    dispatch(setShowMenu(true));
-  };
-
   return (
     <div className="categories-pill-list">
       <div className="categories-pill">
@@ -46,11 +42,7 @@ const CategoryList: FC<ICategoryList> = ({ categories, selectedRelevance }) => {
           </div>
         ))}
       </div>
-      <div className="footer-menu" onClick={handleShowMenu}>
-        <div className="footer-menu-icon">
-          <img src={Menu} alt="menu" />
-        </div>
-      </div>
+      <Footermenu />
     </div>
   );
 };

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import AppSection from "./app-section";
 import AppLoader from "./common/app-loader";
 import { RootState } from "../store";
-import { setRelevanceList } from "../reducers/filter";
+import { setInitialDetails } from "../reducers/filter";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const App = () => {
   useEffect(() => {
     getTopicLists().then((data) => {
       const { categories } = data;
-      dispatch(setRelevanceList([...categories]));
+      dispatch(setInitialDetails([...categories]));
       dispatch(loadTopcis(data));
     });
   }, []);

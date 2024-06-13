@@ -1,8 +1,10 @@
 import { FC } from "react";
 import Menu from "../../assets/menu.svg";
 import { EMPTY_STRING } from "../../constants";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setSelectedRelevance, setShowMenu } from "../../reducers/filter";
+import { useFilterTopic } from "../../hooks";
+import { RootState } from "../../store";
 
 interface ICategoryList {
   categories: string[];
@@ -11,17 +13,19 @@ interface ICategoryList {
 
 const CategoryList: FC<ICategoryList> = ({ categories, selectedRelevance }) => {
   const dispatch = useDispatch();
+  const { filterTopics } = useFilterTopic();
+  const { selectedCategory } = useSelector((state: RootState) => state.filter);
 
   const handleSelectedTopicCategory = (
     event: React.SyntheticEvent<HTMLDivElement>
   ) => {
     const { categoryname = EMPTY_STRING } = (event.target as HTMLDivElement)
       .dataset;
-    dispatch(
-      setSelectedRelevance(
-        selectedRelevance.includes(categoryname) ? [] : [categoryname]
-      )
-    );
+    const updateSelectedRelevance = selectedRelevance.includes(categoryname)
+      ? []
+      : [categoryname];
+    dispatch(setSelectedRelevance(updateSelectedRelevance));
+    filterTopics(selectedCategory, updateSelectedRelevance);
   };
 
   const handleShowMenu = () => {

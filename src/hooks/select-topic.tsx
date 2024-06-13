@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectedTopic } from "../../reducers/topic";
-import { RootState } from "../../store";
-import { SWIPE_DOWN, SWIPE_NONE, SWIPE_UP } from "../../constants";
-import { swipeDownTopicId, swipeUpTopicId } from "../../utils/app";
+import { SWIPE_NONE, SWIPE_UP, SWIPE_DOWN } from "../constants";
+import { setSelectedTopic } from "../reducers/topic";
+import { RootState } from "../store";
+import { swipeUpTopicId, swipeDownTopicId } from "../utils/swipe";
 
-const useSelectTopic = () => {
+export const useSelectTopic = () => {
   const dispatch = useDispatch();
   const filteredTopics = useSelector(
     (state: RootState) => state.topic.filteredTopics
@@ -51,5 +51,3 @@ const useSelectTopic = () => {
 
   return { selectTopic, selectPreviousTopic, selectNextTopic };
 };
-
-export default useSelectTopic;

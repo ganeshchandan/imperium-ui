@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectedTopic } from "../../reducers/topic";
-import { RootState } from "../../store";
+import { RootState } from "../store";
+import { setSelectedTopic } from "../reducers/topic";
 
-const useCloseDetailsPage = () => {
+export const useCloseDetailsPage = () => {
   const selectedTopic = useSelector(
     (state: RootState) => state.topic.selectedTopic
   );
@@ -13,5 +13,3 @@ const useCloseDetailsPage = () => {
   };
   return { backToTopicList };
 };
-
-export default useCloseDetailsPage;

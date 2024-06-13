@@ -1,10 +1,10 @@
 import { TOPIC_IMAGES } from "../../../assets";
 import FavoriteIcon from "../../../assets/favorite.svg";
 import { TOPIC_IMAGE } from "../../../constants";
+import { useSelectTopic } from "../../../hooks";
 import { ITopic } from "../../../type";
 import { formatDescription } from "../../../utils/app";
 import { useRef } from "react";
-import useSelectTopic from "../../hooks/select-topic";
 
 const TopicTile = ({
   topic,

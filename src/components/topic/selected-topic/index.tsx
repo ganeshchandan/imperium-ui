@@ -1,10 +1,9 @@
 import { FC } from "react";
 import { RootState } from "../../../store";
-import useSelectTopic from "../../hooks/select-topic";
-import useCloseDetailsPage from "../../hooks/close-details";
 import { useSelector } from "react-redux";
 import SwipeComponent from "../../Swipe";
 import SelectedTopicContent from "./content";
+import { useCloseDetailsPage, useSelectTopic } from "../../../hooks";
 
 const SwipeableSelectedTopic = SwipeComponent(SelectedTopicContent);
 

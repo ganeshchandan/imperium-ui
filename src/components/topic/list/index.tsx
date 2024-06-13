@@ -8,24 +8,19 @@ import TopicListheader from "./header";
 const TopicList = () => {
   const { filteredTopics } = useSelector((state: RootState) => state.topic);
 
-  const { selectedCategory, relevanceList, selectedRelavance } = useSelector(
+  const { relevanceList, selectedRelavance } = useSelector(
     (state: RootState) => state.filter
   );
 
   const renderTopicLsit = useCallback(() => {
-    const selectedFilters =
-      selectedRelavance.length > 0 ? selectedRelavance : selectedCategory;
     return filteredTopics.reduce((topicHtml, topic, index) => {
-      const { topic_id, topic_category } = topic;
-      return selectedFilters.length === 0 ||
-        selectedFilters.includes(topic_category)
-        ? [
-            ...topicHtml,
-            <TopicTile topic={topic} key={topic_id} topicIndex={index} />,
-          ]
-        : topicHtml;
+      const { topic_id } = topic;
+      return [
+        ...topicHtml,
+        <TopicTile topic={topic} key={topic_id} topicIndex={index} />,
+      ];
     }, [] as ReactNode[]);
-  }, [filteredTopics, selectedCategory, selectedRelavance]);
+  }, [filteredTopics]);
 
   return (
     <div className="topic-list-view">

@@ -29,8 +29,14 @@ export const filterSlice = createSlice({
       state.selectedFilterBy = action.payload;
       state.showMenu = false;
     },
+    setInitialDetails: (state, action: PayloadAction<string[]>) => {
+      state.relevanceList = action.payload;
+      state.selectedCategory = action.payload;
+      state.showMenu = false;
+    },
     setSelectedCategory: (state, action: PayloadAction<string[]>) => {
       state.selectedFilterBy = [];
+      state.selectedRelavance = [];
       state.selectedCategory = action.payload;
       state.showMenu = false;
     },
@@ -55,6 +61,7 @@ export const {
   setRelevanceList,
   setSelectedRelevance,
   setShowMenu,
+  setInitialDetails,
 } = filterSlice.actions;
 
 export default filterSlice.reducer;

@@ -10,6 +10,7 @@ import { FC } from "react";
 import Relevance from "../relevance";
 import FilterByCategory from "../filter-category";
 import ContentContainer from "./container";
+import { useFilterTopic } from "../../../hooks";
 
 const CategoryAndFilter = ContentContainer(FilterByCategory);
 const RelevanceHoc = ContentContainer(Relevance);
@@ -22,6 +23,7 @@ const FilterRelevanceContent: FC<IFilterRelevanceContent> = ({
   selectedTab,
 }) => {
   const dispatch = useDispatch();
+  const { filterTopics } = useFilterTopic();
 
   const { filterByList, categories } = useSelector(
     (state: RootState) => state.topic
@@ -34,8 +36,10 @@ const FilterRelevanceContent: FC<IFilterRelevanceContent> = ({
   const handleFilterBySelected = (selectedItem: string[]) =>
     dispatch(setFilterBy(selectedItem));
 
-  const handleCategorySelection = (selectedItem: string[]) =>
+  const handleCategorySelection = (selectedItem: string[]) => {
     dispatch(setSelectedCategory(selectedItem));
+    filterTopics(selectedItem, []);
+  };
 
   const handleSelectedRelevance = (selectedItem: string[]) =>
     dispatch(setRelevanceList(selectedItem));

@@ -4,6 +4,7 @@ import { FILTER_BY_LIST } from "../constants";
 
 export interface TopicState {
   isLoading: boolean;
+  topics: ITopic[];
   filteredTopics: ITopic[];
   selectedTopic: ISelectedTopic;
   categories: string[];
@@ -12,6 +13,7 @@ export interface TopicState {
 
 const initialState: TopicState = {
   isLoading: true,
+  topics: [],
   filteredTopics: [],
   categories: [],
   selectedTopic: {
@@ -39,16 +41,21 @@ export const topicSlice = createSlice({
     ) => {
       const { topics, categories } = action.payload;
       state.isLoading = false;
+      state.topics = [...topics];
       state.filteredTopics = topics;
       state.categories = categories;
     },
     setSelectedTopic: (state, action: PayloadAction<ISelectedTopic>) => {
       state.selectedTopic = action.payload;
     },
+    setFilteredTopics: (state, action: PayloadAction<ITopic[]>) => {
+      state.filteredTopics = action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { loadTopcis, setSelectedTopic } = topicSlice.actions;
+export const { loadTopcis, setSelectedTopic, setFilteredTopics } =
+  topicSlice.actions;
 
 export default topicSlice.reducer;

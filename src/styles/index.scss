@@ -7,6 +7,19 @@
   font-weight: 600;
 }
 
+// @keyframes hide-menu-bar {
+//   from {
+//       width: 100%;
+//       grid-template-columns: calc(100% - 3.25rem) 3.25rem;
+//       background: var(--footer-menu-background);
+//   }
+//   to {
+//       background: linear-gradient(127.68deg, #ff409a 14.19%, #c438ef 101.67%);
+//       width: 3.25rem;
+//       grid-template-columns: 0 3.25rem;
+//   }
+// }
+
 html,
 body,
 #root {

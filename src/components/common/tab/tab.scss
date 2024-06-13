@@ -23,6 +23,7 @@
             font-weight: 400;
             color: var(--filter-popup-tab-color);
             cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
             // transition: all 0.3s ease-in-out;
             &.selected {
                 font-weight: 600;

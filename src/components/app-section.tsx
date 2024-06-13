@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
-import TopicList from "./topic/list";
 import SelectedTopic from "./topic/selected-topic";
 import Filter from "./filter";
+import SwipeComponent from "./Swipe";
 
 const AppSection = () => {
   const selectedTopic = useSelector(
@@ -16,7 +16,7 @@ const AppSection = () => {
         isSelected ? "topic-selected" : ""
       }`}
     >
-      <TopicList />
+      <SwipeComponent/>
       <SelectedTopic selectedTopic={selectedTopic} />
       <Filter />
     </div>

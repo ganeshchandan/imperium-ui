@@ -11,4 +11,10 @@ export interface ITopic {
 export interface ISelectedTopic extends ITopic {
   topicIndex: number;
   isSelected: boolean;
+  swipeType: "none" | "up" | "down";
 }
+
+export type TSwipeIndesFinder = (
+  topicIndex: number,
+  topicsCount: number
+) => number;

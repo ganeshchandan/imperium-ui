@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedTopic } from "../../reducers/topic";
 import { RootState } from "../../store";
+import { SWIPE_DOWN, SWIPE_NONE, SWIPE_UP } from "../../constants";
+import { swipeDownTopicId, swipeUpTopicId } from "../../utils/app";
 
 const useSelectTopic = () => {
   const dispatch = useDispatch();
@@ -17,31 +19,31 @@ const useSelectTopic = () => {
       setSelectedTopic({
         isSelected: true,
         topicIndex,
+        swipeType: SWIPE_NONE,
         ...filteredTopics[topicIndex],
       })
     );
   };
 
   const selectPreviousTopic = () => {
-    let previousTopicIndex = selectedTopicIndex - 1;
-    previousTopicIndex = (previousTopicIndex + topicsCount) % topicsCount;
+    const previousTopicIndex = swipeUpTopicId(selectedTopicIndex, topicsCount);
     dispatch(
       setSelectedTopic({
         isSelected: true,
         topicIndex: previousTopicIndex,
+        swipeType: SWIPE_UP,
         ...filteredTopics[previousTopicIndex],
       })
     );
   };
 
   const selectNextTopic = () => {
-    let nextTopicIndex = selectedTopicIndex + 1;
-    nextTopicIndex = nextTopicIndex % topicsCount;
-
+    const nextTopicIndex = swipeDownTopicId(selectedTopicIndex, topicsCount);
     dispatch(
       setSelectedTopic({
         isSelected: true,
         topicIndex: nextTopicIndex,
+        swipeType: SWIPE_DOWN,
         ...filteredTopics[nextTopicIndex],
       })
     );

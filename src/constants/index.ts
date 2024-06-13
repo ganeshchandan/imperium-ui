@@ -13,7 +13,9 @@ export const RELEVANCE_TAB = "relevance";
 export const CANCEL = "CANCEL";
 export const RESET = "RESET";
 export const APPLY = "APPLY";
-
+export const SWIPE_NONE = "none";
+export const SWIPE_UP = "up";
+export const SWIPE_DOWN = "down";
 export const FILTER_POPUP_TABS = [
   { name: "Category", value: CATEGORY_TAB },
   { name: "Filter by", value: FILTERBY_TAB },

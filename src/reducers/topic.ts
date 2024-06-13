@@ -16,6 +16,7 @@ const initialState: TopicState = {
   categories: [],
   selectedTopic: {
     topicIndex: -1,
+    swipeType: "none",
     isSelected: false,
     topic_id: 0,
     topic_title: "",

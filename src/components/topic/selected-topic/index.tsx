@@ -12,7 +12,7 @@ const SelectedTopic: FC = () => {
   const selectedTopic = useSelector(
     (state: RootState) => state.topic.selectedTopic
   );
-  // const { topicIndex } = selectedTopic;
+  // const { topicIndex, swipeType } = selectedTopic;
   const { backToTopicList } = useCloseDetailsPage();
   const { selectPreviousTopic, selectNextTopic } = useSelectTopic();
 

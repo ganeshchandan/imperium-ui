@@ -15,10 +15,14 @@ const TopicList = () => {
   const renderTopicLsit = useCallback(() => {
     const selectedFilters =
       selectedRelavance.length > 0 ? selectedRelavance : selectedCategory;
-    return topics.reduce((topicHtml, topic) => {
+    return topics.reduce((topicHtml, topic, index) => {
       const { topic_id, topic_category } = topic;
-      return selectedFilters.includes(topic_category)
-        ? [...topicHtml, <TopicTile topic={topic} key={topic_id} />]
+      return selectedFilters.length === 0 ||
+        selectedFilters.includes(topic_category)
+        ? [
+            ...topicHtml,
+            <TopicTile topic={topic} key={topic_id} topicIndex={index} />,
+          ]
         : topicHtml;
     }, [] as ReactNode[]);
   }, [topics, selectedCategory, selectedRelavance]);

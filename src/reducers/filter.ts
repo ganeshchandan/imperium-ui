@@ -12,7 +12,7 @@ export interface FilterState {
 const initialState: FilterState = {
   showFilter: false,
   selectedFilterBy: ["Recent"],
-  selectedCategory: ["Cyber Security"],
+  selectedCategory: [],
   relevanceList: [],
   selectedRelavance: [],
   showMenu: false,

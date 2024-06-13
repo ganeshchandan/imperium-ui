@@ -3,12 +3,11 @@ import { setSelectedTopic } from "../../../reducers/topic";
 import { ISelectedTopic } from "../../../type";
 import ActionBar from "./action-bar";
 import { formatDescription } from "../../../utils/app";
+import { FC } from "react";
 
-const SelectedTopic = ({
-  selectedTopic,
-}: {
+const SelectedTopic: FC<{
   selectedTopic: ISelectedTopic;
-}) => {
+}> = ({ selectedTopic }) => {
   const dispatch = useDispatch();
   const {
     topic_image,

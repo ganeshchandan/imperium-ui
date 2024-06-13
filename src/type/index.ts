@@ -9,5 +9,6 @@ export interface ITopic {
 }
 
 export interface ISelectedTopic extends ITopic {
+  topicIndex: number;
   isSelected: boolean;
 }

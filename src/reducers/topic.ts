@@ -15,6 +15,7 @@ const initialState: TopicState = {
   topics: [],
   categories: [],
   selectedTopic: {
+    topicIndex: -1,
     isSelected: false,
     topic_id: 0,
     topic_title: "",

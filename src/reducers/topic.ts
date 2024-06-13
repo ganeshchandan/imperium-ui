@@ -4,7 +4,7 @@ import { FILTER_BY_LIST } from "../constants";
 
 export interface TopicState {
   isLoading: boolean;
-  topics: ITopic[];
+  filteredTopics: ITopic[];
   selectedTopic: ISelectedTopic;
   categories: string[];
   filterByList: string[];
@@ -12,7 +12,7 @@ export interface TopicState {
 
 const initialState: TopicState = {
   isLoading: true,
-  topics: [],
+  filteredTopics: [],
   categories: [],
   selectedTopic: {
     topicIndex: -1,
@@ -38,7 +38,7 @@ export const topicSlice = createSlice({
     ) => {
       const { topics, categories } = action.payload;
       state.isLoading = false;
-      state.topics = topics;
+      state.filteredTopics = topics;
       state.categories = categories;
     },
     setSelectedTopic: (state, action: PayloadAction<ISelectedTopic>) => {

@@ -4,15 +4,21 @@ import { RootState } from "../../store";
 
 const useSelectTopic = () => {
   const dispatch = useDispatch();
-  const topics = useSelector((state: RootState) => state.topic.topics);
-  const topicsCount = topics.length;
+  const filteredTopics = useSelector(
+    (state: RootState) => state.topic.filteredTopics
+  );
+  const topicsCount = filteredTopics.length;
   const selectedTopicIndex = useSelector(
     (state: RootState) => state.topic.selectedTopic.topicIndex
   );
 
   const selectTopic = (topicIndex: number) => {
     dispatch(
-      setSelectedTopic({ isSelected: true, topicIndex, ...topics[topicIndex] })
+      setSelectedTopic({
+        isSelected: true,
+        topicIndex,
+        ...filteredTopics[topicIndex],
+      })
     );
   };
 
@@ -23,7 +29,7 @@ const useSelectTopic = () => {
       setSelectedTopic({
         isSelected: true,
         topicIndex: previousTopicIndex,
-        ...topics[previousTopicIndex],
+        ...filteredTopics[previousTopicIndex],
       })
     );
   };
@@ -36,7 +42,7 @@ const useSelectTopic = () => {
       setSelectedTopic({
         isSelected: true,
         topicIndex: nextTopicIndex,
-        ...topics[nextTopicIndex],
+        ...filteredTopics[nextTopicIndex],
       })
     );
   };

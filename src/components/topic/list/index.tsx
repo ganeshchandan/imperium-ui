@@ -6,7 +6,7 @@ import AppFooter from "../../footer";
 import TopicListheader from "./header";
 
 const TopicList = () => {
-  const { topics } = useSelector((state: RootState) => state.topic);
+  const { filteredTopics } = useSelector((state: RootState) => state.topic);
 
   const { selectedCategory, relevanceList, selectedRelavance } = useSelector(
     (state: RootState) => state.filter
@@ -15,7 +15,7 @@ const TopicList = () => {
   const renderTopicLsit = useCallback(() => {
     const selectedFilters =
       selectedRelavance.length > 0 ? selectedRelavance : selectedCategory;
-    return topics.reduce((topicHtml, topic, index) => {
+    return filteredTopics.reduce((topicHtml, topic, index) => {
       const { topic_id, topic_category } = topic;
       return selectedFilters.length === 0 ||
         selectedFilters.includes(topic_category)
@@ -25,7 +25,7 @@ const TopicList = () => {
           ]
         : topicHtml;
     }, [] as ReactNode[]);
-  }, [topics, selectedCategory, selectedRelavance]);
+  }, [filteredTopics, selectedCategory, selectedRelavance]);
 
   return (
     <div className="topic-list-view">

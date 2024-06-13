@@ -17,7 +17,7 @@ const Swipe: FC<{
   });
 
   return (
-    <div {...handlers} style={{ touchAction: "pan-y" }}>
+    <div {...handlers} className="swipeable-div">
       {children}
     </div>
   );

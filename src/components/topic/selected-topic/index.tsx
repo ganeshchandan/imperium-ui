@@ -1,40 +1,29 @@
-import { useDispatch } from "react-redux";
-import { setSelectedTopic } from "../../../reducers/topic";
-import { ISelectedTopic } from "../../../type";
-import ActionBar from "./action-bar";
-import { formatDescription } from "../../../utils/app";
 import { FC } from "react";
+import { RootState } from "../../../store";
+import useSelectTopic from "../../hooks/select-topic";
+import useCloseDetailsPage from "../../hooks/close-details";
+import { useSelector } from "react-redux";
+import SwipeComponent from "../../Swipe";
+import SelectedTopicContent from "./content";
 
-const SelectedTopic: FC<{
-  selectedTopic: ISelectedTopic;
-}> = ({ selectedTopic }) => {
-  const dispatch = useDispatch();
-  const {
-    topic_image,
-    topic_title,
-    topic_short_description,
-    topic_saved_date,
-  } = selectedTopic;
+const SwipeableSelectedTopic = SwipeComponent(SelectedTopicContent);
 
-  const backToTopicList = () => {
-    dispatch(setSelectedTopic({ ...selectedTopic, isSelected: false }));
-  };
+const SelectedTopic: FC = () => {
+  const selectedTopic = useSelector(
+    (state: RootState) => state.topic.selectedTopic
+  );
+  // const { topicIndex } = selectedTopic;
+  const { backToTopicList } = useCloseDetailsPage();
+  const { selectPreviousTopic, selectNextTopic } = useSelectTopic();
 
   return (
-    <div className="selected-topic">
-      <div className="selected-topic-content">
-        <div className="selected-topic-image">
-          <img src={topic_image} alt="Topic" />
-        </div>
-        <div className="selected-topic-description">
-          <div className="topic-title">{topic_title}</div>
-          <div className="topic-saved-date">{topic_saved_date}</div>
-          <div className="topic-description">
-            {formatDescription(topic_short_description)}
-          </div>
-        </div>
-      </div>
-      <ActionBar backToTopicList={backToTopicList} />
+    <div className="selected-topic-list">
+      <SwipeableSelectedTopic
+        selectedTopic={selectedTopic}
+        swipeRight={backToTopicList}
+        swipeUp={selectPreviousTopic}
+        swipeDown={selectNextTopic}
+      />
     </div>
   );
 };

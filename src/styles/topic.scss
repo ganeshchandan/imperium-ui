@@ -137,6 +137,9 @@
                             line-height: 0.75rem;
                             color: var(--saved-date-read-time);
                         }
+                        .favorite-icon {
+                            @include click-effect;
+                        }
                     }
                 }
             }

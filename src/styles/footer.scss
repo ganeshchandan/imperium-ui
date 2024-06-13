@@ -52,6 +52,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: flex-end;
+                @include click-effect;
                 .footer-menu-icon {
                     height: 3.25rem;
                     width: 3.25rem;
@@ -82,18 +83,14 @@
                 justify-content: space-between;
 
                 .footer-category-icon {
+                    @include click-effect;
                     color: var(--footer-menu-icon-label);
-                    font-family: Poppins;
                     font-size: 0.688rem;
                     font-weight: 400;
                     height: 100%;
                     display: grid;
                     justify-items: center;
                     cursor: pointer;
-                    &:active {
-                        transform: scale(1.1);
-                    }
-                    -webkit-tap-highlight-color: transparent;
                 }
             }
         }

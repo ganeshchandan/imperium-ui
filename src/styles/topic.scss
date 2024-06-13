@@ -74,6 +74,7 @@
                     animation-duration: 0.7s;
                     animation-timing-function: ease-in-out;
                     cursor: pointer;
+
                     .topic-details {
                         display: grid;
                         grid-template-columns: 5rem auto;
@@ -84,8 +85,12 @@
                             box-sizing: border-box;
                             display: grid;
                             align-items: center;
-                            > img {
+                            overflow: hidden;
+                            border-radius: 5px;
+                            border: 1px solid var(--app-background-color);
+                            .topic-image-tag {
                                 width: 100%;
+                                transform: scale(1.5);
                             }
                         }
                         .topic-title-content {
@@ -131,6 +136,9 @@
                             font-weight: 500;
                             line-height: 0.75rem;
                             color: var(--saved-date-read-time);
+                        }
+                        .favorite-icon {
+                            @include click-effect;
                         }
                     }
                 }

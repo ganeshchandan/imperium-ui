@@ -41,6 +41,7 @@ const TopicTile = ({ topic }: { topic: ITopic }) => {
           <img
             src={topic_image || TOPIC_IMAGES[`${TOPIC_IMAGE}1`]}
             alt="Topic"
+            className="topic-image-tag"
           />
         </div>
         <div className="topic-title-content">

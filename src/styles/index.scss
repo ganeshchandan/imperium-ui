@@ -17,6 +17,14 @@ body,
   background-color: var(--app-background-color);
 }
 
+@mixin click-effect {
+  cursor: pointer;
+  &:active {
+    transform: scale(1.1);
+  }
+  -webkit-tap-highlight-color: transparent;
+}
+
 * {
   .app {
     height: 100%;

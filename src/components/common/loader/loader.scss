@@ -1,0 +1,31 @@
+* {
+    @keyframes loader {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .loader {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 7px solid #ff409a;
+            border-radius: 50%;
+            border-left-color: #fafafa;
+            animation-name: loader;
+            animation-duration: 1s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+    }
+}

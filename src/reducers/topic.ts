@@ -4,6 +4,7 @@ import { FILTER_BY_LIST } from "../constants";
 
 export interface TopicState {
   isLoading: boolean;
+  isAppLoaded: boolean;
   topics: ITopic[];
   filteredTopics: ITopic[];
   selectedTopic: ISelectedTopic;
@@ -12,7 +13,8 @@ export interface TopicState {
 }
 
 const initialState: TopicState = {
-  isLoading: true,
+  isLoading: false,
+  isAppLoaded: false,
   topics: [],
   filteredTopics: [],
   categories: [],
@@ -37,12 +39,15 @@ export const topicSlice = createSlice({
   name: "topic",
   initialState,
   reducers: {
+    setLoading: (state, action: PayloadAction<boolean>) => {
+      state.isLoading = action.payload;
+    },
     loadTopcis: (
       state,
       action: PayloadAction<{ categories: string[]; topics: ITopic[] }>
     ) => {
       const { topics, categories } = action.payload;
-      state.isLoading = false;
+      state.isAppLoaded = true;
       state.topics = [...topics];
       state.filteredTopics = topics;
       state.categories = categories;
@@ -54,6 +59,7 @@ export const topicSlice = createSlice({
       const { filteredTopics, topics } = action.payload;
       state.filteredTopics = filteredTopics;
       state.topics = topics;
+      state.isLoading = false;
     },
     setSelectedTopic: (state, action: PayloadAction<ISelectedTopic>) => {
       state.selectedTopic = action.payload;
@@ -70,6 +76,7 @@ export const {
   setSelectedTopic,
   setFilteredTopics,
   updateTopicsBookmarkId,
+  setLoading,
 } = topicSlice.actions;
 
 export default topicSlice.reducer;

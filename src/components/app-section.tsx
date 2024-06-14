@@ -3,10 +3,11 @@ import { RootState } from "../store";
 import Filter from "./filter";
 import TopicList from "./topic/list";
 import SelectedTopic from "./topic/selected-topic";
+import Loader from "./common/loader";
 
 const AppSection = () => {
-  const selectedTopic = useSelector(
-    (state: RootState) => state.topic.selectedTopic
+  const { selectedTopic, isLoading } = useSelector(
+    (state: RootState) => state.topic
   );
   const { isSelected } = selectedTopic;
 
@@ -19,6 +20,7 @@ const AppSection = () => {
       <TopicList />
       <SelectedTopic />
       <Filter />
+      {isLoading && <Loader />}
     </div>
   );
 };

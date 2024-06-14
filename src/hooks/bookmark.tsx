@@ -5,6 +5,7 @@ import { RootState } from "../store";
 import { getFilteredTopics, getUpdatedBookmarkId } from "../utils/app";
 import {
   setFilteredTopics,
+  setLoading,
   setSelectedTopic,
   updateTopicsBookmarkId,
 } from "../reducers/topic";
@@ -43,6 +44,7 @@ export const useBookmarkAction = () => {
 
   const topicBookmark = (topic: ITopic, isSelected: boolean) => {
     const { bookmark_id, topic_title } = topic;
+    dispatch(setLoading(true));
     if (bookmark_id) {
       deleteBookmark(bookmark_id).then(() => {
         handleUpdateBookmarkId(topic_title, null, isSelected);

@@ -27,6 +27,8 @@ const initialState: TopicState = {
     topic_read_time: "",
     topic_category: "",
     topic_image: "",
+    author: "",
+    bookmark_id: null,
   },
   filterByList: FILTER_BY_LIST,
 };
@@ -45,6 +47,14 @@ export const topicSlice = createSlice({
       state.filteredTopics = topics;
       state.categories = categories;
     },
+    updateTopicsBookmarkId: (
+      state,
+      action: PayloadAction<{ filteredTopics: ITopic[]; topics: ITopic[] }>
+    ) => {
+      const { filteredTopics, topics } = action.payload;
+      state.filteredTopics = filteredTopics;
+      state.topics = topics;
+    },
     setSelectedTopic: (state, action: PayloadAction<ISelectedTopic>) => {
       state.selectedTopic = action.payload;
     },
@@ -55,7 +65,11 @@ export const topicSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { loadTopcis, setSelectedTopic, setFilteredTopics } =
-  topicSlice.actions;
+export const {
+  loadTopcis,
+  setSelectedTopic,
+  setFilteredTopics,
+  updateTopicsBookmarkId,
+} = topicSlice.actions;
 
 export default topicSlice.reducer;

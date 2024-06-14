@@ -139,6 +139,9 @@
                         }
                         .favorite-icon {
                             @include click-effect;
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-end;
                         }
                     }
                 }

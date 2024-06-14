@@ -1,13 +1,14 @@
 import SearchIcon from "../../assets/search-normal.svg";
-import Menu from "../../assets/menu_four_dot.svg";
 import Filter from "../../assets/sort.svg";
 import Close from "../../assets/close.svg";
 import UserIcon from "../../assets/user-icon.svg";
+import FilterIcon from "../../assets/bookmark.svg";
 import IconWithName from "../common/icon-with-name";
-import { FILTER, SEARCH, MENU, CLOSE, USER } from "../../constants";
+import { FILTER, SEARCH, CLOSE, USER, PINNED } from "../../constants";
 import { FC } from "react";
 import { useDispatch } from "react-redux";
 import { setShowFilter, setShowMenu } from "../../reducers/filter";
+import { useBookmarkAction } from "../../hooks";
 
 interface ICategoryMenu {
   showMenu: boolean;
@@ -15,6 +16,7 @@ interface ICategoryMenu {
 
 const CategoryMenu: FC<ICategoryMenu> = ({ showMenu }) => {
   const dispatch = useDispatch();
+  const { filterBookmark } = useBookmarkAction();
   const handleShowMenu = () => {
     dispatch(setShowMenu(!showMenu));
   };
@@ -37,10 +39,11 @@ const CategoryMenu: FC<ICategoryMenu> = ({ showMenu }) => {
           className="footer-category-icon"
         />
         <IconWithName
-          name={MENU}
-          imageUrl={Menu}
-          imageAlt={MENU}
+          name={PINNED}
+          imageUrl={FilterIcon}
+          imageAlt={PINNED}
           className="footer-category-icon"
+          onClick={filterBookmark}
         />
         <IconWithName
           name={FILTER}

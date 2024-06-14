@@ -14,7 +14,9 @@ interface ICategoryList {
 const CategoryList: FC<ICategoryList> = ({ categories, selectedRelevance }) => {
   const dispatch = useDispatch();
   const { filterTopics } = useFilterTopic();
-  const { selectedCategory } = useSelector((state: RootState) => state.filter);
+  const { selectedCategory, filterType } = useSelector(
+    (state: RootState) => state.filter
+  );
 
   const handleSelectedTopicCategory = (
     event: React.SyntheticEvent<HTMLDivElement>
@@ -25,7 +27,7 @@ const CategoryList: FC<ICategoryList> = ({ categories, selectedRelevance }) => {
       ? []
       : [categoryname];
     dispatch(setSelectedRelevance(updateSelectedRelevance));
-    filterTopics(selectedCategory, updateSelectedRelevance);
+    filterTopics(filterType, selectedCategory, updateSelectedRelevance);
   };
 
   const handleShowMenu = () => {

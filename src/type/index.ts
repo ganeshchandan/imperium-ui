@@ -8,6 +8,7 @@ export interface ITopic {
   topic_category: string;
   topic_image: string;
   bookmark_id: number | null;
+  bookmarked_date: string;
 }
 
 export interface ISelectedTopic extends ITopic {

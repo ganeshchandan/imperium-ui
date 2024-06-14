@@ -13,7 +13,11 @@ export const getUpdatedBookmarkId = (
   topics.map((topic) => {
     const { topic_title } = topic;
     if (selectedTopicTitle === topic_title) {
-      return { ...topic, bookmark_id: bookmarkId };
+      return {
+        ...topic,
+        bookmark_id: bookmarkId,
+        bookmarked_date: new Date().toString(),
+      };
     }
     return { ...topic };
   });

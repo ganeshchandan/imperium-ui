@@ -1,11 +1,20 @@
 import { IGetFilteredTopics, ITopic, TFilterType } from "../type";
 
+const sortBookmarkedTopic = (topics: ITopic[]) =>
+  topics.sort((source, target) => {
+    const { bookmarked_date: sourceDate } = source;
+    const { bookmarked_date: targetDate } = target;
+    return new Date(targetDate).getTime() - new Date(sourceDate).getTime();
+  });
+
 const bookmarkFilter = ({ topics, selectedRelavance }: IGetFilteredTopics) =>
-  topics.filter(
-    ({ topic_category, bookmark_id }) =>
-      bookmark_id &&
-      (selectedRelavance.length === 0 ||
-        selectedRelavance.includes(topic_category))
+  sortBookmarkedTopic(
+    topics.filter(
+      ({ topic_category, bookmark_id }) =>
+        bookmark_id &&
+        (selectedRelavance.length === 0 ||
+          selectedRelavance.includes(topic_category))
+    )
   );
 
 const categoryFilter = ({

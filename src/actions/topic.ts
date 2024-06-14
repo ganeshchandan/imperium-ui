@@ -1,6 +1,6 @@
 import { ITopic } from "../type";
 
-const APP_URL = "https://imperium-server-uat.netlify.app/news/getNews";
+const APP_URL = "https://imperium-server-uat.netlify.app";
 
 export const getTopicLists = async () => {
   const topicResponse = await fetch(`${APP_URL}/news/getNews`);

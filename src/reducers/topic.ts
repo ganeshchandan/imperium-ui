@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { ITopic, ISelectedTopic } from "../type";
+import { ITopic, ISelectedTopic, IBookmarkedTopics } from "../type";
 import { FILTER_BY_LIST } from "../constants";
 
 export interface TopicState {
@@ -11,6 +11,7 @@ export interface TopicState {
   categories: string[];
   filterByList: string[];
   isSearchBox: boolean;
+  bookmarkedTopics: IBookmarkedTopics;
 }
 
 const initialState: TopicState = {
@@ -37,6 +38,7 @@ const initialState: TopicState = {
   },
   filterByList: FILTER_BY_LIST,
   isSearchBox: false,
+  bookmarkedTopics: {},
 };
 
 export const topicSlice = createSlice({
@@ -51,27 +53,30 @@ export const topicSlice = createSlice({
     },
     loadTopcis: (
       state,
-      action: PayloadAction<{ categories: string[]; topics: ITopic[] }>
+      action: PayloadAction<{
+        categories: string[];
+        topics: ITopic[];
+        bookmarked: IBookmarkedTopics;
+      }>
     ) => {
-      const { topics, categories } = action.payload;
+      const { topics, categories, bookmarked } = action.payload;
       state.isAppLoaded = true;
       state.topics = [...topics];
       state.filteredTopics = topics;
       state.categories = categories;
+      state.bookmarkedTopics = bookmarked;
     },
     updateTopicsBookmarkId: (
       state,
       action: PayloadAction<{
+        bookmarkedTopics: IBookmarkedTopics;
         filteredTopics: ITopic[];
-        topics: ITopic[];
-        selectedTopic: ISelectedTopic;
       }>
     ) => {
-      const { filteredTopics, topics, selectedTopic } = action.payload;
+      const { bookmarkedTopics, filteredTopics } = action.payload;
+      state.bookmarkedTopics = bookmarkedTopics;
       state.filteredTopics = filteredTopics;
-      state.topics = topics;
       state.isLoading = false;
-      state.selectedTopic = selectedTopic;
     },
     setSelectedTopic: (state, action: PayloadAction<ISelectedTopic>) => {
       state.selectedTopic = action.payload;

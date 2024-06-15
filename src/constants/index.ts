@@ -27,3 +27,5 @@ export const FILTER_BY_LIST = ["Recent", "Latest", "Bookmarked (0)"];
 export const BOOKMARK_FILTER_TYPE = "bookmark";
 export const CATEGOTY_FILTER_TYPE = "category";
 export const SEARCH_FILTER_TYPE = "search";
+export const DELETE_ACTION = "delete";
+export const ADD_ACTION = "add";

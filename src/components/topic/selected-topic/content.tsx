@@ -7,7 +7,8 @@ import ActionBar from "./action-bar";
 
 const SelectedTopicContent: FC<{
   selectedTopic: ISelectedTopic;
-}> = ({ selectedTopic }) => {
+  isBookmarked: boolean;
+}> = ({ selectedTopic, isBookmarked }) => {
   const dispatch = useDispatch();
   const {
     topic_image,
@@ -34,7 +35,11 @@ const SelectedTopicContent: FC<{
           </div>
         </div>
       </div>
-      <ActionBar backToTopicList={backToTopicList} topic={selectedTopic} />
+      <ActionBar
+        backToTopicList={backToTopicList}
+        topic={selectedTopic}
+        isBookmarked={isBookmarked}
+      />
     </div>
   );
 };

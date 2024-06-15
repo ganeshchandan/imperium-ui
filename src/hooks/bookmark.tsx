@@ -1,18 +1,28 @@
-import { ITopic } from "../type";
+import { IBookmarkedTopic, ITopic } from "../type";
 import { bookmarkTopic, deleteBookmark } from "../actions/topic";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store";
-import { getFilteredTopics, getUpdatedBookmarkId } from "../utils/app";
+import {
+  getBookmarkTopicId,
+  getFilteredTopics,
+  getTopicListForFilterType,
+  updateBookmarkedTopics,
+} from "../utils/app";
 import {
   setFilteredTopics,
   setLoading,
   updateTopicsBookmarkId,
 } from "../reducers/topic";
-import { BOOKMARK_FILTER_TYPE, CATEGOTY_FILTER_TYPE } from "../constants";
+import {
+  ADD_ACTION,
+  BOOKMARK_FILTER_TYPE,
+  CATEGOTY_FILTER_TYPE,
+  DELETE_ACTION,
+} from "../constants";
 import { setFilterType } from "../reducers/filter";
 
 export const useBookmarkAction = () => {
-  const { topics, selectedTopic } = useSelector(
+  const { topics, bookmarkedTopics, filteredTopics } = useSelector(
     (state: RootState) => state.topic
   );
   const { selectedCategory, selectedRelavance, filterType } = useSelector(
@@ -21,41 +31,42 @@ export const useBookmarkAction = () => {
   const dispatch = useDispatch();
 
   const handleUpdateBookmarkId = (
-    topic_title: string,
-    bookmarkId: number | null,
-    isSelected: boolean
+    actionType: string,
+    topicTitle: string,
+    bookmarkedTopic: IBookmarkedTopic
   ) => {
-    const updatedTopics = getUpdatedBookmarkId(topics, topic_title, bookmarkId);
-    let updatedSelectedTopics = { ...selectedTopic };
-    if (isSelected) {
-      updatedSelectedTopics = {
-        ...updatedSelectedTopics,
-        bookmark_id: bookmarkId,
-      };
-    }
     dispatch(
-      updateTopicsBookmarkId({
-        filteredTopics: getFilteredTopics(filterType, updatedTopics, {
+      updateTopicsBookmarkId(
+        updateBookmarkedTopics(actionType, {
+          filterType,
+          topicTitle,
+          bookmarkedTopics,
+          filteredTopics,
           selectedCategory,
           selectedRelavance,
-        }),
-        topics: updatedTopics,
-        selectedTopic: updatedSelectedTopics,
-      })
+          bookmarkedTopic,
+        })
+      )
     );
   };
 
-  const topicBookmark = (topic: ITopic, isSelected: boolean) => {
-    const { bookmark_id, topic_title } = topic;
+  const topicBookmark = (topic: ITopic) => {
+    const { topic_title } = topic;
+    const bookmarkId = getBookmarkTopicId(bookmarkedTopics, topic_title);
+
     dispatch(setLoading(true));
-    if (bookmark_id) {
-      deleteBookmark(bookmark_id).then(() => {
-        handleUpdateBookmarkId(topic_title, null, isSelected);
+    if (bookmarkId) {
+      deleteBookmark(bookmarkId).then(() => {
+        handleUpdateBookmarkId(
+          DELETE_ACTION,
+          topic_title,
+          bookmarkedTopics[topic_title]
+        );
       });
     } else {
       bookmarkTopic(topic).then((response) => {
-        const { bookmark_id } = response;
-        handleUpdateBookmarkId(topic_title, bookmark_id, isSelected);
+        const { bookmark } = response;
+        handleUpdateBookmarkId(ADD_ACTION, topic_title, bookmark);
       });
     }
   };
@@ -65,10 +76,16 @@ export const useBookmarkAction = () => {
       filterType !== BOOKMARK_FILTER_TYPE
         ? BOOKMARK_FILTER_TYPE
         : CATEGOTY_FILTER_TYPE;
+    const topicLists = getTopicListForFilterType(
+      updateFilter,
+      topics,
+      bookmarkedTopics
+    );
+
     dispatch(setFilterType(updateFilter));
     dispatch(
       setFilteredTopics(
-        getFilteredTopics(updateFilter, topics, {
+        getFilteredTopics(updateFilter, topicLists, {
           selectedCategory,
           selectedRelavance,
         })

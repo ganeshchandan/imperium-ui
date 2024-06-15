@@ -1,4 +1,10 @@
-import { IGetFilteredTopics, ITopic, TFilterType } from "../type";
+import { BOOKMARK_FILTER_TYPE } from "../constants";
+import {
+  IBookmarkedTopics,
+  IGetFilteredTopics,
+  ITopic,
+  TFilterType,
+} from "../type";
 
 /**
  * Sorts the bookmared topics, latest bookmarked topics will be at top of lists
@@ -92,3 +98,12 @@ export const getFilteredTopics = (
 export const getSortedTopics = (filterType: TFilterType, topics: ITopic[]) => {
   return sortFilterFunctionMapper[filterType](topics);
 };
+
+export const getTopicListForFilterType = (
+  filterType: TFilterType,
+  topics: ITopic[],
+  bookmarkedTopics: IBookmarkedTopics
+) =>
+  filterType === BOOKMARK_FILTER_TYPE
+    ? (Object.values(bookmarkedTopics) as ITopic[])
+    : topics;

@@ -8,9 +8,11 @@ import { useRef } from "react";
 const TopicTile = ({
   topic,
   topicIndex,
+  isBookmarked,
 }: {
   topic: ITopic;
   topicIndex: number;
+  isBookmarked: boolean;
 }) => {
   const topicTileRef = useRef({ isViewScrolling: false });
   const { selectTopic } = useSelectTopic();
@@ -42,7 +44,7 @@ const TopicTile = ({
           topic_short_description={topic_short_description}
         />
       </div>
-      <TopicTileFooter topic={topic} />
+      <TopicTileFooter topic={topic} isBookmarked={isBookmarked} />
     </div>
   );
 };

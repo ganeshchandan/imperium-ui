@@ -11,15 +11,16 @@ import { ITopic } from "../../../type";
 const ActionBar = ({
   backToTopicList,
   topic,
+  isBookmarked,
 }: {
   backToTopicList: () => void;
   topic: ITopic;
+  isBookmarked: boolean;
 }) => {
-  const { bookmark_id } = topic;
   const { topicBookmark } = useBookmarkAction();
 
   const handleBookmark = () => {
-    topicBookmark(topic, true);
+    topicBookmark(topic);
   };
 
   return (
@@ -40,7 +41,7 @@ const ActionBar = ({
         />
         <IconWithName
           name={BOOKMARK}
-          imageUrl={bookmark_id ? BookmarkIconFilled : BookmarkIcon}
+          imageUrl={isBookmarked ? BookmarkIconFilled : BookmarkIcon}
           imageAlt={BOOKMARK}
           className="icon-with-name"
           onClick={handleBookmark}

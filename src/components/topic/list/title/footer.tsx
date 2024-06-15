@@ -6,15 +6,16 @@ import { ITopic } from "../../../../type";
 
 interface ITopicTileFooter {
   topic: ITopic;
+  isBookmarked: boolean;
 }
 
-const TopicTileFooter: FC<ITopicTileFooter> = ({ topic }) => {
-  const { topic_saved_date, bookmark_id } = topic;
+const TopicTileFooter: FC<ITopicTileFooter> = ({ topic, isBookmarked }) => {
+  const { topic_saved_date } = topic;
   const { topicBookmark } = useBookmarkAction();
 
   const handleBookmark = (event: SyntheticEvent<HTMLDivElement>) => {
     event.stopPropagation();
-    topicBookmark(topic, false);
+    topicBookmark(topic);
   };
 
   const onTouchStart = (event: SyntheticEvent<HTMLDivElement>) => {
@@ -31,7 +32,7 @@ const TopicTileFooter: FC<ITopicTileFooter> = ({ topic }) => {
         onTouchStart={onTouchStart}
       >
         <img
-          src={bookmark_id ? FavoriteIconSaved : FavoriteIcon}
+          src={isBookmarked ? FavoriteIconSaved : FavoriteIcon}
           alt="Favorite Icon"
         />
       </div>

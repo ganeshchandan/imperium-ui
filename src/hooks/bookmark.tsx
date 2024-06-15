@@ -32,8 +32,7 @@ export const useBookmarkAction = () => {
     }
     dispatch(
       updateTopicsBookmarkId({
-        filteredTopics: getFilteredTopics(filterType, {
-          topics: updatedTopics,
+        filteredTopics: getFilteredTopics(filterType, updatedTopics, {
           selectedCategory,
           selectedRelavance,
         }),
@@ -63,24 +62,15 @@ export const useBookmarkAction = () => {
         ? BOOKMARK_FILTER_TYPE
         : CATEGOTY_FILTER_TYPE;
     dispatch(setFilterType(updateFilter));
-    console.log(
-      setFilteredTopics(
-        getFilteredTopics(updateFilter, {
-          topics: topics,
-          selectedCategory,
-          selectedRelavance,
-        })
-      )
-    );
     dispatch(
       setFilteredTopics(
-        getFilteredTopics(updateFilter, {
-          topics: topics,
+        getFilteredTopics(updateFilter, topics, {
           selectedCategory,
           selectedRelavance,
         })
       )
     );
   };
+
   return { topicBookmark, filterBookmark };
 };

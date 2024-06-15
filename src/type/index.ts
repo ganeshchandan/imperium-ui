@@ -9,6 +9,7 @@ export interface ITopic {
   topic_image: string;
   bookmark_id: number | null;
   bookmarked_date: string;
+  last_viewed_date: string;
 }
 
 export interface ISelectedTopic extends ITopic {
@@ -22,10 +23,10 @@ export type TSwipeIndesFinder = (
   topicsCount: number
 ) => number;
 
-export type TFilterType = "bookmark" | "category" | "none";
+export type TFilterType = "bookmark" | "category" | "none" | "search";
 
 export interface IGetFilteredTopics {
-  topics: ITopic[];
-  selectedCategory: string[];
-  selectedRelavance: string[];
+  selectedCategory?: string[];
+  selectedRelavance?: string[];
+  searchValue?: string;
 }

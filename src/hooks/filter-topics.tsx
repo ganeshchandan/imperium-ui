@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store";
-import { setFilteredTopics } from "../reducers/topic";
+import { setFilteredTopics, setSearchBox } from "../reducers/topic";
 import { getFilteredTopics, getSortedTopics } from "../utils/app";
 import { TFilterType } from "../type";
 
@@ -25,6 +25,7 @@ export const useFilterTopic = () => {
     filterType: TFilterType,
     searchValue: string
   ) => {
+    dispatch(setSearchBox(false));
     dispatch(
       setFilteredTopics(
         getFilteredTopics(filterType, topics, {

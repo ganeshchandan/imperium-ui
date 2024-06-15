@@ -26,3 +26,4 @@ export const FILTER_POPUP_TABS = [
 export const FILTER_BY_LIST = ["Recent", "Latest", "Bookmarked (0)"];
 export const BOOKMARK_FILTER_TYPE = "bookmark";
 export const CATEGOTY_FILTER_TYPE = "category";
+export const SEARCH_FILTER_TYPE = "search";

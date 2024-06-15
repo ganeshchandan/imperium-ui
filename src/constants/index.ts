@@ -4,6 +4,7 @@ export const BOOKMARK = "Bookmark";
 export const EMPTY_STRING = "";
 export const SEARCH = "Search";
 export const MENU = "Menu";
+export const PINNED = "Pinned";
 export const FILTER = "Filter";
 export const CLOSE = "Close";
 export const USER = "User";
@@ -23,3 +24,6 @@ export const FILTER_POPUP_TABS = [
 ];
 
 export const FILTER_BY_LIST = ["Recent", "Latest", "Bookmarked (0)"];
+export const BOOKMARK_FILTER_TYPE = "bookmark";
+export const CATEGOTY_FILTER_TYPE = "category";
+export const SEARCH_FILTER_TYPE = "search";

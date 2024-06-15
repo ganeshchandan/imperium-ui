@@ -1,9 +1,10 @@
 import { useSelector } from "react-redux";
-import TopicTile from "./topic-tile";
+import TopicTile from "./title";
 import { RootState } from "../../../store";
 import { ReactNode, useCallback } from "react";
 import AppFooter from "../../footer";
 import TopicListheader from "./header";
+import EmptyList from "../empty-list";
 
 const TopicList = () => {
   const { filteredTopics } = useSelector((state: RootState) => state.topic);
@@ -29,7 +30,13 @@ const TopicList = () => {
           selectedRelavance.length === 0 ? "All" : selectedRelavance[0],
         ]}
       />
-      <div className="topic-list">{renderTopicLsit()}</div>
+
+      {filteredTopics.length > 0 ? (
+        <div className="topic-list">{renderTopicLsit()}</div>
+      ) : (
+        <EmptyList />
+      )}
+
       <AppFooter
         categories={relevanceList}
         selectedRelevance={selectedRelavance}

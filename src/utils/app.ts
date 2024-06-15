@@ -5,18 +5,22 @@ export const formatDescription = (html: string) => {
   return doc.body.innerText || "";
 };
 
-export const getFilteredTopics = (
+export const getUpdatedBookmarkId = (
   topics: ITopic[],
-  selectedCategory: string[],
-  selectedRelavance: string[]
-) => {
-  return topics.filter(
-    ({ topic_category }) =>
-      (selectedCategory.length === 0 ||
-        selectedCategory.includes(topic_category)) &&
-      (selectedRelavance.length === 0 ||
-        selectedRelavance.includes(topic_category))
-  );
-};
+  selectedTopicTitle: string,
+  bookmarkId: number | null
+) =>
+  topics.map((topic) => {
+    const { topic_title } = topic;
+    if (selectedTopicTitle === topic_title) {
+      return {
+        ...topic,
+        bookmark_id: bookmarkId,
+        bookmarked_date: new Date().toString(),
+      };
+    }
+    return { ...topic };
+  });
 
 export * from "./swipe";
+export * from "./filter";

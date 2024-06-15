@@ -34,7 +34,7 @@ const SelectedTopicContent: FC<{
           </div>
         </div>
       </div>
-      <ActionBar backToTopicList={backToTopicList} />
+      <ActionBar backToTopicList={backToTopicList} topic={selectedTopic} />
     </div>
   );
 };

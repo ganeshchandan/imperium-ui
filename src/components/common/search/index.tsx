@@ -1,7 +1,7 @@
 const SearchTopic = () => {
   return (
-    <div className="searchBox">
-      <input />
+    <div className="search-box">
+      <input className="search-box-input" />
     </div>
   );
 };

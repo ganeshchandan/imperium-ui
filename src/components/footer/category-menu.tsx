@@ -9,6 +9,7 @@ import { FC } from "react";
 import { useDispatch } from "react-redux";
 import { setShowFilter, setShowMenu } from "../../reducers/filter";
 import { useBookmarkAction } from "../../hooks";
+import { setSearchBox } from "../../reducers/topic";
 
 interface ICategoryMenu {
   showMenu: boolean;
@@ -25,6 +26,10 @@ const CategoryMenu: FC<ICategoryMenu> = ({ showMenu }) => {
     dispatch(setShowFilter(true));
   };
 
+  const handleSearchClick = () => {
+    dispatch(setSearchBox(true));
+  };
+
   return (
     <div
       className={`footer-category-menus-container ${
@@ -36,6 +41,7 @@ const CategoryMenu: FC<ICategoryMenu> = ({ showMenu }) => {
           name={SEARCH}
           imageUrl={SearchIcon}
           imageAlt={SEARCH}
+          onClick={handleSearchClick}
           className="footer-category-icon"
         />
         <IconWithName

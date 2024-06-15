@@ -10,6 +10,7 @@ export interface TopicState {
   selectedTopic: ISelectedTopic;
   categories: string[];
   filterByList: string[];
+  isSearchBox: boolean;
 }
 
 const initialState: TopicState = {
@@ -35,6 +36,7 @@ const initialState: TopicState = {
     bookmark_id: null,
   },
   filterByList: FILTER_BY_LIST,
+  isSearchBox: false,
 };
 
 export const topicSlice = createSlice({
@@ -43,6 +45,9 @@ export const topicSlice = createSlice({
   reducers: {
     setLoading: (state, action: PayloadAction<boolean>) => {
       state.isLoading = action.payload;
+    },
+    setSearchBox: (state, action: PayloadAction<boolean>) => {
+      state.isSearchBox = action.payload;
     },
     loadTopcis: (
       state,
@@ -79,6 +84,7 @@ export const {
   setFilteredTopics,
   updateTopicsBookmarkId,
   setLoading,
+  setSearchBox,
 } = topicSlice.actions;
 
 export default topicSlice.reducer;

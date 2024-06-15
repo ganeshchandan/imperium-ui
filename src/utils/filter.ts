@@ -22,12 +22,10 @@ const sortBookmarkedTopic = (topics: ITopic[]) =>
  * @param selectedRelavance as input
  */
 const bookmarkFilter = (
-  { topic_category, bookmark_id }: ITopic,
+  { topic_category }: ITopic,
   { selectedRelavance = [] }: IGetFilteredTopics
 ) =>
-  !!bookmark_id &&
-  (selectedRelavance.length === 0 ||
-    selectedRelavance.includes(topic_category));
+  selectedRelavance.length === 0 || selectedRelavance.includes(topic_category);
 
 /**
  * returns true when the passed topic category is part of the seleceted categories.

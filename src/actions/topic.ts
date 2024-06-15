@@ -8,17 +8,6 @@ export const getTopicLists = async () => {
   return await topicResponse.json();
 };
 
-// export const bookmarkTopic = async (topic: ITopic) => {
-//   const bookmarkCreateResponse = await fetch(`${APP_URL}/bookmark/create`, {
-//     method: "post",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify({ bookmark: topic }),
-//   });
-//   return await bookmarkCreateResponse.json();
-// };
-
 export const deleteBookmark = async (bookmarkId: number) => {
   const bookmarkDeleteResponse = await fetch(
     `${APP_URL}/bookmark/delete?bookmarkId=${bookmarkId}`,

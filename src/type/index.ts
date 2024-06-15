@@ -9,7 +9,6 @@ export interface ITopic {
   topic_image: string;
   bookmark_id: number | null;
   bookmarked_date: string;
-  last_viewed_date: string;
 }
 
 export interface IBookmarkedTopic {

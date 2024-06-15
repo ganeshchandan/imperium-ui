@@ -32,7 +32,6 @@ const initialState: TopicState = {
     topic_category: "",
     topic_image: "",
     bookmarked_date: "",
-    last_viewed_date: "",
     author: "",
     bookmark_id: null,
   },

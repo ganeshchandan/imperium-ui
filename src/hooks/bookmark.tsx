@@ -6,7 +6,6 @@ import { getFilteredTopics, getUpdatedBookmarkId } from "../utils/app";
 import {
   setFilteredTopics,
   setLoading,
-  setSelectedTopic,
   updateTopicsBookmarkId,
 } from "../reducers/topic";
 import { BOOKMARK_FILTER_TYPE, CATEGOTY_FILTER_TYPE } from "../constants";
@@ -27,8 +26,12 @@ export const useBookmarkAction = () => {
     isSelected: boolean
   ) => {
     const updatedTopics = getUpdatedBookmarkId(topics, topic_title, bookmarkId);
+    let updatedSelectedTopics = { ...selectedTopic };
     if (isSelected) {
-      dispatch(setSelectedTopic({ ...selectedTopic, bookmark_id: bookmarkId }));
+      updatedSelectedTopics = {
+        ...updatedSelectedTopics,
+        bookmark_id: bookmarkId,
+      };
     }
     dispatch(
       updateTopicsBookmarkId({
@@ -37,6 +40,7 @@ export const useBookmarkAction = () => {
           selectedRelavance,
         }),
         topics: updatedTopics,
+        selectedTopic: updatedSelectedTopics,
       })
     );
   };

@@ -61,12 +61,17 @@ export const topicSlice = createSlice({
     },
     updateTopicsBookmarkId: (
       state,
-      action: PayloadAction<{ filteredTopics: ITopic[]; topics: ITopic[] }>
+      action: PayloadAction<{
+        filteredTopics: ITopic[];
+        topics: ITopic[];
+        selectedTopic: ISelectedTopic;
+      }>
     ) => {
-      const { filteredTopics, topics } = action.payload;
+      const { filteredTopics, topics, selectedTopic } = action.payload;
       state.filteredTopics = filteredTopics;
       state.topics = topics;
       state.isLoading = false;
+      state.selectedTopic = selectedTopic;
     },
     setSelectedTopic: (state, action: PayloadAction<ISelectedTopic>) => {
       state.selectedTopic = action.payload;

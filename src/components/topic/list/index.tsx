@@ -19,14 +19,14 @@ const TopicList = () => {
   const renderTopicLsit = useCallback(() => {
     return filteredTopics.reduce((topicHtml, topic, index) => {
       const { topic_id, topic_title } = topic;
-      const bookmarkId = getBookmarkTopicId(bookmarkedTopics, topic_title);
+      const bookmarkDetails = getBookmarkTopicId(bookmarkedTopics, topic_title);
       return [
         ...topicHtml,
         <TopicTile
           topic={topic}
           key={topic_id}
           topicIndex={index}
-          isBookmarked={!!bookmarkId}
+          bookmarkDetails={bookmarkDetails}
         />,
       ];
     }, [] as ReactNode[]);

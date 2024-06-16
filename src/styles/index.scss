@@ -25,6 +25,36 @@ body,
   -webkit-tap-highlight-color: transparent;
 }
 
+@keyframes dot-loader {
+  0% {
+    transform: scale(0.5);
+  }
+  25% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(0.5);
+  }
+  100% {
+    transform: scale(0.5);
+  }
+}
+
+@keyframes dot-loader-2 {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(0.5);
+  }
+  50% {
+    transform: scale(0.5);
+  }
+  100% {
+    transform: scale(0.5);
+  }
+}
+
 * {
   .app {
     height: 100%;
@@ -106,6 +136,29 @@ body,
           /* background-color: #d9d9d9; */
           color: #fff;
         }
+      }
+    }
+    .dot-loader {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      grid-gap: 0px;
+      .dot {
+        width: 15px;
+        height: 15px;
+        background-color: #c438ef;
+        border-radius: 50%;
+        animation-name: dot-loader;
+        animation-duration: 1.5s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        transform: scale(0.5);
+      }
+      .dot-2 {
+        animation-delay: 0.25s;
+      }
+      .dot-3 {
+        animation-delay: 0.5s;
       }
     }
   }

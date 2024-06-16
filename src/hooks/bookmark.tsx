@@ -8,11 +8,7 @@ import {
   getTopicListForFilterType,
   updateBookmarkedTopics,
 } from "../utils/app";
-import {
-  setFilteredTopics,
-  setLoading,
-  updateTopicsBookmarkId,
-} from "../reducers/topic";
+import { setFilteredTopics, updateTopicsBookmarkId } from "../reducers/topic";
 import {
   ADD_ACTION,
   BOOKMARK_FILTER_TYPE,
@@ -52,9 +48,23 @@ export const useBookmarkAction = () => {
 
   const topicBookmark = (topic: ITopic) => {
     const { topic_title } = topic;
-    const bookmarkId = getBookmarkTopicId(bookmarkedTopics, topic_title);
+    const { bookmark_id: bookmarkId } = getBookmarkTopicId(
+      bookmarkedTopics,
+      topic_title
+    );
 
-    dispatch(setLoading(true));
+    // dispatch(setLoading(true));
+    dispatch(
+      updateTopicsBookmarkId({
+        bookmarkedTopics: {
+          ...bookmarkedTopics,
+          [topic_title]: {
+            ...topic,
+            isLoading: true,
+          },
+        },
+      })
+    );
     if (bookmarkId) {
       deleteBookmark(bookmarkId).then(() => {
         handleUpdateBookmarkId(

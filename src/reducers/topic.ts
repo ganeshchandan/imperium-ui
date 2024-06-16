@@ -69,13 +69,15 @@ export const topicSlice = createSlice({
       state,
       action: PayloadAction<{
         bookmarkedTopics: IBookmarkedTopics;
-        filteredTopics: ITopic[];
+        filteredTopics?: ITopic[];
       }>
     ) => {
       const { bookmarkedTopics, filteredTopics } = action.payload;
       state.bookmarkedTopics = bookmarkedTopics;
-      state.filteredTopics = filteredTopics;
-      state.isLoading = false;
+      if (filteredTopics) {
+        state.filteredTopics = filteredTopics;
+      }
+      // state.isLoading = false;
     },
     setSelectedTopic: (state, action: PayloadAction<ISelectedTopic>) => {
       state.selectedTopic = action.payload;

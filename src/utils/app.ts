@@ -26,9 +26,10 @@ export const getBookmarkTopicId = (
   bookmarkedTopics: IBookmarkedTopics,
   topic_title: string
 ) => {
-  const bookmarkedTopic = bookmarkedTopics[topic_title];
-  const { bookmark_id } = bookmarkedTopic || {};
-  return bookmark_id;
+  const bookmarkedTopic = bookmarkedTopics[topic_title] || {
+    isLoading: false,
+  };
+  return bookmarkedTopic;
 };
 
 export * from "./swipe";

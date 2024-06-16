@@ -1,5 +1,5 @@
 import { useSelectTopic } from "../../../../hooks";
-import { ITopic } from "../../../../type";
+import { IBookmarkedTopic, ITopic } from "../../../../type";
 import TopicImage from "./topic_image";
 import TopicTileContent from "./content";
 import TopicTileFooter from "./footer";
@@ -8,11 +8,11 @@ import { useRef } from "react";
 const TopicTile = ({
   topic,
   topicIndex,
-  isBookmarked,
+  bookmarkDetails,
 }: {
   topic: ITopic;
   topicIndex: number;
-  isBookmarked: boolean;
+  bookmarkDetails: IBookmarkedTopic;
 }) => {
   const topicTileRef = useRef({ isViewScrolling: false });
   const { selectTopic } = useSelectTopic();
@@ -44,7 +44,7 @@ const TopicTile = ({
           topic_short_description={topic_short_description}
         />
       </div>
-      <TopicTileFooter topic={topic} isBookmarked={isBookmarked} />
+      <TopicTileFooter topic={topic} bookmarkDetails={bookmarkDetails} />
     </div>
   );
 };

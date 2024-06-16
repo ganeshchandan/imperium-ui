@@ -12,6 +12,7 @@ export interface ITopic {
 }
 
 export interface IBookmarkedTopic {
+  isLoading?: boolean;
   author: string;
   topic_id: number;
   topic_title: string;

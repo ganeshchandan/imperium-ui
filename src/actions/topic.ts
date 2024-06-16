@@ -1,6 +1,6 @@
 import { ITopic } from "../type";
 
-const APP_URL = "https://imperium-server-dev.netlify.app";
+const APP_URL = import.meta.env.VITE_IMPERIUM_SERVER;
 // const APP_URL = "http://localhost:3000";
 
 export const getTopicLists = async () => {

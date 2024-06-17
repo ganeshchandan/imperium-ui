@@ -1,25 +1,20 @@
 import { FC } from "react";
-import { useDispatch } from "react-redux";
-import { setSelectedTopic } from "../../../reducers/topic";
 import { ISelectedTopic } from "../../../type";
 import { formatDescription } from "../../../utils/app";
 import ActionBar from "./action-bar";
+import { useSelectTopic } from "../../../hooks";
 
 const SelectedTopicContent: FC<{
   selectedTopic: ISelectedTopic;
   isBookmarked: boolean;
 }> = ({ selectedTopic, isBookmarked }) => {
-  const dispatch = useDispatch();
+  const { deselectTopic } = useSelectTopic();
   const {
     topic_image,
     topic_title,
     topic_short_description,
     topic_saved_date,
   } = selectedTopic;
-
-  const backToTopicList = () => {
-    dispatch(setSelectedTopic({ ...selectedTopic, isSelected: false }));
-  };
 
   return (
     <div className="selected-topic">
@@ -36,7 +31,7 @@ const SelectedTopicContent: FC<{
         </div>
       </div>
       <ActionBar
-        backToTopicList={backToTopicList}
+        backToTopicList={deselectTopic}
         topic={selectedTopic}
         isBookmarked={isBookmarked}
       />

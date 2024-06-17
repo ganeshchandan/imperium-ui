@@ -4,6 +4,7 @@ import TopicImage from "./topic_image";
 import TopicTileContent from "./content";
 import TopicTileFooter from "./footer";
 import { useRef } from "react";
+import { CLICK } from "../../../../constants";
 
 const TopicTile = ({
   topic,
@@ -21,7 +22,7 @@ const TopicTile = ({
 
   const handleTopicSelect = () => {
     if (!topicTileRef.current.isViewScrolling) {
-      selectTopic(topicIndex);
+      selectTopic(topicIndex, CLICK);
     }
     topicTileRef.current.isViewScrolling = false;
   };

@@ -10,6 +10,7 @@ export interface FilterState {
   selectedRelavance: string[];
   showMenu: boolean;
   filterType: TFilterType;
+  recentViewedTopics: string[];
 }
 
 const initialState: FilterState = {
@@ -20,6 +21,7 @@ const initialState: FilterState = {
   selectedRelavance: [],
   showMenu: false,
   filterType: CATEGOTY_FILTER_TYPE,
+  recentViewedTopics: [],
 };
 
 export const filterSlice = createSlice({
@@ -58,10 +60,12 @@ export const filterSlice = createSlice({
     setShowMenu: (state, action: PayloadAction<boolean>) => {
       state.showMenu = action.payload;
     },
+    setLastViewdTopics: (state, action: PayloadAction<string[]>) => {
+      state.recentViewedTopics = action.payload;
+    },
   },
 });
 
-// Action creators are generated for each case reducer function
 export const {
   setShowFilter,
   setFilterBy,
@@ -71,6 +75,7 @@ export const {
   setShowMenu,
   setInitialDetails,
   setFilterType,
+  setLastViewdTopics,
 } = filterSlice.actions;
 
 export default filterSlice.reducer;

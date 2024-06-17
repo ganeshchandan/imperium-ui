@@ -22,7 +22,7 @@ const initialState: TopicState = {
   categories: [],
   selectedTopic: {
     topicIndex: -1,
-    swipeType: "none",
+    swipeType: "click",
     isSelected: false,
     topic_id: 0,
     topic_title: "",
@@ -79,8 +79,12 @@ export const topicSlice = createSlice({
       }
       // state.isLoading = false;
     },
-    setSelectedTopic: (state, action: PayloadAction<ISelectedTopic>) => {
-      state.selectedTopic = action.payload;
+    setSelectedTopic: (
+      state,
+      action: PayloadAction<{ selectedTopic: ISelectedTopic }>
+    ) => {
+      const { selectedTopic } = action.payload;
+      state.selectedTopic = selectedTopic;
     },
     setFilteredTopics: (state, action: PayloadAction<ITopic[]>) => {
       state.filteredTopics = action.payload;

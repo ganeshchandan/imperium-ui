@@ -1,3 +1,5 @@
+import { ITopicSelectionType } from "../utils/swipe";
+
 export interface ITopic {
   author: string;
   topic_id: number;
@@ -32,7 +34,7 @@ export interface IBookmarkedTopics {
 export interface ISelectedTopic extends ITopic {
   topicIndex: number;
   isSelected: boolean;
-  swipeType: "none" | "up" | "down";
+  swipeType: ITopicSelectionType;
 }
 
 export type TSwipeIndesFinder = (

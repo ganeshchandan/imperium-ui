@@ -20,6 +20,24 @@ const SelectedTopicContent: FC<{
     dispatch(setSelectedTopic({ ...selectedTopic, isSelected: false }));
   };
 
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: document.title,
+          text: 'Check this out!'
+          // need to add url here once you have exposed
+        });
+
+        console.log('Content shared successfully');
+      } catch (err) {
+        console.error('Error sharing content:', err);
+      }
+    } else {
+      console.log('Web Share API not supported in this browser.');
+    }
+  };  
+  
   return (
     <div className="selected-topic">
       <div className="selected-topic-content">
@@ -34,7 +52,7 @@ const SelectedTopicContent: FC<{
           </div>
         </div>
       </div>
-      <ActionBar backToTopicList={backToTopicList} />
+      <ActionBar backToTopicList={backToTopicList} handleShare={handleShare}/>
     </div>
   );
 };

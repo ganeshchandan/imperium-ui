@@ -5,7 +5,13 @@ import BookmarkIcon from "../../../assets/bookmark.svg";
 
 import { BOOKMARK, SHARE } from "../../../constants";
 
-const ActionBar = ({ backToTopicList }: { backToTopicList: () => void }) => {
+const ActionBar = ({ 
+  backToTopicList,
+  handleShare 
+}: { 
+  backToTopicList: () => void, 
+  handleShare:() => void 
+}) => {
   return (
     <div className="selected-topic-actionbar">
       <img
@@ -20,7 +26,8 @@ const ActionBar = ({ backToTopicList }: { backToTopicList: () => void }) => {
           name={SHARE}
           imageUrl={ShareIcon}
           imageAlt={SHARE}
-          className="icon-with-name"
+          className="icon-with-name"          
+          onClick={handleShare}
         />
         <IconWithName
           name={BOOKMARK}

@@ -1,13 +1,13 @@
 import { FC } from "react";
-import { ISelectedTopic } from "../../../type";
+import { IBookmarkedTopic, ISelectedTopic } from "../../../type";
 import { formatDescription } from "../../../utils/app";
 import ActionBar from "./action-bar";
 import { useSelectTopic } from "../../../hooks";
 
 const SelectedTopicContent: FC<{
   selectedTopic: ISelectedTopic;
-  isBookmarked: boolean;
-}> = ({ selectedTopic, isBookmarked }) => {
+  bookmarkDetails: IBookmarkedTopic;
+}> = ({ selectedTopic, bookmarkDetails }) => {
   const { deselectTopic } = useSelectTopic();
   const {
     topic_image,
@@ -50,10 +50,9 @@ const SelectedTopicContent: FC<{
       </div>
       <ActionBar
         backToTopicList={deselectTopic}
-        // backToTopicList={backToTopicList}
         handleShare={handleShare}
         topic={selectedTopic}
-        isBookmarked={isBookmarked}
+        bookmarkDetails={bookmarkDetails}
       />
     </div>
   );

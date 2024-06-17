@@ -6,20 +6,21 @@ import BookmarkIconFilled from "../../../assets/favorite-filled.svg";
 
 import { BOOKMARK, SHARE } from "../../../constants";
 import { useBookmarkAction } from "../../../hooks";
-import { ITopic } from "../../../type";
+import { IBookmarkedTopic, ITopic } from "../../../type";
 
 const ActionBar = ({
   backToTopicList,
   handleShare,
   topic,
-  isBookmarked,
+  bookmarkDetails,
 }: {
   backToTopicList: () => void;
-  handleShare:() => void; 
+  handleShare: () => void;
   topic: ITopic;
-  isBookmarked: boolean;
+  bookmarkDetails: IBookmarkedTopic;
 }) => {
   const { topicBookmark } = useBookmarkAction();
+  const { bookmark_id, isLoading } = bookmarkDetails;
 
   const handleBookmark = () => {
     topicBookmark(topic);
@@ -39,16 +40,26 @@ const ActionBar = ({
           name={SHARE}
           imageUrl={ShareIcon}
           imageAlt={SHARE}
-          className="icon-with-name"          
+          className="icon-with-name"
           onClick={handleShare}
         />
-        <IconWithName
-          name={BOOKMARK}
-          imageUrl={isBookmarked ? BookmarkIconFilled : BookmarkIcon}
-          imageAlt={BOOKMARK}
-          className="icon-with-name"
-          onClick={handleBookmark}
-        />
+        {isLoading ? (
+          <div className="icon-with-name" style={{ width: "3.438rem" }}>
+            <div className="dot-loader">
+              <div className="dot dot-1" />
+              <div className="dot dot-2" />
+              <div className="dot dot-3" />
+            </div>
+          </div>
+        ) : (
+          <IconWithName
+            name={BOOKMARK}
+            imageUrl={bookmark_id ? BookmarkIconFilled : BookmarkIcon}
+            imageAlt={BOOKMARK}
+            className="icon-with-name"
+            onClick={handleBookmark}
+          />
+        )}
       </div>
     </div>
   );

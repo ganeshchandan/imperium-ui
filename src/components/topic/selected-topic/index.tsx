@@ -14,7 +14,7 @@ const SelectedTopic: FC = () => {
     (state: RootState) => state.topic
   );
   const { topic_title, topicIndex } = selectedTopic;
-  const bookmarkId = getBookmarkTopicId(bookmarkedTopics, topic_title);
+  const bookmarkDetails = getBookmarkTopicId(bookmarkedTopics, topic_title);
   const { deselectTopic } = useSelectTopic();
   const { selectTopic } = useSelectTopic();
 
@@ -30,7 +30,7 @@ const SelectedTopic: FC = () => {
     <div className="selected-topic-list">
       <SwipeableSelectedTopic
         selectedTopic={selectedTopic}
-        isBookmarked={!!bookmarkId}
+        bookmarkDetails={bookmarkDetails}
         swipeRight={deselectTopic}
         swipeUp={handleSwipeUp}
         swipeDown={handleSwipeDown}

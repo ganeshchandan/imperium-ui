@@ -23,6 +23,7 @@ export default defineConfig({
         description: "",
         theme_color: "#ffffff",
         start_url: "/?fullscreen=true",
+        orientation: "portrait-primary",
         display: "fullscreen",
         icons: [
           {

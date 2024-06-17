@@ -16,6 +16,24 @@ const SelectedTopicContent: FC<{
     topic_saved_date,
   } = selectedTopic;
 
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: document.title,
+          text: "Check this out!",
+          // need to add url here once you have exposed
+        });
+
+        console.log("Content shared successfully");
+      } catch (err) {
+        console.error("Error sharing content:", err);
+      }
+    } else {
+      console.log("Web Share API not supported in this browser.");
+    }
+  };
+
   return (
     <div className="selected-topic">
       <div className="selected-topic-content">
@@ -32,6 +50,8 @@ const SelectedTopicContent: FC<{
       </div>
       <ActionBar
         backToTopicList={deselectTopic}
+        // backToTopicList={backToTopicList}
+        handleShare={handleShare}
         topic={selectedTopic}
         isBookmarked={isBookmarked}
       />

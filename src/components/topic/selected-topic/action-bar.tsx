@@ -10,10 +10,12 @@ import { ITopic } from "../../../type";
 
 const ActionBar = ({
   backToTopicList,
+  handleShare,
   topic,
   isBookmarked,
 }: {
   backToTopicList: () => void;
+  handleShare:() => void; 
   topic: ITopic;
   isBookmarked: boolean;
 }) => {
@@ -37,7 +39,8 @@ const ActionBar = ({
           name={SHARE}
           imageUrl={ShareIcon}
           imageAlt={SHARE}
-          className="icon-with-name"
+          className="icon-with-name"          
+          onClick={handleShare}
         />
         <IconWithName
           name={BOOKMARK}

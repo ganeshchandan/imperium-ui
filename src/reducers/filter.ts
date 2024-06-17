@@ -1,4 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { TFilterType } from "../type";
+import { CATEGOTY_FILTER_TYPE } from "../constants";
 
 export interface FilterState {
   showFilter: boolean;
@@ -7,6 +9,7 @@ export interface FilterState {
   relevanceList: string[];
   selectedRelavance: string[];
   showMenu: boolean;
+  filterType: TFilterType;
 }
 
 const initialState: FilterState = {
@@ -16,12 +19,16 @@ const initialState: FilterState = {
   relevanceList: [],
   selectedRelavance: [],
   showMenu: false,
+  filterType: CATEGOTY_FILTER_TYPE,
 };
 
 export const filterSlice = createSlice({
   name: "filter",
   initialState,
   reducers: {
+    setFilterType: (state, action: PayloadAction<TFilterType>) => {
+      state.filterType = action.payload;
+    },
     setShowFilter: (state, action: PayloadAction<boolean>) => {
       state.showFilter = action.payload;
     },
@@ -38,6 +45,7 @@ export const filterSlice = createSlice({
       state.selectedFilterBy = [];
       state.selectedRelavance = [];
       state.selectedCategory = action.payload;
+      state.filterType = CATEGOTY_FILTER_TYPE;
       state.showMenu = false;
     },
     setRelevanceList: (state, action: PayloadAction<string[]>) => {
@@ -62,6 +70,7 @@ export const {
   setSelectedRelevance,
   setShowMenu,
   setInitialDetails,
+  setFilterType,
 } = filterSlice.actions;
 
 export default filterSlice.reducer;

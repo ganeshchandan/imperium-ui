@@ -9,7 +9,9 @@ import { setInitialDetails } from "../reducers/filter";
 
 const App = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector((state: RootState) => state.topic.isLoading);
+  const isAppLoaded = useSelector(
+    (state: RootState) => state.topic.isAppLoaded
+  );
 
   useEffect(() => {
     getTopicLists().then((data) => {
@@ -20,7 +22,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="app">{isLoading ? <AppLoader /> : <AppSection />}</div>
+    <div className="app">{isAppLoaded ? <AppSection /> : <AppLoader />}</div>
   );
 };
 

@@ -2,16 +2,29 @@ import BackArrow from "../../../assets/arrow-right.svg";
 import IconWithName from "../../common/icon-with-name";
 import ShareIcon from "../../../assets/share.svg";
 import BookmarkIcon from "../../../assets/bookmark.svg";
+import BookmarkIconFilled from "../../../assets/favorite-filled.svg";
 
 import { BOOKMARK, SHARE } from "../../../constants";
+import { useBookmarkAction } from "../../../hooks";
+import { ITopic } from "../../../type";
 
-const ActionBar = ({ 
+const ActionBar = ({
   backToTopicList,
-  handleShare 
-}: { 
-  backToTopicList: () => void, 
-  handleShare:() => void 
+  handleShare,
+  topic,
+  isBookmarked,
+}: {
+  backToTopicList: () => void;
+  handleShare:() => void; 
+  topic: ITopic;
+  isBookmarked: boolean;
 }) => {
+  const { topicBookmark } = useBookmarkAction();
+
+  const handleBookmark = () => {
+    topicBookmark(topic);
+  };
+
   return (
     <div className="selected-topic-actionbar">
       <img
@@ -31,9 +44,10 @@ const ActionBar = ({
         />
         <IconWithName
           name={BOOKMARK}
-          imageUrl={BookmarkIcon}
+          imageUrl={isBookmarked ? BookmarkIconFilled : BookmarkIcon}
           imageAlt={BOOKMARK}
           className="icon-with-name"
+          onClick={handleBookmark}
         />
       </div>
     </div>

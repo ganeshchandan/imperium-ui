@@ -1,14 +1,14 @@
 import { FC } from "react";
-import { useDispatch } from "react-redux";
-import { setSelectedTopic } from "../../../reducers/topic";
-import { ISelectedTopic } from "../../../type";
+import { IBookmarkedTopic, ISelectedTopic } from "../../../type";
 import { formatDescription } from "../../../utils/app";
 import ActionBar from "./action-bar";
+import { useSelectTopic } from "../../../hooks";
 
 const SelectedTopicContent: FC<{
   selectedTopic: ISelectedTopic;
-}> = ({ selectedTopic }) => {
-  const dispatch = useDispatch();
+  bookmarkDetails: IBookmarkedTopic;
+}> = ({ selectedTopic, bookmarkDetails }) => {
+  const { deselectTopic } = useSelectTopic();
   const {
     topic_image,
     topic_title,
@@ -16,8 +16,22 @@ const SelectedTopicContent: FC<{
     topic_saved_date,
   } = selectedTopic;
 
-  const backToTopicList = () => {
-    dispatch(setSelectedTopic({ ...selectedTopic, isSelected: false }));
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: document.title,
+          text: "Check this out!",
+          // need to add url here once you have exposed
+        });
+
+        console.log("Content shared successfully");
+      } catch (err) {
+        console.error("Error sharing content:", err);
+      }
+    } else {
+      console.log("Web Share API not supported in this browser.");
+    }
   };
 
   return (
@@ -34,7 +48,12 @@ const SelectedTopicContent: FC<{
           </div>
         </div>
       </div>
-      <ActionBar backToTopicList={backToTopicList} topic={selectedTopic} />
+      <ActionBar
+        backToTopicList={deselectTopic}
+        handleShare={handleShare}
+        topic={selectedTopic}
+        bookmarkDetails={bookmarkDetails}
+      />
     </div>
   );
 };

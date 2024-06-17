@@ -1,11 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store";
 import { setFilteredTopics, setSearchBox } from "../reducers/topic";
-import { getFilteredTopics, getSortedTopics } from "../utils/app";
+import {
+  getFilteredTopics,
+  getSortedTopics,
+  getTopicListForFilterType,
+} from "../utils/app";
 import { TFilterType } from "../type";
 
 export const useFilterTopic = () => {
-  const { topics } = useSelector((state: RootState) => state.topic);
+  const { topics, bookmarkedTopics } = useSelector(
+    (state: RootState) => state.topic
+  );
   const dispatch = useDispatch();
 
   const filterTopics = (
@@ -13,7 +19,12 @@ export const useFilterTopic = () => {
     selectedCategory: string[],
     selectedRelavance: string[]
   ) => {
-    const filteredTopics = getFilteredTopics(filterType, topics, {
+    const topicList = getTopicListForFilterType(
+      filterType,
+      topics,
+      bookmarkedTopics
+    );
+    const filteredTopics = getFilteredTopics(filterType, topicList, {
       selectedCategory,
       selectedRelavance,
     });

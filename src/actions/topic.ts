@@ -1,22 +1,12 @@
 import { ITopic } from "../type";
 
-const APP_URL = "https://imperium-server-uat.netlify.app";
+const APP_URL = import.meta.env.VITE_IMPERIUM_SERVER;
+// const APP_URL = "http://localhost:3000";
 
 export const getTopicLists = async () => {
   const topicResponse = await fetch(`${APP_URL}/news/getNews`);
   return await topicResponse.json();
 };
-
-// export const bookmarkTopic = async (topic: ITopic) => {
-//   const bookmarkCreateResponse = await fetch(`${APP_URL}/bookmark/create`, {
-//     method: "post",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify({ bookmark: topic }),
-//   });
-//   return await bookmarkCreateResponse.json();
-// };
 
 export const deleteBookmark = async (bookmarkId: number) => {
   const bookmarkDeleteResponse = await fetch(

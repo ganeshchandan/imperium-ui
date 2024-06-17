@@ -1,14 +1,14 @@
 import { TSwipeIndesFinder } from "../type";
 
-export const swipeUpTopicId: TSwipeIndesFinder = (topicIndex, topicsCount) => {
-  const previousTopicIndex = topicIndex - 1;
-  return (previousTopicIndex + topicsCount) % topicsCount;
-};
-
 export const swipeDownTopicId: TSwipeIndesFinder = (
   topicIndex,
   topicsCount
 ) => {
+  const previousTopicIndex = topicIndex - 1;
+  return (previousTopicIndex + topicsCount) % topicsCount;
+};
+
+export const swipeUpTopicId: TSwipeIndesFinder = (topicIndex, topicsCount) => {
   let nextTopicIndex = topicIndex + 1;
   return (nextTopicIndex = nextTopicIndex % topicsCount);
 };
@@ -23,3 +23,22 @@ export const nextDisplayTopicIndex = (
   topicsCount: number,
   topicIndex: number
 ) => topicIdAndSwipeMapper[swipeType](topicIndex, topicsCount);
+
+export const getClickedTopicIndex: TSwipeIndesFinder = (topicIndex) =>
+  topicIndex;
+
+export const TOPIC_INDEX_GETTER: {
+  [key: string]: TSwipeIndesFinder;
+} = {
+  click: getClickedTopicIndex,
+  swipe_up: swipeUpTopicId,
+  swipe_down: swipeDownTopicId,
+};
+
+export type ITopicSelectionType = "click" | "swipe_up" | "swipe_down";
+
+export const getTopicIndex = (
+  topicIndex: number,
+  selectionType: ITopicSelectionType,
+  topicsCount: number
+) => TOPIC_INDEX_GETTER[selectionType](topicIndex, topicsCount);

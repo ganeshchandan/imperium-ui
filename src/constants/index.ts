@@ -14,9 +14,10 @@ export const RELEVANCE_TAB = "relevance";
 export const CANCEL = "CANCEL";
 export const RESET = "RESET";
 export const APPLY = "APPLY";
+export const CLICK = "click";
+export const SWIPE_UP = "swipe_up";
+export const SWIPE_DOWN = "swipe_down";
 export const SWIPE_NONE = "none";
-export const SWIPE_UP = "up";
-export const SWIPE_DOWN = "down";
 export const FILTER_POPUP_TABS = [
   { name: "Category", value: CATEGORY_TAB },
   { name: "Filter by", value: FILTERBY_TAB },
@@ -27,3 +28,5 @@ export const FILTER_BY_LIST = ["Recent", "Latest", "Bookmarked (0)"];
 export const BOOKMARK_FILTER_TYPE = "bookmark";
 export const CATEGOTY_FILTER_TYPE = "category";
 export const SEARCH_FILTER_TYPE = "search";
+export const DELETE_ACTION = "delete";
+export const ADD_ACTION = "add";

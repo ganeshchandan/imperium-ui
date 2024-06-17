@@ -1,8 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { SWIPE_NONE, SWIPE_UP, SWIPE_DOWN } from "../constants";
 import { setSelectedTopic } from "../reducers/topic";
 import { RootState } from "../store";
-import { swipeUpTopicId, swipeDownTopicId } from "../utils/swipe";
+import { getTopicIndex, ITopicSelectionType } from "../utils/swipe";
 
 export const useSelectTopic = () => {
   const dispatch = useDispatch();
@@ -10,44 +9,37 @@ export const useSelectTopic = () => {
     (state: RootState) => state.topic.filteredTopics
   );
   const topicsCount = filteredTopics.length;
-  const selectedTopicIndex = useSelector(
-    (state: RootState) => state.topic.selectedTopic.topicIndex
+  const selectedTopic = useSelector(
+    (state: RootState) => state.topic.selectedTopic
   );
-
-  const selectTopic = (topicIndex: number) => {
+  const deselectTopic = () => {
     dispatch(
       setSelectedTopic({
-        isSelected: true,
-        topicIndex,
-        swipeType: SWIPE_NONE,
-        ...filteredTopics[topicIndex],
+        selectedTopic: { ...selectedTopic, isSelected: false },
       })
     );
   };
 
-  const selectPreviousTopic = () => {
-    const previousTopicIndex = swipeUpTopicId(selectedTopicIndex, topicsCount);
+  const selectTopic = (
+    selectedTopicIndex: number,
+    selectionType: ITopicSelectionType
+  ) => {
+    const topicIndex = getTopicIndex(
+      selectedTopicIndex,
+      selectionType,
+      topicsCount
+    );
     dispatch(
       setSelectedTopic({
-        isSelected: true,
-        topicIndex: previousTopicIndex,
-        swipeType: SWIPE_UP,
-        ...filteredTopics[previousTopicIndex],
+        selectedTopic: {
+          isSelected: true,
+          topicIndex,
+          swipeType: selectionType,
+          ...filteredTopics[topicIndex],
+        },
       })
     );
   };
 
-  const selectNextTopic = () => {
-    const nextTopicIndex = swipeDownTopicId(selectedTopicIndex, topicsCount);
-    dispatch(
-      setSelectedTopic({
-        isSelected: true,
-        topicIndex: nextTopicIndex,
-        swipeType: SWIPE_DOWN,
-        ...filteredTopics[nextTopicIndex],
-      })
-    );
-  };
-
-  return { selectTopic, selectPreviousTopic, selectNextTopic };
+  return { selectTopic, deselectTopic };
 };

@@ -1,4 +1,10 @@
-import { IGetFilteredTopics, ITopic, TFilterType } from "../type";
+import { BOOKMARK_FILTER_TYPE } from "../constants";
+import {
+  IBookmarkedTopics,
+  IGetFilteredTopics,
+  ITopic,
+  TFilterType,
+} from "../type";
 
 /**
  * Sorts the bookmared topics, latest bookmarked topics will be at top of lists
@@ -16,12 +22,10 @@ const sortBookmarkedTopic = (topics: ITopic[]) =>
  * @param selectedRelavance as input
  */
 const bookmarkFilter = (
-  { topic_category, bookmark_id }: ITopic,
+  { topic_category }: ITopic,
   { selectedRelavance = [] }: IGetFilteredTopics
 ) =>
-  !!bookmark_id &&
-  (selectedRelavance.length === 0 ||
-    selectedRelavance.includes(topic_category));
+  selectedRelavance.length === 0 || selectedRelavance.includes(topic_category);
 
 /**
  * returns true when the passed topic category is part of the seleceted categories.
@@ -92,3 +96,12 @@ export const getFilteredTopics = (
 export const getSortedTopics = (filterType: TFilterType, topics: ITopic[]) => {
   return sortFilterFunctionMapper[filterType](topics);
 };
+
+export const getTopicListForFilterType = (
+  filterType: TFilterType,
+  topics: ITopic[],
+  bookmarkedTopics: IBookmarkedTopics
+) =>
+  filterType === BOOKMARK_FILTER_TYPE
+    ? (Object.values(bookmarkedTopics) as ITopic[])
+    : topics;

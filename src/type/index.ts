@@ -1,3 +1,5 @@
+import { ITopicSelectionType } from "../utils/swipe";
+
 export interface ITopic {
   author: string;
   topic_id: number;
@@ -9,13 +11,30 @@ export interface ITopic {
   topic_image: string;
   bookmark_id: number | null;
   bookmarked_date: string;
-  last_viewed_date: string;
+}
+
+export interface IBookmarkedTopic {
+  isLoading?: boolean;
+  author: string;
+  topic_id: number;
+  topic_title: string;
+  topic_short_description: string;
+  topic_saved_date: string;
+  topic_read_time: string;
+  topic_category: string;
+  topic_image: string;
+  bookmark_id: number | null;
+  bookmarked_date: string;
+}
+
+export interface IBookmarkedTopics {
+  [key: string]: IBookmarkedTopic;
 }
 
 export interface ISelectedTopic extends ITopic {
   topicIndex: number;
   isSelected: boolean;
-  swipeType: "none" | "up" | "down";
+  swipeType: ITopicSelectionType;
 }
 
 export type TSwipeIndesFinder = (

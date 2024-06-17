@@ -1,4 +1,4 @@
-import { ITopic } from "../type";
+import { IBookmarkedTopics, ITopic } from "../type";
 
 export const formatDescription = (html: string) => {
   const doc = new DOMParser().parseFromString(html, "text/html");
@@ -22,5 +22,16 @@ export const getUpdatedBookmarkId = (
     return { ...topic };
   });
 
+export const getBookmarkTopicId = (
+  bookmarkedTopics: IBookmarkedTopics,
+  topic_title: string
+) => {
+  const bookmarkedTopic = bookmarkedTopics[topic_title] || {
+    isLoading: false,
+  };
+  return bookmarkedTopic;
+};
+
 export * from "./swipe";
 export * from "./filter";
+export * from "./bookmark";

@@ -15,14 +15,14 @@ export default defineConfig({
       workbox: {
         cleanupOutdatedCaches: false,
         sourcemap: true,
-      },
+      },    
       includeAssets: ["vite.svg", "logo192.png", "logo512.png"],
       manifest: {
         name: "Imperium",
         short_name: "Imperium",
         description: "",
         theme_color: "#ffffff",
-        start_url: "/?fullscreen=true",
+        start_url: "/?fullscreen=true"  ,
         orientation: "portrait-primary",
         display: "fullscreen",
         icons: [

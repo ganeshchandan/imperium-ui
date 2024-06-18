@@ -59,11 +59,46 @@ body,
   }
 }
 
+@keyframes button-ripple {
+  0% {
+    display: block;
+    width: 30px;
+    height: 30px;
+  }
+  100% {
+    display: none;
+    width: 150%;
+    height: 150%;
+  }
+}
+
 * {
   .app {
     height: 100%;
     width: 100%;
     background-color: var(--app-background-color);
+    // .icon-with-name {
+    //   position: relative;
+    //   aspect-ratio: 1/1;
+    //   > img,
+    //   label {
+    //     z-index: 2;
+    //   }
+    //   &::after {
+    //     content: "";
+    //     width: 30px;
+    //     height: 30px;
+    //     background-color: rgba(0, 0, 0, 0.5);
+    //     position: absolute;
+    //     border-radius: 50%;
+    //     z-index: 1;
+    //     animation-name: button-ripple;
+    //     animation-duration: 2s;
+    //     animation-timing-function: linear;
+    //     animation-fill-mode: forwards;
+    //     animation-iteration-count: infinite;
+    //   }
+    // }
     .app-loading {
       width: 180px;
       height: 100%;

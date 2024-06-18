@@ -16,7 +16,7 @@ const IconWithName = ({
   onClick,
 }: IIconWithName) => {
   return (
-    <div className={className} onClick={onClick}>
+    <div className={`icon-with-name ${className}`} onClick={onClick}>
       <img src={imageUrl} alt={imageAlt}></img>
       <label>{name}</label>
     </div>

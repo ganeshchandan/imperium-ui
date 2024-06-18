@@ -1,6 +1,6 @@
 import { FC, SyntheticEvent } from "react";
-import FavoriteIconSaved from "../../../../assets/favorite-filled.svg";
-import FavoriteIcon from "../../../../assets/favorite.svg";
+import PinnedIconSaved from "../../../../assets/pinned_saved.svg";
+import PinnedIcon from "../../../../assets/pinned.svg";
 import { useBookmarkAction } from "../../../../hooks";
 import { IBookmarkedTopic, ITopic } from "../../../../type";
 
@@ -42,7 +42,7 @@ const TopicTileFooter: FC<ITopicTileFooter> = ({ topic, bookmarkDetails }) => {
           onTouchStart={onTouchStart}
         >
           <img
-            src={bookmark_id ? FavoriteIconSaved : FavoriteIcon}
+            src={bookmark_id ? PinnedIconSaved : PinnedIcon}
             alt="Favorite Icon"
           />
         </div>

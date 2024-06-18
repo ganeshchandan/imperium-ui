@@ -76,7 +76,7 @@
                     border-radius: 0.5rem;
                     background-color: var(--topic-tile-background-color);
                     box-sizing: border-box;
-                    grid-gap: 0.5rem;
+                    // grid-gap: 0.5rem;
                     height: max-content;
                     display: grid;
                     transform: translateY(30px);
@@ -142,8 +142,9 @@
                         justify-content: space-between;
                         padding: 0 0.25rem;
                         grid-template-columns: auto auto;
-                        height: 18px;
+                        height: 1.625rem;
                         .saved-date-read-time {
+                            padding-top: 0.5rem;
                             font-size: 0.625rem;
                             font-weight: 500;
                             line-height: 0.75rem;
@@ -151,6 +152,7 @@
                         }
                         .favorite-icon {
                             @include click-effect;
+                            padding-top: 0.5rem;
                             display: flex;
                             align-items: center;
                             justify-content: flex-end;

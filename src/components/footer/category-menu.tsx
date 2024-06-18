@@ -2,7 +2,7 @@ import SearchIcon from "../../assets/search-normal.svg";
 import Filter from "../../assets/sort.svg";
 import Close from "../../assets/close.svg";
 import UserIcon from "../../assets/user-icon.svg";
-import FilterIcon from "../../assets/bookmark.svg";
+import PinnedFooter from "../../assets/pinned_footer.svg";
 import IconWithName from "../common/icon-with-name";
 import { FILTER, SEARCH, CLOSE, USER, PINNED } from "../../constants";
 import { FC } from "react";
@@ -46,7 +46,7 @@ const CategoryMenu: FC<ICategoryMenu> = ({ showMenu }) => {
         />
         <IconWithName
           name={PINNED}
-          imageUrl={FilterIcon}
+          imageUrl={PinnedFooter}
           imageAlt={PINNED}
           className="footer-category-icon"
           onClick={filterBookmark}

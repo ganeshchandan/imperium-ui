@@ -1,20 +1,24 @@
 import { useSelectTopic } from "../../../../hooks";
-import { IBookmarkedTopic, ITopic } from "../../../../type";
+import { IBookmarkedTopic, ITopic, TViewType } from "../../../../type";
 import TopicImage from "./topic_image";
 import TopicTileContent from "./content";
 import TopicTileFooter from "./footer";
 import { useRef } from "react";
 import { CLICK } from "../../../../constants";
 
-const TopicTile = ({
-  topic,
-  topicIndex,
-  bookmarkDetails,
-}: {
+interface ITopicList {
   topic: ITopic;
   topicIndex: number;
   bookmarkDetails: IBookmarkedTopic;
-}) => {
+  viewType: TViewType;
+}
+
+const TopicList = ({
+  topic,
+  topicIndex,
+  bookmarkDetails,
+  viewType,
+}: ITopicList) => {
   const topicTileRef = useRef({ isViewScrolling: false });
   const { selectTopic } = useSelectTopic();
 
@@ -33,7 +37,7 @@ const TopicTile = ({
 
   return (
     <div
-      className="topic-tile"
+      className={viewType}
       onClick={handleTopicSelect}
       onTouchEnd={handleTopicSelect}
       onTouchMove={handleTouchMove}
@@ -50,4 +54,4 @@ const TopicTile = ({
   );
 };
 
-export default TopicTile;
+export default TopicList;

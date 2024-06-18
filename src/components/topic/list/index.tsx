@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import TopicTile from "./title";
+import TopicTile from "./tile";
 import { RootState } from "../../../store";
 import { ReactNode, useCallback } from "react";
 import AppFooter from "../../footer";
@@ -11,10 +11,10 @@ const TopicList = () => {
   const { filteredTopics, bookmarkedTopics } = useSelector(
     (state: RootState) => state.topic
   );
-
   const { relevanceList, selectedRelavance } = useSelector(
     (state: RootState) => state.filter
   );
+  const { viewType } = useSelector((state: RootState) => state.appConfig);
 
   const renderTopicLsit = useCallback(() => {
     return filteredTopics.reduce((topicHtml, topic, index) => {
@@ -27,10 +27,11 @@ const TopicList = () => {
           key={topic_id}
           topicIndex={index}
           bookmarkDetails={bookmarkDetails}
+          viewType={viewType}
         />,
       ];
     }, [] as ReactNode[]);
-  }, [bookmarkedTopics, filteredTopics]);
+  }, [bookmarkedTopics, filteredTopics, viewType]);
 
   return (
     <div className="topic-list-view">
@@ -38,10 +39,11 @@ const TopicList = () => {
         selectedCategory={[
           selectedRelavance.length === 0 ? "All" : selectedRelavance[0],
         ]}
+        viewType={viewType}
       />
 
       {filteredTopics.length > 0 ? (
-        <div className="topic-list">{renderTopicLsit()}</div>
+        <div className="topic-lists">{renderTopicLsit()}</div>
       ) : (
         <EmptyList />
       )}

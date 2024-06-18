@@ -1,3 +1,5 @@
+import { TViewType } from "../type";
+
 export const TOPIC_IMAGE = "TOPIC_";
 export const SHARE = "Share";
 export const BOOKMARK = "Bookmark";
@@ -30,3 +32,9 @@ export const CATEGOTY_FILTER_TYPE = "category";
 export const SEARCH_FILTER_TYPE = "search";
 export const DELETE_ACTION = "delete";
 export const ADD_ACTION = "add";
+export const TOPIC_GRID = "topic-grid";
+export const TOPIC_LIST = "topic-list";
+export const VIEW_TYPE_SWITCH: { [key: string]: TViewType } = {
+  [TOPIC_GRID]: TOPIC_LIST,
+  [TOPIC_LIST]: TOPIC_GRID,
+};

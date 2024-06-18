@@ -49,3 +49,5 @@ export interface IGetFilteredTopics {
   selectedRelavance?: string[];
   searchValue?: string;
 }
+
+export type TViewType = "topic-grid" | "topic-list";

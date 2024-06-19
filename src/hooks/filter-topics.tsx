@@ -9,7 +9,7 @@ import {
 import { TFilterType } from "../type";
 
 export const useFilterTopic = () => {
-  const { topics, bookmarkedTopics } = useSelector(
+  const { topics, bookmarkedTopics, recentlyViewedTopics } = useSelector(
     (state: RootState) => state.topic
   );
   const dispatch = useDispatch();
@@ -27,9 +27,14 @@ export const useFilterTopic = () => {
     const filteredTopics = getFilteredTopics(filterType, topicList, {
       selectedCategory,
       selectedRelavance,
+      recentlyViewedTopics,
     });
 
-    dispatch(setFilteredTopics(getSortedTopics(filterType, filteredTopics)));
+    dispatch(
+      setFilteredTopics(
+        getSortedTopics(filterType, filteredTopics, recentlyViewedTopics)
+      )
+    );
   };
 
   const filterTopicsBySearch = (

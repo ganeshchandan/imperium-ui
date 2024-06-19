@@ -2,13 +2,13 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   CATEGORY_TAB,
   CATEGOTY_FILTER_TYPE,
-  FILTERBY_TAB,
+  RECENTLY_VIEWED,
   RELEVANCE_TAB,
 } from "../../../constants";
 import {
   setSelectedCategory,
-  setFilterBy,
   setRelevanceList,
+  setRecentlyViewFilter,
 } from "../../../reducers/filter";
 import { RootState } from "../../../store";
 import { FC } from "react";
@@ -30,20 +30,23 @@ const FilterRelevanceContent: FC<IFilterRelevanceContent> = ({
   const dispatch = useDispatch();
   const { filterTopics } = useFilterTopic();
 
-  const { filterByList, categories } = useSelector(
-    (state: RootState) => state.topic
-  );
+  const { categories } = useSelector((state: RootState) => state.topic);
 
-  const { selectedFilterBy, selectedCategory, relevanceList } = useSelector(
+  const { selectedCategory, relevanceList } = useSelector(
     (state: RootState) => state.filter
   );
 
-  const handleFilterBySelected = (selectedItem: string[]) =>
-    dispatch(setFilterBy(selectedItem));
-
-  const handleCategorySelection = (selectedItem: string[]) => {
-    dispatch(setSelectedCategory(selectedItem));
-    filterTopics(CATEGOTY_FILTER_TYPE, selectedItem, []);
+  const handleCategorySelection = (
+    selectedItem: string[],
+    isRecentlyViewed: boolean
+  ) => {
+    if (isRecentlyViewed) {
+      dispatch(setRecentlyViewFilter());
+      filterTopics(RECENTLY_VIEWED, selectedItem, []);
+    } else {
+      dispatch(setSelectedCategory(selectedItem));
+      filterTopics(CATEGOTY_FILTER_TYPE, selectedItem, []);
+    }
   };
 
   const handleSelectedRelevance = (selectedItem: string[]) =>
@@ -58,15 +61,6 @@ const FilterRelevanceContent: FC<IFilterRelevanceContent> = ({
             selectedItems={selectedCategory}
             handleSelected={handleCategorySelection}
             isMultipleSelection={true}
-          />
-        );
-      case FILTERBY_TAB:
-        return (
-          <CategoryAndFilter
-            isMultipleSelection={false}
-            listItems={filterByList}
-            selectedItems={selectedFilterBy}
-            handleSelected={handleFilterBySelected}
           />
         );
       case RELEVANCE_TAB:

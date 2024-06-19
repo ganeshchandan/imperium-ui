@@ -6,14 +6,35 @@ import {
   TFilterType,
 } from "../type";
 
+type ISortTopic = (
+  topics: ITopic[],
+  recentlyViewedTopics?: string[]
+) => ITopic[];
+
 /**
  * Sorts the bookmared topics, latest bookmarked topics will be at top of lists
  */
-const sortBookmarkedTopic = (topics: ITopic[]) =>
+const sortBookmarkedTopic: ISortTopic = (topics) =>
   topics.sort((source, target) => {
     const { bookmarked_date: sourceDate } = source;
     const { bookmarked_date: targetDate } = target;
     return new Date(targetDate).getTime() - new Date(sourceDate).getTime();
+  });
+
+/**
+ * Sorts the recently viewed topics, latest bookmarked topics will be at top of lists
+ */
+const sortRecentlyViewedTopic: ISortTopic = (
+  topics: ITopic[],
+  recentlyViewedTopics = []
+) =>
+  topics.sort((source, target) => {
+    const { topic_title: sourceTopicTitle } = source;
+    const { topic_title: targetTopicTitle } = target;
+    return (
+      recentlyViewedTopics.indexOf(sourceTopicTitle) -
+      recentlyViewedTopics.indexOf(targetTopicTitle)
+    );
   });
 
 /**
@@ -55,6 +76,18 @@ const searchTopics = (
   topic_short_description.toLowerCase().includes(searchValue);
 
 /**
+ * returns true when the passed topic value is recently Viewed.
+ * @param Topic as a input
+ * @param selectedRelavance as input
+ */
+const recentlyViewed = (
+  { topic_title }: ITopic,
+  { recentlyViewedTopics = [] }: IGetFilteredTopics
+) => {
+  return recentlyViewedTopics.includes(topic_title);
+};
+
+/**
  * Filter function mapper, key will be type fiter and value will be corresponding filter condition logic method
  */
 const filterTypeFunctionMapper: {
@@ -63,17 +96,19 @@ const filterTypeFunctionMapper: {
   bookmark: bookmarkFilter,
   category: categoryFilter,
   search: searchTopics,
+  recentlyViewed: recentlyViewed,
 };
 
 /**
  * Sort function mapper, key will be type sort and value will be corresponding Sort method
  */
 const sortFilterFunctionMapper: {
-  [key: string]: (topics: ITopic[]) => ITopic[];
+  [key: string]: ISortTopic;
 } = {
   bookmark: sortBookmarkedTopic,
   category: (topics: ITopic[]) => topics,
   search: (topics: ITopic[]) => topics,
+  recentlyViewed: sortRecentlyViewedTopic,
 };
 
 /**
@@ -84,17 +119,21 @@ export const getFilteredTopics = (
   topics: ITopic[],
   filterDetails: IGetFilteredTopics
 ) => {
-  const filteredTopic = topics.filter((topic) =>
-    filterTypeFunctionMapper[filterType](topic, filterDetails)
-  );
+  const filteredTopic = topics.filter((topic) => {
+    return filterTypeFunctionMapper[filterType](topic, filterDetails);
+  });
   return filteredTopic;
 };
 
 /**
  * Returns the sorted topic list according to sort cateria
  */
-export const getSortedTopics = (filterType: TFilterType, topics: ITopic[]) => {
-  return sortFilterFunctionMapper[filterType](topics);
+export const getSortedTopics = (
+  filterType: TFilterType,
+  topics: ITopic[],
+  recentlyViewedTopics: string[]
+) => {
+  return sortFilterFunctionMapper[filterType](topics, recentlyViewedTopics);
 };
 
 export const getTopicListForFilterType = (

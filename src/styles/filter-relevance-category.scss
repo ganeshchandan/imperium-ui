@@ -48,6 +48,17 @@
             padding: 1.75rem 2.5rem 0 2.5rem;
             padding: 1.25rem 2.5rem 0 2.5rem;
             overflow: auto;
+            .recently-viewed {
+                font-size: 1rem;
+                font-weight: 400;
+                color: var(--list-text-color);
+                padding: 1rem 0 1.125rem 0;
+                -webkit-tap-highlight-color: transparent;
+                cursor: pointer;
+                &.recently-viewed-selected {
+                    font-weight: 500;
+                }
+            }
         }
         .relevance {
             padding: 0.5rem 2.5rem 0 2.5rem;

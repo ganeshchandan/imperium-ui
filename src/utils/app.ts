@@ -32,6 +32,18 @@ export const getBookmarkTopicId = (
   return bookmarkedTopic;
 };
 
+export const updateRecentlyviewedTopicList = (
+  recentlyViewedTopics: string[],
+  selectedTopic: ITopic
+) => {
+  const { topic_title } = selectedTopic;
+  const selectedTopicIndex = recentlyViewedTopics.indexOf(topic_title);
+  if (selectedTopicIndex !== -1) {
+    recentlyViewedTopics.splice(selectedTopicIndex, 1);
+  }
+  return [topic_title, ...recentlyViewedTopics];
+};
+
 export * from "./swipe";
 export * from "./filter";
 export * from "./bookmark";

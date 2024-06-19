@@ -1,27 +1,23 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { TFilterType } from "../type";
-import { CATEGOTY_FILTER_TYPE } from "../constants";
+import { CATEGOTY_FILTER_TYPE, RECENTLY_VIEWED } from "../constants";
 
 export interface FilterState {
   showFilter: boolean;
   selectedCategory: string[];
-  selectedFilterBy: string[];
   relevanceList: string[];
   selectedRelavance: string[];
   showMenu: boolean;
   filterType: TFilterType;
-  recentViewedTopics: string[];
 }
 
 const initialState: FilterState = {
   showFilter: false,
-  selectedFilterBy: ["Recent"],
   selectedCategory: [],
   relevanceList: [],
   selectedRelavance: [],
   showMenu: false,
   filterType: CATEGOTY_FILTER_TYPE,
-  recentViewedTopics: [],
 };
 
 export const filterSlice = createSlice({
@@ -34,20 +30,21 @@ export const filterSlice = createSlice({
     setShowFilter: (state, action: PayloadAction<boolean>) => {
       state.showFilter = action.payload;
     },
-    setFilterBy: (state, action: PayloadAction<string[]>) => {
-      state.selectedFilterBy = action.payload;
-      state.showMenu = false;
-    },
     setInitialDetails: (state, action: PayloadAction<string[]>) => {
       state.relevanceList = action.payload;
       state.selectedCategory = action.payload;
       state.showMenu = false;
     },
     setSelectedCategory: (state, action: PayloadAction<string[]>) => {
-      state.selectedFilterBy = [];
       state.selectedRelavance = [];
       state.selectedCategory = action.payload;
       state.filterType = CATEGOTY_FILTER_TYPE;
+      state.showMenu = false;
+    },
+    setRecentlyViewFilter: (state) => {
+      state.selectedRelavance = [];
+      state.selectedCategory = [];
+      state.filterType = RECENTLY_VIEWED;
       state.showMenu = false;
     },
     setRelevanceList: (state, action: PayloadAction<string[]>) => {
@@ -60,22 +57,18 @@ export const filterSlice = createSlice({
     setShowMenu: (state, action: PayloadAction<boolean>) => {
       state.showMenu = action.payload;
     },
-    setLastViewdTopics: (state, action: PayloadAction<string[]>) => {
-      state.recentViewedTopics = action.payload;
-    },
   },
 });
 
 export const {
   setShowFilter,
-  setFilterBy,
   setSelectedCategory,
   setRelevanceList,
   setSelectedRelevance,
   setShowMenu,
   setInitialDetails,
   setFilterType,
-  setLastViewdTopics,
+  setRecentlyViewFilter,
 } = filterSlice.actions;
 
 export default filterSlice.reducer;

@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 interface ICategoryAndFilterByList {
   listItems: string[];
   selectedItems: string[];
-  handleSelected: (selectedItems: string[]) => void;
+  handleSelected: (selectedItems: string[], isRecentlyViewed: boolean) => void;
   isMultipleSelection: boolean;
   Component: FC<IFilterByCategory>;
 }
@@ -25,21 +25,27 @@ const CategoryAndFilterByList: FC<ICategoryAndFilterByList> = ({
   const [updatedSelectedItems, setUpdatedSelectedItems] = useState<string[]>(
     []
   );
+  const [isRecentlyViewed, setRecentlyViewed] = useState<boolean>(false);
 
   useEffect(() => {
     setUpdatedSelectedItems([...selectedItems]);
   }, [selectedItems]);
 
   const handleItemSelected = (selectedItems: string[]) => {
+    setRecentlyViewed(false);
     setUpdatedSelectedItems(selectedItems);
+  };
+
+  const handleRecentlyViewed = () => {
+    setUpdatedSelectedItems([]);
+    setRecentlyViewed(true);
   };
 
   const handleActionButtonClick = (action: string) => {
     if (action === RESET) {
-      // handleSelected(selectedItems);
       setUpdatedSelectedItems([...selectedItems]);
     } else if (action === APPLY) {
-      handleSelected(updatedSelectedItems);
+      handleSelected(updatedSelectedItems, isRecentlyViewed);
       dispatch(setShowFilter(false));
     } else if (action === CANCEL) {
       setUpdatedSelectedItems([...selectedItems]);
@@ -54,6 +60,8 @@ const CategoryAndFilterByList: FC<ICategoryAndFilterByList> = ({
         isMultipleSelection={isMultipleSelection}
         updatedSelectedItems={updatedSelectedItems}
         handleSelected={handleItemSelected}
+        handleRecentlyViewed={handleRecentlyViewed}
+        isRecentlyViewed={isRecentlyViewed}
       />
       <FilterRelevanceAction
         handleActionButtonClick={handleActionButtonClick}

@@ -5,14 +5,19 @@ export interface IFilterByCategory {
   listItems: string[];
   updatedSelectedItems: string[];
   handleSelected: (selectedItems: string[]) => void;
+  handleRecentlyViewed: () => void;
   isMultipleSelection: boolean;
+  isRecentlyViewed: boolean;
 }
 
 const ContentContainer = (Component: FC<IFilterByCategory>) => {
   return (props: {
     listItems: string[];
     selectedItems: string[];
-    handleSelected: (selectedItems: string[]) => void;
+    handleSelected: (
+      selectedItems: string[],
+      isRecentlyViewed: boolean
+    ) => void;
     isMultipleSelection: boolean;
   }) => <CategoryAndFilterByList {...props} Component={Component} />;
 };

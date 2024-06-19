@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { ITopic, ISelectedTopic, IBookmarkedTopics } from "../type";
-import { FILTER_BY_LIST } from "../constants";
+import { updateRecentlyviewedTopicList } from "../utils/app";
 
 export interface TopicState {
   isLoading: boolean;
@@ -9,9 +9,9 @@ export interface TopicState {
   filteredTopics: ITopic[];
   selectedTopic: ISelectedTopic;
   categories: string[];
-  filterByList: string[];
   isSearchBox: boolean;
   bookmarkedTopics: IBookmarkedTopics;
+  recentlyViewedTopics: string[];
 }
 
 const initialState: TopicState = {
@@ -35,9 +35,9 @@ const initialState: TopicState = {
     author: "",
     bookmark_id: null,
   },
-  filterByList: FILTER_BY_LIST,
   isSearchBox: false,
   bookmarkedTopics: {},
+  recentlyViewedTopics: [],
 };
 
 export const topicSlice = createSlice({
@@ -84,6 +84,10 @@ export const topicSlice = createSlice({
       action: PayloadAction<{ selectedTopic: ISelectedTopic }>
     ) => {
       const { selectedTopic } = action.payload;
+      state.recentlyViewedTopics = updateRecentlyviewedTopicList(
+        state.recentlyViewedTopics,
+        selectedTopic
+      );
       state.selectedTopic = selectedTopic;
     },
     setFilteredTopics: (state, action: PayloadAction<ITopic[]>) => {

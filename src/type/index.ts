@@ -42,12 +42,18 @@ export type TSwipeIndesFinder = (
   topicsCount: number
 ) => number;
 
-export type TFilterType = "bookmark" | "category" | "none" | "search";
+export type TFilterType =
+  | "bookmark"
+  | "category"
+  | "none"
+  | "search"
+  | "recentlyViewed";
 
 export interface IGetFilteredTopics {
   selectedCategory?: string[];
   selectedRelavance?: string[];
   searchValue?: string;
+  recentlyViewedTopics?: string[];
 }
 
 export type TViewType = "topic-grid" | "topic-list";

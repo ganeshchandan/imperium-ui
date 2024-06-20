@@ -5,23 +5,6 @@ export const formatDescription = (html: string) => {
   return doc.body.innerText || "";
 };
 
-export const getUpdatedBookmarkId = (
-  topics: ITopic[],
-  selectedTopicTitle: string,
-  bookmarkId: number | null
-) =>
-  topics.map((topic) => {
-    const { topic_title } = topic;
-    if (selectedTopicTitle === topic_title) {
-      return {
-        ...topic,
-        bookmark_id: bookmarkId,
-        bookmarked_date: new Date().toString(),
-      };
-    }
-    return { ...topic };
-  });
-
 export const getBookmarkTopicId = (
   bookmarkedTopics: IBookmarkedTopics,
   topic_title: string
@@ -33,15 +16,40 @@ export const getBookmarkTopicId = (
 };
 
 export const updateRecentlyviewedTopicList = (
-  recentlyViewedTopics: string[],
+  recentlyViewedTopics: ITopic[],
   selectedTopic: ITopic
 ) => {
-  const { topic_title } = selectedTopic;
-  const selectedTopicIndex = recentlyViewedTopics.indexOf(topic_title);
-  if (selectedTopicIndex !== -1) {
-    recentlyViewedTopics.splice(selectedTopicIndex, 1);
-  }
-  return [topic_title, ...recentlyViewedTopics];
+  const {
+    topic_title: selectedTopicTitile,
+    topic_category,
+    topic_id,
+    topic_image,
+    topic_read_time,
+    topic_saved_date,
+    topic_short_description,
+    author,
+  } = selectedTopic;
+  recentlyViewedTopics = recentlyViewedTopics.filter(
+    ({ topic_title }) => selectedTopicTitile !== topic_title
+  );
+
+  recentlyViewedTopics = [
+    {
+      topic_title: selectedTopicTitile,
+      topic_category,
+      topic_id,
+      topic_image,
+      topic_read_time,
+      topic_saved_date,
+      topic_short_description,
+      author,
+      bookmark_id: null,
+      bookmarked_date: "",
+    },
+    ...recentlyViewedTopics,
+  ];
+
+  return recentlyViewedTopics.splice(0, 20);
 };
 
 export * from "./swipe";

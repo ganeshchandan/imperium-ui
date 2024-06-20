@@ -11,7 +11,7 @@ export interface TopicState {
   categories: string[];
   isSearchBox: boolean;
   bookmarkedTopics: IBookmarkedTopics;
-  recentlyViewedTopics: string[];
+  recentlyViewedTopics: ITopic[];
 }
 
 const initialState: TopicState = {

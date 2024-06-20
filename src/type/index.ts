@@ -13,16 +13,8 @@ export interface ITopic {
   bookmarked_date: string;
 }
 
-export interface IBookmarkedTopic {
+export interface IBookmarkedTopic extends ITopic {
   isLoading?: boolean;
-  author: string;
-  topic_id: number;
-  topic_title: string;
-  topic_short_description: string;
-  topic_saved_date: string;
-  topic_read_time: string;
-  topic_category: string;
-  topic_image: string;
   bookmark_id: number | null;
   bookmarked_date: string;
 }

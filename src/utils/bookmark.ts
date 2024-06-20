@@ -44,7 +44,8 @@ const deleteBookmarkedTopic: TAddBookmarkedTopic = ({
     const topicLists = getTopicListForFilterType(
       filterType,
       filteredTopics,
-      updatedBookmarkedTopics
+      updatedBookmarkedTopics,
+      []
     );
 
     updatedFilteredTopics = getFilteredTopics(filterType, topicLists, {

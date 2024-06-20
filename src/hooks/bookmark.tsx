@@ -89,7 +89,8 @@ export const useBookmarkAction = () => {
     const topicLists = getTopicListForFilterType(
       updateFilter,
       topics,
-      bookmarkedTopics
+      bookmarkedTopics,
+      []
     );
 
     dispatch(setFilterType(updateFilter));

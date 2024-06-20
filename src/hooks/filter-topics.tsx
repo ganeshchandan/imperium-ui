@@ -22,7 +22,8 @@ export const useFilterTopic = () => {
     const topicList = getTopicListForFilterType(
       filterType,
       topics,
-      bookmarkedTopics
+      bookmarkedTopics,
+      recentlyViewedTopics
     );
     const filteredTopics = getFilteredTopics(filterType, topicList, {
       selectedCategory,
@@ -30,11 +31,7 @@ export const useFilterTopic = () => {
       recentlyViewedTopics,
     });
 
-    dispatch(
-      setFilteredTopics(
-        getSortedTopics(filterType, filteredTopics, recentlyViewedTopics)
-      )
-    );
+    dispatch(setFilteredTopics(getSortedTopics(filterType, filteredTopics)));
   };
 
   const filterTopicsBySearch = (

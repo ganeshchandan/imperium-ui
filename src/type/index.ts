@@ -45,7 +45,7 @@ export interface IGetFilteredTopics {
   selectedCategory?: string[];
   selectedRelavance?: string[];
   searchValue?: string;
-  recentlyViewedTopics?: string[];
+  recentlyViewedTopics?: ITopic[];
 }
 
 export type TViewType = "topic-grid" | "topic-list";

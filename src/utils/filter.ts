@@ -4,6 +4,7 @@ import {
   ITopic,
   TFilterType,
 } from "../type";
+import { searchTopics } from "./search";
 
 type ISortTopic = (topics: ITopic[]) => ITopic[];
 type TGetTopicListForFilterTypeMapper = (topics: {
@@ -46,19 +47,6 @@ const categoryFilter = (
     selectedCategory.includes(topic_category)) &&
   (selectedRelavance.length === 0 ||
     selectedRelavance.includes(topic_category));
-
-/**
- * returns true when the passed topic value is part of the search value.
- * @param Topic as a input
- * @param selectedRelavance as input
- */
-const searchTopics = (
-  { topic_short_description, topic_title }: ITopic,
-  { searchValue = "" }: IGetFilteredTopics
-) =>
-  searchValue === "" ||
-  topic_title.toLowerCase().includes(searchValue) ||
-  topic_short_description.toLowerCase().includes(searchValue);
 
 // /**
 //  * returns true when the passed topic value is recently Viewed.

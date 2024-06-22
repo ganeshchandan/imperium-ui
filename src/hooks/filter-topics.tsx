@@ -6,7 +6,7 @@ import {
   getSortedTopics,
   getTopicListForFilterType,
 } from "../utils/app";
-import { TFilterType } from "../type";
+import { TFilterType, TSearchByColumn } from "../type";
 
 export const useFilterTopic = () => {
   const { topics, bookmarkedTopics, recentlyViewedTopics } = useSelector(
@@ -36,13 +36,15 @@ export const useFilterTopic = () => {
 
   const filterTopicsBySearch = (
     filterType: TFilterType,
-    searchValue: string
+    searchValue: string,
+    searchBy: TSearchByColumn
   ) => {
     dispatch(setSearchBox(false));
     dispatch(
       setFilteredTopics(
         getFilteredTopics(filterType, topics, {
           searchValue: searchValue.toLowerCase(),
+          searchBy,
         })
       )
     );

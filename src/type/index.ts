@@ -46,6 +46,11 @@ export interface IGetFilteredTopics {
   selectedRelavance?: string[];
   searchValue?: string;
   recentlyViewedTopics?: ITopic[];
+  searchBy?: TSearchByColumn;
 }
 
+export type TSearchByColumn = "topic_short_description" | "topic_title" | "";
+
 export type TViewType = "topic-grid" | "topic-list";
+
+export type TSearchResults = { type: string; value: string };

@@ -9,6 +9,7 @@ export interface ITopic {
   topic_read_time: string;
   topic_category: string;
   topic_image: string;
+  topic_link: string;
   bookmark_id: number | null;
   bookmarked_date: string;
 }

@@ -5,13 +5,10 @@ import {
   KeyboardEvent,
   SyntheticEvent,
 } from "react";
-// import { useFilterTopic } from "../../../hooks";
-// import { SEARCH_FILTER_TYPE } from "../../../constants";
 import CloseImg from "../../../assets/close.svg";
 import SearchImg from "../../../assets/search-normal.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { setSearchBox } from "../../../reducers/topic";
-// import { useFilterTopic } from "../../../hooks";
 import { getSearchResults } from "../../../utils/search";
 import { RootState } from "../../../store";
 import SearchResult from "./result";
@@ -64,15 +61,13 @@ const SearchTopic = () => {
     <div
       className="search-box-overlay"
       onClick={onCloseSearchBox}
-      onTouchEnd={onCloseSearchBox}
-      onTouchStart={onCloseSearchBox}
+      onTouchStart={preventDefaultAcion}
     >
       <div
         className={`search-box-container ${
           searchValue.trim() !== "" ? "show-search-result" : ""
         }`}
         onClick={preventDefaultAcion}
-        onTouchEnd={preventDefaultAcion}
         onTouchStart={preventDefaultAcion}
       >
         <div className="search-box">

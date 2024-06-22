@@ -80,7 +80,7 @@ const SearchTopic = () => {
           />
           <SearchBoxIcons src={CloseImg} onClick={onCloseSearchBox} />
         </div>
-        <SearchResult searchResults={searchResults} />
+        <SearchResult searchResults={searchResults} searchValue={searchValue} />
       </div>
     </div>
   );

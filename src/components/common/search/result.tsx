@@ -1,11 +1,14 @@
+import Highlighter from "react-highlight-words";
 import { SEARCH_FILTER_TYPE } from "../../../constants";
 import { useFilterTopic } from "../../../hooks";
 import { TSearchByColumn, TSearchResults } from "../../../type";
 
 const SearchResult = ({
   searchResults,
+  searchValue,
 }: {
   searchResults: TSearchResults[];
+  searchValue: string;
 }) => {
   const { filterTopicsBySearch } = useFilterTopic();
 
@@ -29,9 +32,14 @@ const SearchResult = ({
           key={value}
           onClick={handleOnClick}
           data-searchvalue={value}
-          data-searchBy={type}
+          data-searchby={type}
         >
-          {value}
+          <Highlighter
+            highlightClassName="highlight-searched-value" // Define your custom highlight class
+            searchWords={[searchValue]}
+            autoEscape={true}
+            textToHighlight={value}
+          />
         </div>
       ))}
     </div>

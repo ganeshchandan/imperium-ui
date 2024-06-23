@@ -1,7 +1,6 @@
 import { ITopic } from "@types";
 
-const APP_URL = import.meta.env.VITE_IMPERIUM_SERVER;
-// const APP_URL = "http://localhost:3000";
+export const APP_URL = import.meta.env.VITE_IMPERIUM_SERVER;
 
 export const getTopicLists = async () => {
   const topicResponse = await fetch(`${APP_URL}/news/getNews`);

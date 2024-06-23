@@ -232,6 +232,9 @@
             .topic-link-iframe {
                 height: calc(100% - 6rem);
                 width: 100%;
+                iframe {
+                    border: none;
+                }
             }
             .selected-topic-actionbar {
                 &::before {

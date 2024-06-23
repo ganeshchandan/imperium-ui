@@ -2,6 +2,7 @@ import { RootState } from "@store";
 import { useSelector } from "react-redux";
 import ActionBar from "../selected-topic/action-bar";
 import { useSelectTopic } from "../../../hooks/select-topic";
+import { APP_URL } from "../../../actions/topic";
 
 const TopicLink = () => {
   const { selectedTopic } = useSelector((state: RootState) => state.topic);
@@ -14,7 +15,7 @@ const TopicLink = () => {
         <iframe
           width="100%"
           height="100%"
-          src={`http://localhost:3000/news/load_topic_link?topicLink=${topic_link}`}
+          src={`${APP_URL}/news/load_topic_link?topicLink=${topic_link}`}
           allowFullScreen={true}
         ></iframe>
       </div>

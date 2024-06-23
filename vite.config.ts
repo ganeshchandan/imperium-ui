@@ -8,6 +8,7 @@ export default defineConfig({
     alias: [
       { find: "@constants", replacement: "/src/constants" },
       { find: "@types", replacement: "/src/type" },
+      { find: "@hooks", replacement: "/src/hooks" },
     ],
   },
   plugins: [

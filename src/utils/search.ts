@@ -1,4 +1,4 @@
-import { IGetFilteredTopics, ITopic, TSearchResults } from "../type";
+import { IGetFilteredTopics, ITopic, TSearchResults } from "@types";
 
 const searchHandler = (searchInput: string, searchValue: string) =>
   searchInput.toLowerCase().includes(searchValue);

@@ -1,4 +1,4 @@
-import { IBookmarkedTopic, ITopic } from "../type";
+import { IBookmarkedTopic, ITopic } from "@types";
 import { bookmarkTopic, deleteBookmark } from "../actions/topic";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store";

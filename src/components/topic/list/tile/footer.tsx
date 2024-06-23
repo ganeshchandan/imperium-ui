@@ -1,8 +1,8 @@
 import { FC, SyntheticEvent } from "react";
 import PinnedIconSaved from "../../../../assets/pinned_saved.svg";
 import PinnedIcon from "../../../../assets/pinned.svg";
-import { useBookmarkAction } from "../../../../hooks";
-import { ITopicTileFooter } from "../../../../type";
+import { useBookmarkAction } from "@hooks";
+import { ITopicTileFooter } from "@types";
 
 const TopicTileFooter: FC<ITopicTileFooter> = ({ topic, bookmarkDetails }) => {
   const { topic_saved_date } = topic;

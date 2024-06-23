@@ -1,4 +1,4 @@
-import { IBookmarkedTopics, ITopic } from "../type";
+import { IBookmarkedTopics, ITopic } from "@types";
 
 export const formatDescription = (html: string) => {
   const doc = new DOMParser().parseFromString(html, "text/html");

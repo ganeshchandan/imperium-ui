@@ -12,9 +12,9 @@ import SearchResult from "./results-items";
 import SearchBoxIcons from "./icons";
 import { RootState } from "../../store";
 import { SEARCH_FILTER_TYPE } from "@constants";
-import { useFilterTopic } from "../../hooks";
+import { useFilterTopic } from "@hooks";
 import { setSearchBox } from "../../reducers/topic";
-import { TSearchResults } from "../../type";
+import { TSearchResults } from "@types";
 import { getSearchResults } from "../../utils/search";
 
 const SearchTopic = () => {

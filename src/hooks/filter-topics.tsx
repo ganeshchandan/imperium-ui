@@ -6,7 +6,7 @@ import {
   getSortedTopics,
   getTopicListForFilterType,
 } from "../utils/app";
-import { TFilterType, TSearchByColumn } from "../type";
+import { TFilterType, TSearchByColumn } from "@types";
 
 export const useFilterTopic = () => {
   const { topics, bookmarkedTopics, recentlyViewedTopics } = useSelector(

@@ -1,4 +1,4 @@
-import { TSwipeIndesFinder } from "../type";
+import { TSwipeIndesFinder } from "@types";
 
 export const swipeDownTopicId: TSwipeIndesFinder = (
   topicIndex,

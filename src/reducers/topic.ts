@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { ITopic, ISelectedTopic, IBookmarkedTopics } from "../type";
+import { ITopic, ISelectedTopic, IBookmarkedTopics } from "@types";
 import { updateRecentlyviewedTopicList } from "../utils/app";
 
 export interface TopicState {

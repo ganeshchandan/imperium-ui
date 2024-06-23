@@ -3,7 +3,7 @@ import { RootState } from "../../../store";
 import { useSelector } from "react-redux";
 import SwipeComponent from "../../Swipe";
 import SelectedTopicContent from "./content";
-import { useSelectTopic } from "../../../hooks";
+import { useSelectTopic } from "@hooks";
 import { getBookmarkTopicId } from "../../../utils/app";
 import { SWIPE_DOWN, SWIPE_UP } from "@constants";
 

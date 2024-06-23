@@ -1,4 +1,4 @@
-import { TViewType } from "../type";
+import { TViewType } from "@types";
 
 export const TOPIC_IMAGE = "TOPIC_";
 export const SHARE = "Share";

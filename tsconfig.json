@@ -21,7 +21,8 @@
     "noFallthroughCasesInSwitch": true,
     "paths": {
       "@types": ["./src/type"],
-      "@constants": ["./src/constants"]
+      "@constants": ["./src/constants"],
+      "@hooks": ["./src/hooks"]
     }
   },
   "include": ["src"],

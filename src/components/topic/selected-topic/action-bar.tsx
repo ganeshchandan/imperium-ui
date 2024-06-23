@@ -4,7 +4,7 @@ import ShareIcon from "../../../assets/share.svg";
 import BookmarkIcon from "../../../assets/bookmark.svg";
 import BookmarkIconFilled from "../../../assets/favorite-filled.svg";
 import { BOOKMARK, SHARE } from "@constants";
-import { useBookmarkAction } from "../../../hooks";
+import { useBookmarkAction } from "@hooks";
 import { IActionBar } from "@types";
 
 const ActionBar = ({

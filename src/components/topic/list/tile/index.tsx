@@ -1,4 +1,4 @@
-import { useSelectTopic } from "../../../../hooks";
+import { useSelectTopic } from "@hooks";
 import { ITopicList } from "@types";
 import TopicImage from "./topic_image";
 import TopicTileContent from "./content";

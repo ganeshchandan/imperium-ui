@@ -3,7 +3,7 @@ import {
   IGetFilteredTopics,
   ITopic,
   TFilterType,
-} from "../type";
+} from "@types";
 import { searchTopics } from "./search";
 
 type ISortTopic = (topics: ITopic[]) => ITopic[];

@@ -15,7 +15,7 @@ import { FC } from "react";
 import Relevance from "../relevance";
 import FilterByCategory from "../filter-category";
 import ContentContainer from "./container";
-import { useFilterTopic } from "../../../hooks";
+import { useFilterTopic } from "@hooks";
 import { IFilterRelevanceContent } from "@types";
 
 const CategoryAndFilter = ContentContainer(FilterByCategory);

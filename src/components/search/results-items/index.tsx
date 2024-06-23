@@ -1,6 +1,6 @@
 import { FC } from "react";
 import SearchResultItem from "./result-item";
-import { ISearchResults } from "../../../type";
+import { ISearchResults } from "@types";
 
 const SearchResults: FC<ISearchResults> = ({ searchResults, searchValue }) => {
   return (

@@ -1,4 +1,4 @@
-import { ITopic } from "../type";
+import { ITopic } from "@types";
 
 const APP_URL = import.meta.env.VITE_IMPERIUM_SERVER;
 // const APP_URL = "http://localhost:3000";

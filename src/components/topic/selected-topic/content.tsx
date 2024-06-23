@@ -1,8 +1,8 @@
 import { FC } from "react";
-import { IBookmarkedTopic, ISelectedTopic } from "../../../type";
+import { IBookmarkedTopic, ISelectedTopic } from "@types";
 import { formatDescription } from "../../../utils/app";
 import ActionBar from "./action-bar";
-import { useSelectTopic } from "../../../hooks";
+import { useSelectTopic } from "@hooks";
 
 const SelectedTopicContent: FC<{
   selectedTopic: ISelectedTopic;

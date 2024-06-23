@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import TopicTile from "./tile";
-import { RootState } from "../../../store";
+import { RootState } from "@store";
 import { ReactNode, useCallback } from "react";
 import AppFooter from "../../footer";
 import TopicListheader from "./header";

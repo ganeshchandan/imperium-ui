@@ -2,7 +2,7 @@ import { FC } from "react";
 import CategoryMenu from "./category-menu";
 import CategoryList from "./category-list";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store";
+import { RootState } from "@store";
 
 interface IAppFooter {
   categories: string[];

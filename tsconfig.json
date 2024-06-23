@@ -22,7 +22,9 @@
     "paths": {
       "@types": ["./src/type"],
       "@constants": ["./src/constants"],
-      "@hooks": ["./src/hooks"]
+      "@hooks": ["./src/hooks"],
+      "@store": ["./src/store"],
+      "@reducers": ["./src/reducers"]
     }
   },
   "include": ["src"],

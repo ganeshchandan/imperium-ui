@@ -10,10 +10,10 @@ import SearchImg from "../../assets/search-normal.svg";
 import { useDispatch, useSelector } from "react-redux";
 import SearchResult from "./results-items";
 import SearchBoxIcons from "./icons";
-import { RootState } from "../../store";
+import { RootState } from "@store";
 import { SEARCH_FILTER_TYPE } from "@constants";
 import { useFilterTopic } from "@hooks";
-import { setSearchBox } from "../../reducers/topic";
+import { setSearchBox } from "@reducers";
 import { TSearchResults } from "@types";
 import { getSearchResults } from "../../utils/search";
 

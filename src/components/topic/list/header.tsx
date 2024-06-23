@@ -4,7 +4,7 @@ import ListView from "../../../assets/list_view.svg";
 import { ITopicListHeader } from "@types";
 import { TOPIC_LIST, VIEW_TYPE_SWITCH } from "@constants";
 import { useDispatch } from "react-redux";
-import { updateApplicationView } from "../../../reducers/app-config";
+import { updateApplicationView } from "@reducers";
 
 const TopicListheader: FC<ITopicListHeader> = ({
   selectedCategory,

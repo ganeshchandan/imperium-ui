@@ -1,21 +1,24 @@
 import { IBookmarkedTopic, ITopic } from "@types";
 import { bookmarkTopic, deleteBookmark } from "../actions/topic";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../store";
+import { RootState } from "@store";
 import {
   getBookmarkTopicId,
   getFilteredTopics,
   getTopicListForFilterType,
   updateBookmarkedTopics,
 } from "../utils/app";
-import { setFilteredTopics, updateTopicsBookmarkId } from "../reducers/topic";
+import {
+  setFilteredTopics,
+  updateTopicsBookmarkId,
+  setFilterType,
+} from "@reducers";
 import {
   ADD_ACTION,
   BOOKMARK_FILTER_TYPE,
   CATEGOTY_FILTER_TYPE,
   DELETE_ACTION,
 } from "@constants";
-import { setFilterType } from "../reducers/filter";
 
 export const useBookmarkAction = () => {
   const { topics, bookmarkedTopics, filteredTopics } = useSelector(

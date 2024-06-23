@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectedTopic } from "../reducers/topic";
-import { RootState } from "../store";
+import { setSelectedTopic } from "@reducers";
+import { RootState } from "@store";
 import { getTopicIndex, ITopicSelectionType } from "../utils/swipe";
 
 export const useSelectTopic = () => {

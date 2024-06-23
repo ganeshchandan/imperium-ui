@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { RootState } from "../store";
+import { RootState } from "@store";
 import Filter from "./filter";
 import TopicList from "./topic/list";
 import SelectedTopic from "./topic/selected-topic";

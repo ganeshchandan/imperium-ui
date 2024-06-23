@@ -3,8 +3,8 @@ import { CATEGORY_TAB } from "@constants";
 import FilterRelevanceTabs from "./tabs";
 import FilterRelevanceContent from "./content";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store";
-import { setShowFilter } from "../../reducers/filter";
+import { RootState } from "@store";
+import { setShowFilter } from "@reducers";
 
 const Filter = () => {
   const dispatch = useDispatch();

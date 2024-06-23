@@ -9,8 +9,8 @@ import {
   setSelectedCategory,
   setRelevanceList,
   setRecentlyViewFilter,
-} from "../../../reducers/filter";
-import { RootState } from "../../../store";
+} from "@reducers";
+import { RootState } from "@store";
 import { FC } from "react";
 import Relevance from "../relevance";
 import FilterByCategory from "../filter-category";

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { RootState } from "../../../store";
+import { RootState } from "@store";
 import { useSelector } from "react-redux";
 import SwipeComponent from "../../Swipe";
 import SelectedTopicContent from "./content";

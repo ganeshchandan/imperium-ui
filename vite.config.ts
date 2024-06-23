@@ -9,6 +9,8 @@ export default defineConfig({
       { find: "@constants", replacement: "/src/constants" },
       { find: "@types", replacement: "/src/type" },
       { find: "@hooks", replacement: "/src/hooks" },
+      { find: "@store", replacement: "/src/store" },
+      { find: "@reducers", replacement: "/src/reducers" },
     ],
   },
   plugins: [

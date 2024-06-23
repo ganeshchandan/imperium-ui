@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import FilterRelevanceAction from "../../actions";
 import { APPLY, CANCEL, RESET } from "@constants";
-import { setShowFilter } from "../../../../reducers/filter";
+import { setShowFilter } from "@reducers";
 import { useDispatch } from "react-redux";
 import { ICategoryAndFilterByList } from "@types";
 

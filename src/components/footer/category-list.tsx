@@ -2,9 +2,9 @@ import { FC } from "react";
 import Menu from "../../assets/menu.svg";
 import { EMPTY_STRING } from "@constants";
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectedRelevance, setShowMenu } from "../../reducers/filter";
+import { setSelectedRelevance, setShowMenu } from "@reducers";
 import { useFilterTopic } from "@hooks";
-import { RootState } from "../../store";
+import { RootState } from "@store";
 import { ICategoryList } from "@types";
 
 const CategoryList: FC<ICategoryList> = ({ categories, selectedRelevance }) => {

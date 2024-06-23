@@ -7,9 +7,8 @@ import IconWithName from "../common/icon-with-name";
 import { FILTER, SEARCH, CLOSE, USER, PINNED } from "@constants";
 import { FC } from "react";
 import { useDispatch } from "react-redux";
-import { setShowFilter, setShowMenu } from "../../reducers/filter";
+import { setShowFilter, setShowMenu, setSearchBox } from "@reducers";
 import { useBookmarkAction } from "@hooks";
-import { setSearchBox } from "../../reducers/topic";
 import { ICategoryMenu } from "@types";
 
 const CategoryMenu: FC<ICategoryMenu> = ({ showMenu }) => {

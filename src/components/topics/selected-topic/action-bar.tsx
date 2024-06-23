@@ -14,12 +14,15 @@ const ActionBar = ({
   handleShare,
   topic,
   bookmarkDetails,
+  enableBookmarkAndShare,
 }: IActionBar) => {
   const { topicBookmark } = useBookmarkAction();
-  const { bookmark_id, isLoading } = bookmarkDetails;
+  const { bookmark_id, isLoading } = bookmarkDetails || {};
 
   const handleBookmark = () => {
-    topicBookmark(topic);
+    if (enableBookmarkAndShare && topic) {
+      topicBookmark(topic);
+    }
   };
 
   return (
@@ -31,32 +34,34 @@ const ActionBar = ({
         onTouchEnd={backToTopicList}
         className="back-to-topic-list"
       />
-      <div className="share-bookmark-icons">
-        <IconWithName
-          name={SHARE}
-          imageUrl={ShareIcon}
-          imageAlt={SHARE}
-          className="icon-with-name"
-          onClick={handleShare}
-        />
-        {isLoading ? (
-          <div className="icon-with-name" style={{ width: "3.438rem" }}>
-            <div className="dot-loader">
-              <div className="dot dot-1" />
-              <div className="dot dot-2" />
-              <div className="dot dot-3" />
-            </div>
-          </div>
-        ) : (
+      {enableBookmarkAndShare && (
+        <div className="share-bookmark-icons">
           <IconWithName
-            name={BOOKMARK}
-            imageUrl={bookmark_id ? BookmarkIconFilled : BookmarkIcon}
-            imageAlt={BOOKMARK}
+            name={SHARE}
+            imageUrl={ShareIcon}
+            imageAlt={SHARE}
             className="icon-with-name"
-            onClick={handleBookmark}
+            onClick={handleShare}
           />
-        )}
-      </div>
+          {isLoading ? (
+            <div className="icon-with-name" style={{ width: "3.438rem" }}>
+              <div className="dot-loader">
+                <div className="dot dot-1" />
+                <div className="dot dot-2" />
+                <div className="dot dot-3" />
+              </div>
+            </div>
+          ) : (
+            <IconWithName
+              name={BOOKMARK}
+              imageUrl={bookmark_id ? BookmarkIconFilled : BookmarkIcon}
+              imageAlt={BOOKMARK}
+              className="icon-with-name"
+              onClick={handleBookmark}
+            />
+          )}
+        </div>
+      )}
     </div>
   );
 };

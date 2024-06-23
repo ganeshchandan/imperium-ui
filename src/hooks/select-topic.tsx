@@ -3,9 +3,9 @@ import { setSelectedTopic } from "@reducers";
 import { RootState } from "@store";
 import { getTopicIndex, ITopicSelectionType } from "../utils/swipe";
 import {
+  BACK_PAGE_MAPPER,
   DETAILS_PAGE_SELECT,
   LINK_PAGE_SELECT,
-  LIST_PAGE_SELECT,
 } from "@constants";
 
 export const useSelectTopic = () => {
@@ -17,11 +17,15 @@ export const useSelectTopic = () => {
   const selectedTopic = useSelector(
     (state: RootState) => state.topic.selectedTopic
   );
+  const { selectedPage } = selectedTopic;
 
   const deselectTopic = () => {
     dispatch(
       setSelectedTopic({
-        selectedTopic: { ...selectedTopic, selectedPage: LIST_PAGE_SELECT },
+        selectedTopic: {
+          ...selectedTopic,
+          selectedPage: BACK_PAGE_MAPPER[selectedPage],
+        },
       })
     );
   };

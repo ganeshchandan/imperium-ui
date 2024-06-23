@@ -1,4 +1,4 @@
-import { TViewType } from "@types";
+import { TSelectedPage, TViewType } from "@types";
 
 export const TOPIC_IMAGE = "TOPIC_";
 export const SHARE = "Share";
@@ -40,3 +40,7 @@ export const RECENTLY_VIEWED = "recentlyViewed";
 export const LIST_PAGE_SELECT = "list-page";
 export const DETAILS_PAGE_SELECT = "details-page";
 export const LINK_PAGE_SELECT = "link-page";
+export const BACK_PAGE_MAPPER: { [key: string]: TSelectedPage } = {
+  [DETAILS_PAGE_SELECT]: LIST_PAGE_SELECT,
+  [LINK_PAGE_SELECT]: DETAILS_PAGE_SELECT,
+};

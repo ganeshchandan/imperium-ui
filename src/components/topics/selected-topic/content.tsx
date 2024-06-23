@@ -53,6 +53,7 @@ const SelectedTopicContent: FC<{
         handleShare={handleShare}
         topic={selectedTopic}
         bookmarkDetails={bookmarkDetails}
+        enableBookmarkAndShare={true}
       />
     </div>
   );

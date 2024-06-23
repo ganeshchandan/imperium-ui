@@ -24,9 +24,11 @@ export interface IBookmarkedTopics {
   [key: string]: IBookmarkedTopic;
 }
 
+export type TSelectedPage = "list-page" | "details-page" | "link-page";
+
 export interface ISelectedTopic extends ITopic {
   topicIndex: number;
-  selectedPage: "list-page" | "details-page" | "link-page";
+  selectedPage: TSelectedPage;
   swipeType: ITopicSelectionType;
 }
 

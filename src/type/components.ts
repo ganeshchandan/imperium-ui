@@ -77,7 +77,8 @@ export interface ITopicImage {
 
 export interface IActionBar {
   backToTopicList: () => void;
-  handleShare: () => void;
-  topic: ITopic;
-  bookmarkDetails: IBookmarkedTopic;
+  handleShare?: () => void;
+  topic?: ITopic;
+  bookmarkDetails?: IBookmarkedTopic;
+  enableBookmarkAndShare: boolean;
 }

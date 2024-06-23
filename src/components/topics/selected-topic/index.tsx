@@ -15,8 +15,7 @@ const SelectedTopic: FC = () => {
   );
   const { topic_title, topicIndex } = selectedTopic;
   const bookmarkDetails = getBookmarkTopicId(bookmarkedTopics, topic_title);
-  const { deselectTopic } = useSelectTopic();
-  const { selectTopic } = useSelectTopic();
+  const { deselectTopic, selectTopic, openTopicLink } = useSelectTopic();
 
   const handleSwipeUp = () => {
     selectTopic(topicIndex, SWIPE_UP);
@@ -34,6 +33,7 @@ const SelectedTopic: FC = () => {
         swipeRight={deselectTopic}
         swipeUp={handleSwipeUp}
         swipeDown={handleSwipeDown}
+        swipeLeft={openTopicLink}
       />
     </div>
   );

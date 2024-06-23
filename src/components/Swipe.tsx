@@ -7,9 +7,10 @@ const Swipe: FC<{
   swipeRight: () => void;
   swipeUp: () => void;
   swipeDown: () => void;
-}> = ({ children, swipeRight, swipeUp, swipeDown }) => {
+  swipeLeft: () => void;
+}> = ({ children, swipeRight, swipeUp, swipeDown, swipeLeft }) => {
   const handlers: SwipeableHandlers = useSwipeable({
-    onSwipedLeft: () => console.log("Swiped left!"),
+    onSwipedLeft: swipeLeft,
     onSwipedRight: swipeRight,
     onSwipedUp: swipeUp,
     onSwipedDown: swipeDown,
@@ -24,8 +25,13 @@ const Swipe: FC<{
 };
 
 const SwipeComponent = (Component: FC<any>) => {
-  return ({ swipeRight, swipeUp, swipeDown, ...props }: any) => (
-    <Swipe swipeRight={swipeRight} swipeUp={swipeUp} swipeDown={swipeDown}>
+  return ({ swipeRight, swipeUp, swipeDown, swipeLeft, ...props }: any) => (
+    <Swipe
+      swipeRight={swipeRight}
+      swipeUp={swipeUp}
+      swipeDown={swipeDown}
+      swipeLeft={swipeLeft}
+    >
       <Component {...props} />
     </Swipe>
   );

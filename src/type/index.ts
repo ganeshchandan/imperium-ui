@@ -26,7 +26,7 @@ export interface IBookmarkedTopics {
 
 export interface ISelectedTopic extends ITopic {
   topicIndex: number;
-  isSelected: boolean;
+  selectedPage: "list-page" | "details-page" | "link-page";
   swipeType: ITopicSelectionType;
 }
 

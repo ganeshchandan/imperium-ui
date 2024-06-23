@@ -2,6 +2,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSelectedTopic } from "@reducers";
 import { RootState } from "@store";
 import { getTopicIndex, ITopicSelectionType } from "../utils/swipe";
+import {
+  DETAILS_PAGE_SELECT,
+  LINK_PAGE_SELECT,
+  LIST_PAGE_SELECT,
+} from "@constants";
 
 export const useSelectTopic = () => {
   const dispatch = useDispatch();
@@ -12,10 +17,11 @@ export const useSelectTopic = () => {
   const selectedTopic = useSelector(
     (state: RootState) => state.topic.selectedTopic
   );
+
   const deselectTopic = () => {
     dispatch(
       setSelectedTopic({
-        selectedTopic: { ...selectedTopic, isSelected: false },
+        selectedTopic: { ...selectedTopic, selectedPage: LIST_PAGE_SELECT },
       })
     );
   };
@@ -32,7 +38,7 @@ export const useSelectTopic = () => {
     dispatch(
       setSelectedTopic({
         selectedTopic: {
-          isSelected: true,
+          selectedPage: DETAILS_PAGE_SELECT,
           topicIndex,
           swipeType: selectionType,
           ...filteredTopics[topicIndex],
@@ -41,5 +47,13 @@ export const useSelectTopic = () => {
     );
   };
 
-  return { selectTopic, deselectTopic };
+  const openTopicLink = () => {
+    dispatch(
+      setSelectedTopic({
+        selectedTopic: { ...selectedTopic, selectedPage: LINK_PAGE_SELECT },
+      })
+    );
+  };
+
+  return { selectTopic, deselectTopic, openTopicLink };
 };

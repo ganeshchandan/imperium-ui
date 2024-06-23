@@ -36,3 +36,7 @@ export const VIEW_TYPE_SWITCH: { [key: string]: TViewType } = {
   [TOPIC_LIST]: TOPIC_GRID,
 };
 export const RECENTLY_VIEWED = "recentlyViewed";
+
+export const LIST_PAGE_SELECT = "list-page";
+export const DETAILS_PAGE_SELECT = "details-page";
+export const LINK_PAGE_SELECT = "link-page";

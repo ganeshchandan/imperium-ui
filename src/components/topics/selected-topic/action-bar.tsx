@@ -31,7 +31,7 @@ const ActionBar = ({
         src={BackArrow}
         alt="Back to topic List"
         onClick={backToTopicList}
-        onTouchEnd={backToTopicList}
+        // onTouchEnd={backToTopicList}
         className="back-to-topic-list"
       />
       {enableBookmarkAndShare && (

@@ -5,8 +5,7 @@ import {
   KeyboardEvent,
   SyntheticEvent,
 } from "react";
-import CloseImg from "../../assets/close.svg";
-import SearchImg from "../../assets/search-normal.svg";
+import { Close, SearchIcon } from "@assets";
 import { useDispatch, useSelector } from "react-redux";
 import SearchResult from "./results-items";
 import SearchBoxIcons from "./icons";
@@ -71,14 +70,14 @@ const SearchTopic = () => {
         onTouchStart={preventDefaultAcion}
       >
         <div className="search-box">
-          <SearchBoxIcons src={SearchImg} onClick={onCloseSearchBox} />
+          <SearchBoxIcons src={SearchIcon} onClick={onCloseSearchBox} />
           <input
             className="search-box-input"
             value={searchValue}
             onChange={handleSearchInput}
             onKeyUp={onKeyUp}
           />
-          <SearchBoxIcons src={CloseImg} onClick={onCloseSearchBox} />
+          <SearchBoxIcons src={Close} onClick={onCloseSearchBox} />
         </div>
         <div className="separator"></div>
         <SearchResult searchResults={searchResults} searchValue={searchValue} />

@@ -1,15 +1,11 @@
-import SearchIcon from "../../assets/search-normal.svg";
-import Filter from "../../assets/sort.svg";
-import Close from "../../assets/close.svg";
-import UserIcon from "../../assets/user-icon.svg";
-import PinnedFooter from "../../assets/pinned_footer.svg";
-import IconWithName from "../common/icon-with-name";
-import { FILTER, SEARCH, CLOSE, USER, PINNED } from "@constants";
 import { FC } from "react";
 import { useDispatch } from "react-redux";
+import { SearchIcon, Filter, Close, UserIcon, PinnedFooter } from "@assets";
+import { FILTER, SEARCH, CLOSE, USER, PINNED } from "@constants";
 import { setShowFilter, setShowMenu, setSearchBox } from "@reducers";
 import { useBookmarkAction } from "@hooks";
 import { ICategoryMenu } from "@types";
+import IconWithName from "../common/icon-with-name";
 
 const CategoryMenu: FC<ICategoryMenu> = ({ showMenu }) => {
   const dispatch = useDispatch();

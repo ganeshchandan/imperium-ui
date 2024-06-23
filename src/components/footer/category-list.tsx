@@ -1,5 +1,5 @@
 import { FC } from "react";
-import Menu from "../../assets/menu.svg";
+import { Menu } from "@assets";
 import { EMPTY_STRING } from "@constants";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedRelevance, setShowMenu } from "@reducers";

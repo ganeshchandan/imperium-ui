@@ -1,11 +1,13 @@
-import BackArrow from "../../../assets/arrow-right.svg";
-import IconWithName from "../../common/icon-with-name";
-import ShareIcon from "../../../assets/share.svg";
-import BookmarkIcon from "../../../assets/bookmark.svg";
-import BookmarkIconFilled from "../../../assets/favorite-filled.svg";
 import { BOOKMARK, SHARE } from "@constants";
 import { useBookmarkAction } from "@hooks";
 import { IActionBar } from "@types";
+import {
+  BackArrow,
+  ShareIcon,
+  BookmarkIcon,
+  BookmarkIconFilled,
+} from "@assets";
+import IconWithName from "../../common/icon-with-name";
 
 const ActionBar = ({
   backToTopicList,

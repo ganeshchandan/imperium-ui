@@ -24,7 +24,8 @@
       "@constants": ["./src/constants"],
       "@hooks": ["./src/hooks"],
       "@store": ["./src/store"],
-      "@reducers": ["./src/reducers"]
+      "@reducers": ["./src/reducers"],
+      "@assets": ["./src/assets"]
     }
   },
   "include": ["src"],

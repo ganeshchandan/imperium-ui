@@ -1,10 +1,9 @@
 import { FC } from "react";
-import DispalyGrid from "../../../assets/display-grid.svg";
-import ListView from "../../../assets/list_view.svg";
+import { useDispatch } from "react-redux";
 import { ITopicListHeader } from "@types";
 import { TOPIC_LIST, VIEW_TYPE_SWITCH } from "@constants";
-import { useDispatch } from "react-redux";
 import { updateApplicationView } from "@reducers";
+import { DispalyGrid, ListView } from "@assets";
 
 const TopicListheader: FC<ITopicListHeader> = ({
   selectedCategory,

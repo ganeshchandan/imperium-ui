@@ -234,6 +234,7 @@
                 width: 100%;
                 iframe {
                     border: none;
+                    touch-action: none;
                 }
             }
             .selected-topic-actionbar {

@@ -54,4 +54,6 @@ export type TSearchByColumn = "topic_short_description" | "topic_title" | "";
 
 export type TViewType = "topic-grid" | "topic-list";
 
-export type TSearchResults = { type: string; value: string };
+export type TSearchResults = { searchBy: TSearchByColumn; searchvalue: string };
+
+export * from "./components";

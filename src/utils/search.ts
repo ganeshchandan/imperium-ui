@@ -26,18 +26,16 @@ export const searchTopics = (
 };
 
 export const getSearchResults = (topics: ITopic[], searchValue: string) => {
-  return topics.reduce(
-    (searchResults, { topic_short_description, topic_title }) => {
-      if (searchHandler(topic_title, searchValue)) {
-        return [...searchResults, { type: "topic_title", value: topic_title }];
-      } else if (searchHandler(topic_title, topic_short_description)) {
-        return [
-          ...searchResults,
-          { type: "topic_short_description", value: topic_short_description },
-        ];
-      }
-      return [...searchResults];
-    },
-    [] as TSearchResults[]
-  );
+  const searchResults: TSearchResults[] = [];
+  topics.forEach(({ topic_short_description, topic_title }) => {
+    if (searchHandler(topic_title, searchValue)) {
+      searchResults.push({ searchBy: "topic_title", searchvalue: topic_title });
+    } else if (searchHandler(topic_title, topic_short_description)) {
+      searchResults.push({
+        searchBy: "topic_short_description",
+        searchvalue: topic_short_description,
+      });
+    }
+  });
+  return searchResults;
 };

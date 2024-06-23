@@ -20,7 +20,8 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      // "@constants": ["./src/constants"]
+      "@types": ["./src/type"],
+      "@constants": ["./src/constants"]
     }
   },
   "include": ["src"],

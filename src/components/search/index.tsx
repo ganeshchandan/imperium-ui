@@ -5,17 +5,17 @@ import {
   KeyboardEvent,
   SyntheticEvent,
 } from "react";
-import CloseImg from "../../../assets/close.svg";
-import SearchImg from "../../../assets/search-normal.svg";
+import CloseImg from "../../assets/close.svg";
+import SearchImg from "../../assets/search-normal.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { setSearchBox } from "../../../reducers/topic";
-import { getSearchResults } from "../../../utils/search";
-import { RootState } from "../../../store";
-import SearchResult from "./result";
+import SearchResult from "./results-items";
 import SearchBoxIcons from "./icons";
-import { TSearchResults } from "../../../type";
-import { useFilterTopic } from "../../../hooks";
-import { SEARCH_FILTER_TYPE } from "../../../constants";
+import { RootState } from "../../store";
+import { SEARCH_FILTER_TYPE } from "@constants";
+import { useFilterTopic } from "../../hooks";
+import { setSearchBox } from "../../reducers/topic";
+import { TSearchResults } from "../../type";
+import { getSearchResults } from "../../utils/search";
 
 const SearchTopic = () => {
   const searchRef = useRef<{ searchBoxTimer?: NodeJS.Timeout }>({});

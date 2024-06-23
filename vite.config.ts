@@ -4,6 +4,12 @@ import { VitePWA } from "vite-plugin-pwa";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  resolve: {
+    alias: [
+      { find: "@constants", replacement: "/src/constants" },
+      { find: "@types", replacement: "/src/type" },
+    ],
+  },
   plugins: [
     react(),
     VitePWA({
@@ -15,14 +21,14 @@ export default defineConfig({
       workbox: {
         cleanupOutdatedCaches: false,
         sourcemap: true,
-      },    
+      },
       includeAssets: ["vite.svg", "logo192.png", "logo512.png"],
       manifest: {
         name: "Imperium",
         short_name: "Imperium",
         description: "",
         theme_color: "#ffffff",
-        start_url: "/?fullscreen=true"  ,
+        start_url: "/?fullscreen=true",
         orientation: "portrait",
         display: "fullscreen",
         icons: [

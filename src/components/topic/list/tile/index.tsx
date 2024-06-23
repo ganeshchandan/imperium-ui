@@ -1,17 +1,10 @@
 import { useSelectTopic } from "../../../../hooks";
-import { IBookmarkedTopic, ITopic, TViewType } from "../../../../type";
+import { ITopicList } from "@types";
 import TopicImage from "./topic_image";
 import TopicTileContent from "./content";
 import TopicTileFooter from "./footer";
 import { useRef } from "react";
 import { CLICK } from "../../../../constants";
-
-interface ITopicList {
-  topic: ITopic;
-  topicIndex: number;
-  bookmarkDetails: IBookmarkedTopic;
-  viewType: TViewType;
-}
 
 const TopicList = ({
   topic,

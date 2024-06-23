@@ -1,10 +1,6 @@
 import { FC } from "react";
 import { formatDescription } from "../../../../utils/app";
-
-interface ITopicTileContent {
-  topic_title: string;
-  topic_short_description: string;
-}
+import { ITopicTileContent } from "../../../../type";
 
 const TopicTileContent: FC<ITopicTileContent> = ({
   topic_title,

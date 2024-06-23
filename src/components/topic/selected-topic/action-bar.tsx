@@ -3,22 +3,16 @@ import IconWithName from "../../common/icon-with-name";
 import ShareIcon from "../../../assets/share.svg";
 import BookmarkIcon from "../../../assets/bookmark.svg";
 import BookmarkIconFilled from "../../../assets/favorite-filled.svg";
-
-import { BOOKMARK, SHARE } from "../../../constants";
+import { BOOKMARK, SHARE } from "@constants";
 import { useBookmarkAction } from "../../../hooks";
-import { IBookmarkedTopic, ITopic } from "../../../type";
+import { IActionBar } from "@types";
 
 const ActionBar = ({
   backToTopicList,
   handleShare,
   topic,
   bookmarkDetails,
-}: {
-  backToTopicList: () => void;
-  handleShare: () => void;
-  topic: ITopic;
-  bookmarkDetails: IBookmarkedTopic;
-}) => {
+}: IActionBar) => {
   const { topicBookmark } = useBookmarkAction();
   const { bookmark_id, isLoading } = bookmarkDetails;
 

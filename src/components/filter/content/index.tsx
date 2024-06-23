@@ -4,7 +4,7 @@ import {
   CATEGOTY_FILTER_TYPE,
   RECENTLY_VIEWED,
   RELEVANCE_TAB,
-} from "../../../constants";
+} from "@constants";
 import {
   setSelectedCategory,
   setRelevanceList,
@@ -16,13 +16,10 @@ import Relevance from "../relevance";
 import FilterByCategory from "../filter-category";
 import ContentContainer from "./container";
 import { useFilterTopic } from "../../../hooks";
+import { IFilterRelevanceContent } from "@types";
 
 const CategoryAndFilter = ContentContainer(FilterByCategory);
 const RelevanceHoc = ContentContainer(Relevance);
-
-interface IFilterRelevanceContent {
-  selectedTab: string;
-}
 
 const FilterRelevanceContent: FC<IFilterRelevanceContent> = ({
   selectedTab,

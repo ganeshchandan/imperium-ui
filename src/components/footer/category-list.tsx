@@ -1,15 +1,11 @@
 import { FC } from "react";
 import Menu from "../../assets/menu.svg";
-import { EMPTY_STRING } from "../../constants";
+import { EMPTY_STRING } from "@constants";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedRelevance, setShowMenu } from "../../reducers/filter";
 import { useFilterTopic } from "../../hooks";
 import { RootState } from "../../store";
-
-interface ICategoryList {
-  categories: string[];
-  selectedRelevance: string[];
-}
+import { ICategoryList } from "@types";
 
 const CategoryList: FC<ICategoryList> = ({ categories, selectedRelevance }) => {
   const dispatch = useDispatch();

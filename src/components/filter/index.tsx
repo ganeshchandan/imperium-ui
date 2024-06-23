@@ -1,5 +1,5 @@
 import { SyntheticEvent, useState } from "react";
-import { CATEGORY_TAB } from "../../constants";
+import { CATEGORY_TAB } from "@constants";
 import FilterRelevanceTabs from "./tabs";
 import FilterRelevanceContent from "./content";
 import { useDispatch, useSelector } from "react-redux";

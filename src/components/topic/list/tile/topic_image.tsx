@@ -1,10 +1,7 @@
 import { FC } from "react";
 import { TOPIC_IMAGES } from "../../../../assets";
-import { TOPIC_IMAGE } from "../../../../constants";
-
-interface ITopicImage {
-  topic_image: string;
-}
+import { TOPIC_IMAGE } from "@constants";
+import { ITopicImage } from "@types";
 
 const TopicImage: FC<ITopicImage> = ({ topic_image }) => {
   return (

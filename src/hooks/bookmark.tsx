@@ -14,7 +14,7 @@ import {
   BOOKMARK_FILTER_TYPE,
   CATEGOTY_FILTER_TYPE,
   DELETE_ACTION,
-} from "../constants";
+} from "@constants";
 import { setFilterType } from "../reducers/filter";
 
 export const useBookmarkAction = () => {

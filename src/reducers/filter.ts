@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { TFilterType } from "../type";
-import { CATEGOTY_FILTER_TYPE, RECENTLY_VIEWED } from "../constants";
+import { TFilterType } from "@types";
+import { CATEGOTY_FILTER_TYPE, RECENTLY_VIEWED } from "@constants";
 
 export interface FilterState {
   showFilter: boolean;

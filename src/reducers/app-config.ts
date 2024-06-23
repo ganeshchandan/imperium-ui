@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { TViewType } from "../type";
-import { TOPIC_LIST } from "../constants";
+import { TViewType } from "@types";
+import { TOPIC_LIST } from "@constants";
 
 export interface AppConfigState {
   viewType: TViewType;

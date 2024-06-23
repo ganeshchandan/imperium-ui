@@ -4,16 +4,13 @@ import Close from "../../assets/close.svg";
 import UserIcon from "../../assets/user-icon.svg";
 import PinnedFooter from "../../assets/pinned_footer.svg";
 import IconWithName from "../common/icon-with-name";
-import { FILTER, SEARCH, CLOSE, USER, PINNED } from "../../constants";
+import { FILTER, SEARCH, CLOSE, USER, PINNED } from "@constants";
 import { FC } from "react";
 import { useDispatch } from "react-redux";
 import { setShowFilter, setShowMenu } from "../../reducers/filter";
 import { useBookmarkAction } from "../../hooks";
 import { setSearchBox } from "../../reducers/topic";
-
-interface ICategoryMenu {
-  showMenu: boolean;
-}
+import { ICategoryMenu } from "@types";
 
 const CategoryMenu: FC<ICategoryMenu> = ({ showMenu }) => {
   const dispatch = useDispatch();

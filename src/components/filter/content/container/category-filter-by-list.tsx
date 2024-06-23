@@ -1,17 +1,9 @@
 import { FC, useEffect, useState } from "react";
 import FilterRelevanceAction from "../../actions";
-import { APPLY, CANCEL, RESET } from "../../../../constants";
-import { IFilterByCategory } from ".";
+import { APPLY, CANCEL, RESET } from "@constants";
 import { setShowFilter } from "../../../../reducers/filter";
 import { useDispatch } from "react-redux";
-
-interface ICategoryAndFilterByList {
-  listItems: string[];
-  selectedItems: string[];
-  handleSelected: (selectedItems: string[], isRecentlyViewed: boolean) => void;
-  isMultipleSelection: boolean;
-  Component: FC<IFilterByCategory>;
-}
+import { ICategoryAndFilterByList } from "@types";
 
 const CategoryAndFilterByList: FC<ICategoryAndFilterByList> = ({
   listItems,

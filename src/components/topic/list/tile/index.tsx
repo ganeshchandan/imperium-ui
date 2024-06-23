@@ -4,7 +4,7 @@ import TopicImage from "./topic_image";
 import TopicTileContent from "./content";
 import TopicTileFooter from "./footer";
 import { useRef } from "react";
-import { CLICK } from "../../../../constants";
+import { CLICK } from "@constants";
 
 const TopicList = ({
   topic,

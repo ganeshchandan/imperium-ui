@@ -1,8 +1,8 @@
 import { FC } from "react";
 import Highlighter from "react-highlight-words";
-import { SEARCH_FILTER_TYPE } from "../../../constants";
+import { SEARCH_FILTER_TYPE } from "@constants";
 import { useFilterTopic } from "../../../hooks";
-import { ISearchResultItem } from "../../../type";
+import { ISearchResultItem } from "@types";
 
 const SearchResultItem: FC<ISearchResultItem> = ({
   searchResult,

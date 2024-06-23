@@ -1,11 +1,7 @@
 import { FC, useCallback } from "react";
-import { FILTER_POPUP_TABS } from "../../constants";
+import { FILTER_POPUP_TABS } from "@constants";
 import Tabs from "../common/tab";
-
-interface IFilterRelevanceTabs {
-  selectedTab: string;
-  setSelectedTab: React.Dispatch<React.SetStateAction<string>>;
-}
+import { IFilterRelevanceTabs } from "@types";
 
 const FilterRelevanceTabs: FC<IFilterRelevanceTabs> = ({
   selectedTab,

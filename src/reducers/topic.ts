@@ -34,6 +34,7 @@ const initialState: TopicState = {
     bookmarked_date: "",
     author: "",
     bookmark_id: null,
+    topic_link: "",
   },
   isSearchBox: false,
   bookmarkedTopics: {},

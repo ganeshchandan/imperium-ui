@@ -45,6 +45,7 @@ export const updateRecentlyviewedTopicList = (
       author,
       bookmark_id: null,
       bookmarked_date: "",
+      topic_link: "",
     },
     ...recentlyViewedTopics,
   ];

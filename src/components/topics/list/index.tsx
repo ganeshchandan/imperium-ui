@@ -1,13 +1,14 @@
 import { useSelector } from "react-redux";
 import TopicTile from "./tile";
 import { RootState } from "@store";
-import { ReactNode, useCallback } from "react";
+import { ReactNode, useCallback, useRef } from "react";
 import AppFooter from "../../footer";
 import TopicListheader from "./header";
 import EmptyList from "../empty-list";
 import { getBookmarkTopicId } from "../../../utils/app";
 
 const TopicList = () => {
+  const listHeaderRef = useRef<HTMLDivElement>(null);
   const { filteredTopics, bookmarkedTopics } = useSelector(
     (state: RootState) => state.topic
   );
@@ -33,6 +34,16 @@ const TopicList = () => {
     }, [] as ReactNode[]);
   }, [bookmarkedTopics, filteredTopics, viewType]);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleOnScroll = (event: any) => {
+    const scrollTop = event.target.scrollTop;
+    if (scrollTop > 5) {
+      listHeaderRef.current?.classList.add("is-view-scrolled");
+    } else {
+      listHeaderRef.current?.classList.remove("is-view-scrolled");
+    }
+  };
+
   return (
     <div className="topic-list-view">
       <TopicListheader
@@ -40,10 +51,13 @@ const TopicList = () => {
           selectedRelavance.length === 0 ? "All" : selectedRelavance[0],
         ]}
         viewType={viewType}
+        ref={listHeaderRef}
       />
 
       {filteredTopics.length > 0 ? (
-        <div className="topic-lists">{renderTopicLsit()}</div>
+        <div className="topic-lists" onScroll={handleOnScroll}>
+          {renderTopicLsit()}
+        </div>
       ) : (
         <EmptyList />
       )}

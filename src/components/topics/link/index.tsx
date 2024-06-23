@@ -15,18 +15,18 @@ const TopicLink = () => {
     // readLinkData();
   }, [topic_link]);
 
-  const readLinkData = async () => {
-    if (topic_link !== "") {
-      const data = await fetch(
-        `${APP_URL}/news/load_topic_link?topicLink=${topic_link}`
-      );
-      // debugger;
-      const response = await data.text();
-      if (contentRef.current) {
-        contentRef.current.innerHTML = response || "";
-      }
-    }
-  };
+  // const readLinkData = async () => {
+  //   if (topic_link !== "") {
+  //     const data = await fetch(
+  //       `${APP_URL}/news/load_topic_link?topicLink=${topic_link}`
+  //     );
+  //     // debugger;
+  //     const response = await data.text();
+  //     if (contentRef.current) {
+  //       contentRef.current.innerHTML = response || "";
+  //     }
+  //   }
+  // };
 
   return (
     <>

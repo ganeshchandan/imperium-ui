@@ -6,7 +6,11 @@ const SwipeableLinkTopic = SwipeComponent(TopicLink);
 
 const SwipeableLinkPage = () => {
   const { deselectTopic } = useSelectTopic();
-  return <SwipeableLinkTopic swipeRight={deselectTopic} />;
+  return (
+    <div className="topic-link-content">
+      <SwipeableLinkTopic swipeRight={deselectTopic} />
+    </div>
+  );
 };
 
 export default SwipeableLinkPage;

@@ -3,8 +3,8 @@
 :root {
   line-height: 16px;
   font-family: Poppins;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 16px !important;
+  font-weight: 600 !important;
 }
 
 html,
@@ -15,6 +15,13 @@ body,
   margin: 0px;
   overflow: hidden;
   background-color: var(--app-background-color);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 16px;
+  font-family: Poppins;
+  font-size: 16px !important;
+  font-weight: 600 !important;
 }
 
 @mixin click-effect {
@@ -73,6 +80,13 @@ body,
 }
 
 * {
+  img {
+    border: 0;
+    vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    display: unset !important;
+  }
   .app {
     height: 100%;
     width: 100%;

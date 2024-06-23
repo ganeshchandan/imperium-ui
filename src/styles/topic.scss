@@ -127,6 +127,7 @@
                                 -webkit-line-clamp: 1;
                                 -webkit-box-orient: vertical;
                                 overflow: hidden;
+                                font-family: Poppins;
                             }
                             .topic-content {
                                 font-size: 0.825rem;
@@ -229,9 +230,11 @@
         .topic-link-content {
             height: 100%;
             width: 100%;
+            overflow: hidden;
             .topic-link-iframe {
                 height: calc(100% - 6rem);
                 width: 100%;
+                overflow: auto;
                 iframe {
                     border: none;
                     touch-action: none;

@@ -1,8 +1,16 @@
 import { FC } from "react";
 import { Menu } from "@assets";
-import { EMPTY_STRING } from "@constants";
+import {
+  CATEGOTY_FILTER_TYPE,
+  EMPTY_STRING,
+  RECENTLY_VIEWED,
+} from "@constants";
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectedRelevance, setShowMenu } from "@reducers";
+import {
+  setRecentlyViewFilter,
+  setSelectedRelevance,
+  setShowMenu,
+} from "@reducers";
 import { useFilterTopic } from "@hooks";
 import { RootState } from "@store";
 import { ICategoryList } from "@types";
@@ -22,17 +30,39 @@ const CategoryList: FC<ICategoryList> = ({ categories, selectedRelevance }) => {
     const updateSelectedRelevance = selectedRelevance.includes(categoryname)
       ? []
       : [categoryname];
-    dispatch(setSelectedRelevance(updateSelectedRelevance));
-    filterTopics(filterType, selectedCategory, updateSelectedRelevance);
+
+    const updatedFilterType =
+      filterType === RECENTLY_VIEWED ? CATEGOTY_FILTER_TYPE : filterType;
+
+    dispatch(
+      setSelectedRelevance({
+        selectedRelavance: updateSelectedRelevance,
+        filterType: updatedFilterType,
+      })
+    );
+    filterTopics(updatedFilterType, selectedCategory, updateSelectedRelevance);
   };
 
   const handleShowMenu = () => {
     dispatch(setShowMenu(true));
   };
 
+  const handleRecentlyViewed = () => {
+    dispatch(setRecentlyViewFilter());
+    filterTopics(RECENTLY_VIEWED, [], []);
+  };
+
   return (
     <div className="categories-pill-list">
       <div className="categories-pill">
+        <div
+          className={`category-pill ${
+            filterType === RECENTLY_VIEWED ? "category-pill-selected" : ""
+          }`}
+          onClick={handleRecentlyViewed}
+        >
+          Recently Viewed
+        </div>
         {categories.map((topicCategory) => (
           <div
             key={topicCategory}

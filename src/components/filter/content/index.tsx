@@ -1,15 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import {
-  CATEGORY_TAB,
-  CATEGOTY_FILTER_TYPE,
-  RECENTLY_VIEWED,
-  RELEVANCE_TAB,
-} from "@constants";
-import {
-  setSelectedCategory,
-  setRelevanceList,
-  setRecentlyViewFilter,
-} from "@reducers";
+import { CATEGORY_TAB, CATEGOTY_FILTER_TYPE, RELEVANCE_TAB } from "@constants";
+import { setSelectedCategory, setRelevanceList } from "@reducers";
 import { RootState } from "@store";
 import { FC } from "react";
 import Relevance from "../relevance";
@@ -33,17 +24,9 @@ const FilterRelevanceContent: FC<IFilterRelevanceContent> = ({
     (state: RootState) => state.filter
   );
 
-  const handleCategorySelection = (
-    selectedItem: string[],
-    isRecentlyViewed: boolean
-  ) => {
-    if (isRecentlyViewed) {
-      dispatch(setRecentlyViewFilter());
-      filterTopics(RECENTLY_VIEWED, selectedItem, []);
-    } else {
-      dispatch(setSelectedCategory(selectedItem));
-      filterTopics(CATEGOTY_FILTER_TYPE, selectedItem, []);
-    }
+  const handleCategorySelection = (selectedItem: string[]) => {
+    dispatch(setSelectedCategory(selectedItem));
+    filterTopics(CATEGOTY_FILTER_TYPE, selectedItem, []);
   };
 
   const handleSelectedRelevance = (selectedItem: string[]) =>

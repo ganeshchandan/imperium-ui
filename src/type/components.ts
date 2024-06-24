@@ -40,9 +40,7 @@ export interface IFilterByCategory {
   listItems: string[];
   updatedSelectedItems: string[];
   handleSelected: (selectedItems: string[]) => void;
-  handleRecentlyViewed: () => void;
   isMultipleSelection: boolean;
-  isRecentlyViewed: boolean;
 }
 
 export interface IFilterRelevanceContent {
@@ -52,7 +50,7 @@ export interface IFilterRelevanceContent {
 export interface ICategoryAndFilterByList {
   listItems: string[];
   selectedItems: string[];
-  handleSelected: (selectedItems: string[], isRecentlyViewed: boolean) => void;
+  handleSelected: (selectedItems: string[]) => void;
   isMultipleSelection: boolean;
   Component: FC<IFilterByCategory>;
 }

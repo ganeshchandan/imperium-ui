@@ -17,27 +17,20 @@ const CategoryAndFilterByList: FC<ICategoryAndFilterByList> = ({
   const [updatedSelectedItems, setUpdatedSelectedItems] = useState<string[]>(
     []
   );
-  const [isRecentlyViewed, setRecentlyViewed] = useState<boolean>(false);
 
   useEffect(() => {
     setUpdatedSelectedItems([...selectedItems]);
   }, [selectedItems]);
 
   const handleItemSelected = (selectedItems: string[]) => {
-    setRecentlyViewed(false);
     setUpdatedSelectedItems(selectedItems);
-  };
-
-  const handleRecentlyViewed = () => {
-    setUpdatedSelectedItems([]);
-    setRecentlyViewed(true);
   };
 
   const handleActionButtonClick = (action: string) => {
     if (action === RESET) {
       setUpdatedSelectedItems([...selectedItems]);
     } else if (action === APPLY) {
-      handleSelected(updatedSelectedItems, isRecentlyViewed);
+      handleSelected(updatedSelectedItems);
       dispatch(setShowFilter(false));
     } else if (action === CANCEL) {
       setUpdatedSelectedItems([...selectedItems]);
@@ -52,8 +45,6 @@ const CategoryAndFilterByList: FC<ICategoryAndFilterByList> = ({
         isMultipleSelection={isMultipleSelection}
         updatedSelectedItems={updatedSelectedItems}
         handleSelected={handleItemSelected}
-        handleRecentlyViewed={handleRecentlyViewed}
-        isRecentlyViewed={isRecentlyViewed}
       />
       <FilterRelevanceAction
         handleActionButtonClick={handleActionButtonClick}

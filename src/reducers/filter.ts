@@ -43,7 +43,6 @@ export const filterSlice = createSlice({
     },
     setRecentlyViewFilter: (state) => {
       state.selectedRelavance = [];
-      state.selectedCategory = [];
       state.filterType = RECENTLY_VIEWED;
       state.showMenu = false;
     },
@@ -51,8 +50,16 @@ export const filterSlice = createSlice({
       state.relevanceList = action.payload;
       state.showMenu = false;
     },
-    setSelectedRelevance: (state, action: PayloadAction<string[]>) => {
-      state.selectedRelavance = action.payload;
+    setSelectedRelevance: (
+      state,
+      action: PayloadAction<{
+        selectedRelavance: string[];
+        filterType: TFilterType;
+      }>
+    ) => {
+      const { selectedRelavance, filterType } = action.payload;
+      state.selectedRelavance = selectedRelavance;
+      state.filterType = filterType;
     },
     setShowMenu: (state, action: PayloadAction<boolean>) => {
       state.showMenu = action.payload;

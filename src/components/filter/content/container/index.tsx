@@ -6,10 +6,7 @@ const ContentContainer = (Component: FC<IFilterByCategory>) => {
   return (props: {
     listItems: string[];
     selectedItems: string[];
-    handleSelected: (
-      selectedItems: string[],
-      isRecentlyViewed: boolean
-    ) => void;
+    handleSelected: (selectedItems: string[]) => void;
     isMultipleSelection: boolean;
   }) => <CategoryAndFilterByList {...props} Component={Component} />;
 };

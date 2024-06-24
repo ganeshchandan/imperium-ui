@@ -53,6 +53,12 @@ export const updateRecentlyviewedTopicList = (
   return recentlyViewedTopics.splice(0, 20);
 };
 
+export const isSwipeActionModal = () =>
+  sessionStorage.getItem("hideSwipeActionModal");
+
+export const setSwipeActionModal = () =>
+  sessionStorage.setItem("hideSwipeActionModal", "true");
+
 export * from "./swipe";
 export * from "./filter";
 export * from "./bookmark";

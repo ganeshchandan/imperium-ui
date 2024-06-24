@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { IBookmarkedTopic, ISelectedTopic } from "@types";
-import { formatDescription } from "../../../utils/app";
+import { formatDescription, isSwipeActionModal } from "../../../utils/app";
 import ActionBar from "./action-bar";
 import { useSelectTopic } from "@hooks";
 import SwipeActions from "./swipe-actions";

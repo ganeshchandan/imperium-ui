@@ -1,4 +1,6 @@
 import { SwipeArrow } from "@assets";
+import { isSwipeActionModal, setSwipeActionModal } from "../../../utils/app";
+import { useEffect, useState } from "react";
 
 const SwipeAction = ({
   className,
@@ -16,7 +18,18 @@ const SwipeAction = ({
 };
 
 const SwipeActions = () => {
-  return (
+  const [showSwipeModal, setShowSwipeModal] = useState(true);
+
+  useEffect(() => {
+    setShowSwipeModal(!isSwipeActionModal());
+  }, []);
+
+  const handleSwipeActionModal = () => {
+    setSwipeActionModal();
+    setShowSwipeModal(false);
+  };
+
+  return showSwipeModal ? (
     <div className="swipe-actions-container">
       <div className="swipe-actions">
         <SwipeAction className="swipe-action next-news" label="Next News" />
@@ -27,8 +40,12 @@ const SwipeActions = () => {
         <SwipeAction className="swipe-action list-news" label="List View" />
         <SwipeAction className="swipe-action source-page" label="Source Page" />
       </div>
-      <div className="close-modal">OK GOT IT !</div>
+      <div className="close-modal" onClick={handleSwipeActionModal}>
+        OK GOT IT !
+      </div>
     </div>
+  ) : (
+    <></>
   );
 };
 

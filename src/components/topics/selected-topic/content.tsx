@@ -3,6 +3,7 @@ import { IBookmarkedTopic, ISelectedTopic } from "@types";
 import { formatDescription } from "../../../utils/app";
 import ActionBar from "./action-bar";
 import { useSelectTopic } from "@hooks";
+import SwipeActions from "./swipe-actions";
 
 const SelectedTopicContent: FC<{
   selectedTopic: ISelectedTopic;
@@ -55,6 +56,7 @@ const SelectedTopicContent: FC<{
         bookmarkDetails={bookmarkDetails}
         enableBookmarkAndShare={true}
       />
+      <SwipeActions />
     </div>
   );
 };

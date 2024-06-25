@@ -1,4 +1,4 @@
-import { SwipeArrow } from "@assets";
+// import { SwipeArrow } from "@assets";
 import { isSwipeActionModal, setSwipeActionModal } from "../../../utils/app";
 import { useEffect, useState } from "react";
 
@@ -11,7 +11,10 @@ const SwipeAction = ({
 }) => {
   return (
     <div className={className}>
-      <img src={SwipeArrow} alt="swipe-arrow" />
+      <div className="arrow">
+        <span></span>
+        <span></span>
+      </div>
       <label>{label}</label>
     </div>
   );

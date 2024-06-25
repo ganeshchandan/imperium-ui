@@ -94,7 +94,7 @@
                 .topic-list,
                 .topic-grid {
                     width: 100%;
-                    padding: 0.5rem;
+                    padding: 0.75rem 0.5rem;
                     border-radius: 0.5rem;
                     background-color: var(--topic-tile-background-color);
                     box-sizing: border-box;
@@ -157,12 +157,12 @@
                     .topic-metadata {
                         box-sizing: border-box;
                         display: grid;
-                        align-items: center;
+                        align-items: flex-end;
                         justify-content: space-between;
                         grid-template-columns: auto auto;
-                        height: 1.625rem;
+                        height: 2.625rem;
                         .saved-date-read-time {
-                            padding-top: 0.5rem;
+                            // padding-top: 0.5rem;
                             font-size: 0.625rem;
                             font-weight: 500;
                             line-height: 0.75rem;
@@ -170,10 +170,11 @@
                         }
                         .favorite-icon {
                             @include click-effect;
-                            // padding-top: 0.5rem;
                             display: flex;
-                            align-items: center;
+                            align-items: flex-end;
                             justify-content: flex-end;
+                            height: 100%;
+                            width: 40px;
                         }
                     }
                 }

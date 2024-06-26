@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { SwipeableHandlers, useSwipeable } from "react-swipeable";
 import { FC, ReactNode } from "react";
 
@@ -14,6 +13,11 @@ const Swipe: FC<{
     onSwipedRight: swipeRight,
     onSwipedUp: swipeUp,
     onSwipedDown: swipeDown,
+    // onSwiping: (event: any) => {
+    //   const height = event.event.currentTarget.clientHeight;
+    //   const top = height - event.absY;
+    //   event.event.currentTarget.children[0].children[0].children[0].style.top = `-${top}px`;
+    // },
     trackMouse: true,
   });
 

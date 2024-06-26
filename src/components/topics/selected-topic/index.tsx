@@ -5,7 +5,7 @@ import { useSelectTopic } from "@hooks";
 import { getBookmarkTopicId } from "../../../utils/app";
 import ActionBar from "./action-bar";
 import SwipeActions from "./swipe-actions";
-import TopicLists from "./topic-lists";
+import SwipeTopicLists from "./topic-lists-swipe";
 
 const SelectedTopic: FC = () => {
   const { bookmarkedTopics, selectedTopic } = useSelector(
@@ -36,7 +36,7 @@ const SelectedTopic: FC = () => {
   return (
     <div className="selected-topic-list">
       <div className="selected-topics">
-        <TopicLists selectedTopic={selectedTopic} />
+        <SwipeTopicLists selectedTopic={selectedTopic} />
         <ActionBar
           backToTopicList={deselectTopic}
           handleShare={handleShare}

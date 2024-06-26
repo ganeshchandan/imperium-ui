@@ -53,3 +53,23 @@ export const getPreviousAndNextTopic = (
     nextTopic: topics[swipeUpTopicId(topicIndex, topicsCount)],
   };
 };
+
+export const selectedTopicHandler = (
+  topicListRefElement: HTMLElement | null,
+  topicIndex: number,
+  swipeType: ITopicSelectionType,
+  selectTopic: (
+    selectedTopicIndex: number,
+    selectionType: ITopicSelectionType
+  ) => void
+) => {
+  if (topicListRefElement) {
+    topicListRefElement.classList.add(swipeType);
+    topicListRefElement.classList.add("transition");
+    setTimeout(() => {
+      topicListRefElement.classList.remove("transition");
+      topicListRefElement.classList.remove(swipeType);
+      selectTopic(topicIndex, swipeType);
+    }, 500);
+  }
+};

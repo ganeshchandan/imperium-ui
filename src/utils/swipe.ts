@@ -65,7 +65,7 @@ export const selectedTopicHandler = (
 ) => {
   if (topicListRefElement) {
     topicListRefElement.classList.add(swipeType);
-    topicListRefElement.classList.add("transition");
+    topicListRefElement.classList.add(`transition`);
     setTimeout(() => {
       topicListRefElement.classList.remove("transition");
       topicListRefElement.classList.remove(swipeType);

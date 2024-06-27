@@ -24,11 +24,12 @@
     }
     .selected-topic-actionbar {
         height: 5.625rem;
-        padding: 1rem 1.25rem 0 1.25rem;
+        padding: 0rem 1.25rem 0 0rem;
         box-sizing: border-box;
         position: absolute;
         bottom: 0;
         display: grid;
+        align-items: center;
         grid-template-columns: auto auto;
         width: 100%;
         background-color: var(--app-background-color);
@@ -41,9 +42,20 @@
             height: 30px;
             top: -30px;
         }
+        // .back-to-button {
         .back-to-topic-list {
             @include click-effect;
+            display: grid;
+            // height: 40px;
+            justify-items: flex-start;
+            align-items: center;
+            // width: max-content;
+            padding: 1.25rem;
+            &:active {
+                transform: scale(1.1);
+            }
         }
+        // }
         .share-bookmark-icons {
             display: grid;
             grid-template-columns: 60px 60px;

@@ -35,7 +35,6 @@ const ActionBar = ({
             name={SHARE}
             imageUrl={ShareIcon}
             imageAlt={SHARE}
-            className="icon-with-name"
             onClick={handleShare}
           />
           {isLoading ? (
@@ -51,7 +50,6 @@ const ActionBar = ({
               name={PINNED}
               imageUrl={bookmark_id ? PinnedFooter : PinnedIconSaved}
               imageAlt={BOOKMARK}
-              className="icon-with-name"
               onClick={handleBookmark}
             />
           )}

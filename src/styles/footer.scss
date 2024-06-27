@@ -51,7 +51,6 @@
                 grid-gap: 0.625rem;
                 overflow: auto;
                 z-index: 2;
-                position: relative;
                 &::after {
                     content: "";
                     background: linear-gradient(270deg, #162143 21%, rgba(22, 33, 67, 0.45) 88.64%);
@@ -61,7 +60,7 @@
                     height: 100%;
                     position: absolute;
                     top: 0px;
-                    left: 96%;
+                    right: 3.6rem;
                 }
 
                 .category-pill {

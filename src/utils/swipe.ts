@@ -55,6 +55,7 @@ export const getPreviousAndNextTopic = (
 };
 
 export const selectedTopicHandler = (
+  timerRef: NodeJS.Timeout,
   topicListRefElement: HTMLElement | null,
   topicIndex: number,
   swipeType: ITopicSelectionType,
@@ -66,7 +67,8 @@ export const selectedTopicHandler = (
   if (topicListRefElement) {
     topicListRefElement.classList.add(swipeType);
     topicListRefElement.classList.add(`transition`);
-    setTimeout(() => {
+    clearTimeout(timerRef);
+    timerRef = setTimeout(() => {
       topicListRefElement.classList.remove("transition");
       topicListRefElement.classList.remove(swipeType);
       selectTopic(topicIndex, swipeType);

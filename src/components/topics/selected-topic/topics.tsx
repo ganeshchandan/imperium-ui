@@ -19,15 +19,19 @@ const Topics: FC<{ selectedTopic: ISelectedTopic }> = ({ selectedTopic }) => {
 
   return (
     <>
-      <Topic
-        selectedTopic={nextTopic as ISelectedTopic}
-        className="next-topic"
-      />
+      {nextTopic && (
+        <Topic
+          selectedTopic={nextTopic as ISelectedTopic}
+          className="next-topic"
+        />
+      )}
       <Topic selectedTopic={selectedTopic} className="selected-topic" />
-      <Topic
-        selectedTopic={previousTopic as ISelectedTopic}
-        className="previous-topic"
-      />
+      {previousTopic && (
+        <Topic
+          selectedTopic={previousTopic as ISelectedTopic}
+          className="previous-topic"
+        />
+      )}
     </>
   );
 };

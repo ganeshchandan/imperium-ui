@@ -30,7 +30,7 @@ export const getSearchResults = (topics: ITopic[], searchValue: string) => {
   topics.forEach(({ topic_short_description, topic_title }) => {
     if (searchHandler(topic_title, searchValue)) {
       searchResults.push({ searchBy: "topic_title", searchvalue: topic_title });
-    } else if (searchHandler(topic_title, topic_short_description)) {
+    } else if (searchHandler(topic_short_description, searchValue)) {
       searchResults.push({
         searchBy: "topic_short_description",
         searchvalue: topic_short_description,

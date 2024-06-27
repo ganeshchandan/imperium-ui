@@ -5,8 +5,9 @@ import { ISearchResults } from "@types";
 const SearchResults: FC<ISearchResults> = ({ searchResults, searchValue }) => {
   return (
     <div className="search-results">
-      {searchResults.map((searchResult) => (
+      {searchResults.map((searchResult, index) => (
         <SearchResultItem
+          key={index}
           searchResult={searchResult}
           searchValue={searchValue}
         />

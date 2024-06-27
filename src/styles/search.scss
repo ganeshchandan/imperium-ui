@@ -52,7 +52,7 @@
             .search-box {
                 height: 52px;
                 display: grid;
-                grid-template-columns: 50px auto 50px;
+                grid-template-columns: 50px auto 60px;
                 -webkit-tap-highlight-color: transparent;
                 cursor: pointer;
                 box-sizing: border-box;
@@ -75,6 +75,17 @@
                     display: grid;
                     align-items: center;
                     justify-content: center;
+                }
+                .search-clear {
+                    font-size: 0.75rem;
+                    font-weight: 400;
+                    display: flex;
+                    align-items: center;
+                    color: var(--search-box-clear-text-color);
+                    &.disable-clear {
+                        pointer-events: none;
+                        color: var(--search-box-clear-diable-text);
+                    }
                 }
             }
             .search-results {

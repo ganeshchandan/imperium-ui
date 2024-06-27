@@ -33,6 +33,8 @@ const SearchTopic = () => {
         setSearchResults(() =>
           getSearchResults(topics, searchValue.toLowerCase() || "")
         );
+      } else {
+        setSearchResults([]);
       }
     }, 300);
   };
@@ -56,6 +58,12 @@ const SearchTopic = () => {
     event.nativeEvent.stopImmediatePropagation();
   };
 
+  const resetSearchResult = (event: any) => {
+    event.stopPropagation();
+    setSearchValue("");
+    setSearchResults([]);
+  };
+
   return (
     <div
       className="search-box-overlay"
@@ -77,7 +85,18 @@ const SearchTopic = () => {
             onChange={handleSearchInput}
             onKeyUp={onKeyUp}
           />
-          <SearchBoxIcons src={Close} onClick={onCloseSearchBox} />
+          {searchValue.trim() !== "" ? (
+            <div
+              className={`search-clear ${
+                searchValue.trim() === "" ? "disable-clear" : ""
+              }`}
+              onClick={resetSearchResult}
+            >
+              Clear
+            </div>
+          ) : (
+            <SearchBoxIcons src={Close} onClick={onCloseSearchBox} />
+          )}
         </div>
         <div className="separator"></div>
         <SearchResult searchResults={searchResults} searchValue={searchValue} />

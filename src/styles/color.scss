@@ -3,6 +3,7 @@ $blue_01: #192757;
 $blue_02: #7284c4;
 $bule_03: #2a59e0;
 $bule_04: #8091c8;
+$bule_05: #22326a;
 $white_01: #e8e8e8;
 $white_02: #d9d9d9;
 $white: #fff;
@@ -11,6 +12,7 @@ $gray_1: #303131;
 $gray_2: #717171;
 $gray_3: #737373;
 $gray_4: #8e8e8e;
+$gray_5: #303d68;
 
 :root {
     --app-background-color: #{$blue};
@@ -69,7 +71,8 @@ $gray_4: #8e8e8e;
     --search-box-background: #{$blue_01};
     --search-box-shadow: 0px 0px 5px 0px rgba(204, 58, 207, 0.3490196078);
     --search-box-text-color: #{$bule_04};
-    --search-box-result-border-top: #22326a;
-
+    --search-box-result-border-top: #{$bule_05};
+    --search-box-clear-text-color: #{$bule_04};
+    --search-box-clear-diable-text: #{$gray_5};
     --swipe-action-color: #{$white};
 }

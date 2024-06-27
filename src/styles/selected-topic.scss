@@ -46,9 +46,9 @@
         }
         .share-bookmark-icons {
             display: grid;
-            grid-template-columns: auto auto;
+            grid-template-columns: 60px 60px;
             justify-content: end;
-            grid-gap: 40px;
+            // grid-gap: 40px;
             .icon-with-name {
                 @include click-effect;
                 display: grid;

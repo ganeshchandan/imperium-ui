@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@store";
-import { setFilteredTopics, setSearchBox } from "@reducers";
+import { setFilteredTopics, setSearchBox, setShowMenu } from "@reducers";
 import {
   getFilteredTopics,
   getSortedTopics,
@@ -40,6 +40,7 @@ export const useFilterTopic = () => {
     searchBy: TSearchByColumn
   ) => {
     dispatch(setSearchBox(false));
+    dispatch(setShowMenu(false));
     dispatch(
       setFilteredTopics(
         getFilteredTopics(filterType, topics, {

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Menu } from "@assets";
+// import { Menu } from "@assets";
 import {
   CATEGOTY_FILTER_TYPE,
   EMPTY_STRING,
@@ -9,11 +9,12 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   setRecentlyViewFilter,
   setSelectedRelevance,
-  setShowMenu,
+  // setShowMenu,
 } from "@reducers";
 import { useFilterTopic } from "@hooks";
 import { RootState } from "@store";
 import { ICategoryList } from "@types";
+import Footermenu from "./menu";
 
 const CategoryList: FC<ICategoryList> = ({ categories, selectedRelevance }) => {
   const dispatch = useDispatch();
@@ -44,9 +45,9 @@ const CategoryList: FC<ICategoryList> = ({ categories, selectedRelevance }) => {
     filterTopics(updatedFilterType, selectedCategory, updateSelectedRelevance);
   };
 
-  const handleShowMenu = () => {
-    dispatch(setShowMenu(true));
-  };
+  // const handleShowMenu = () => {
+  //   dispatch(setShowMenu(true));
+  // };
 
   const handleRecentlyViewed = (event: any) => {
     event.stopPropagation();
@@ -81,11 +82,7 @@ const CategoryList: FC<ICategoryList> = ({ categories, selectedRelevance }) => {
           </div>
         ))}
       </div>
-      <div className="footer-menu" onClick={handleShowMenu}>
-        <div className="footer-menu-icon">
-          <img src={Menu} alt="menu" />
-        </div>
-      </div>
+      <Footermenu />
     </div>
   );
 };

@@ -109,32 +109,41 @@ body,
   ::-webkit-scrollbar-thumb:hover {
     background: transparent;
   }
+
+  @keyframes button-click-css {
+    from {
+      background: rgba(0, 0, 0, 0.5);
+      width: 0px;
+    }
+    to {
+      background: rgba(0, 0, 0, 0.2);
+      width: 150%;
+    }
+  }
+
   .app {
     height: 100%;
     width: 100%;
     background-color: var(--app-background-color);
-    // .icon-with-name {
-    //   position: relative;
-    //   aspect-ratio: 1/1;
-    //   > img,
-    //   label {
-    //     z-index: 2;
-    //   }
-    //   &::after {
-    //     content: "";
-    //     width: 30px;
-    //     height: 30px;
-    //     background-color: rgba(0, 0, 0, 0.5);
-    //     position: absolute;
-    //     border-radius: 50%;
-    //     z-index: 1;
-    //     animation-name: button-ripple;
-    //     animation-duration: 2s;
-    //     animation-timing-function: linear;
-    //     animation-fill-mode: forwards;
-    //     animation-iteration-count: infinite;
-    //   }
-    // }
+    .icon-with-name {
+      position: relative;
+      img,
+      label {
+        z-index: 2;
+      }
+      &.button-clicked {
+        &::before {
+          content: "";
+          position: absolute;
+          border-radius: 50%;
+          z-index: 1;
+          animation-name: button-click-css;
+          animation-duration: 0.5s;
+          animation-timing-function: ease;
+          aspect-ratio: 1;
+        }
+      }
+    }
     .app-loading {
       width: 180px;
       height: 100%;

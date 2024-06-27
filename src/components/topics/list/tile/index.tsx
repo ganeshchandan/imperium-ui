@@ -15,7 +15,7 @@ const TopicList = ({
   const topicTileRef = useRef({ isViewScrolling: false });
   const { selectTopic } = useSelectTopic();
 
-  const { topic_title, topic_short_description, topic_image } = topic;
+  const { topic_title, topic_short_description, topic_image, topic_id } = topic;
 
   const handleTopicSelect = () => {
     if (!topicTileRef.current.isViewScrolling) {
@@ -34,6 +34,7 @@ const TopicList = ({
       onClick={handleTopicSelect}
       onTouchEnd={handleTopicSelect}
       onTouchMove={handleTouchMove}
+      key={topic_id}
     >
       <div className="topic-details">
         <TopicImage topic_image={topic_image} />

@@ -29,8 +29,6 @@ import PinnedIconSavedImg from "./pinned_saved.svg";
 import PinnedIconImg from "./pinned.svg";
 import BackArrowImg from "./arrow-right.svg";
 import ShareIconImg from "./share.svg";
-import BookmarkIconImg from "./bookmark.svg";
-import BookmarkIconFilledImg from "./favorite-filled.svg";
 import SwipeArrowImg from "./swipe_arrow.svg";
 
 export const AppLogo = AppLogoImg;
@@ -48,6 +46,4 @@ export const PinnedIconSaved = PinnedIconSavedImg;
 export const PinnedIcon = PinnedIconImg;
 export const BackArrow = BackArrowImg;
 export const ShareIcon = ShareIconImg;
-export const BookmarkIcon = BookmarkIconImg;
-export const BookmarkIconFilled = BookmarkIconFilledImg;
 export const SwipeArrow = SwipeArrowImg;

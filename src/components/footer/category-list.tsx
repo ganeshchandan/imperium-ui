@@ -48,7 +48,9 @@ const CategoryList: FC<ICategoryList> = ({ categories, selectedRelevance }) => {
     dispatch(setShowMenu(true));
   };
 
-  const handleRecentlyViewed = () => {
+  const handleRecentlyViewed = (event: any) => {
+    event.stopPropagation();
+    event.target.scrollIntoViewIfNeeded({ behavior: "smooth" });
     dispatch(setRecentlyViewFilter());
     filterTopics(RECENTLY_VIEWED, [], []);
   };

@@ -70,6 +70,6 @@ export const selectedTopicHandler = (
       topicListRefElement.classList.remove("transition");
       topicListRefElement.classList.remove(swipeType);
       selectTopic(topicIndex, swipeType);
-    }, 500);
+    }, 4000);
   }
 };

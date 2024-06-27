@@ -88,13 +88,9 @@
                 display: flex;
                 grid-gap: 1rem;
                 height: calc(100% - 9.375rem);
-                overflow: auto;
+                overflow: scroll;
                 flex-flow: column;
                 transition: all 0.5s ease-in-out;
-                &::-webkit-scrollbar {
-                    width: 0;
-                    height: 0;
-                }
                 .topic-list,
                 .topic-grid {
                     width: 100%;

@@ -91,6 +91,10 @@
                 overflow: auto;
                 flex-flow: column;
                 transition: all 0.5s ease-in-out;
+                &::-webkit-scrollbar {
+                    width: 0;
+                    height: 0;
+                }
                 .topic-list,
                 .topic-grid {
                     width: 100%;

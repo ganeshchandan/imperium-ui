@@ -22,9 +22,10 @@ const CategoryList: FC<ICategoryList> = ({ categories, selectedRelevance }) => {
     (state: RootState) => state.filter
   );
 
-  const handleSelectedTopicCategory = (
-    event: React.SyntheticEvent<HTMLDivElement>
-  ) => {
+  const handleSelectedTopicCategory = (event: any) => {
+    event.stopPropagation();
+    event.target.scrollIntoViewIfNeeded({ behavior: "smooth" });
+
     const { categoryname = EMPTY_STRING } = (event.target as HTMLDivElement)
       .dataset;
     const updateSelectedRelevance = selectedRelevance.includes(categoryname)

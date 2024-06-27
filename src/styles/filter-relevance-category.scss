@@ -23,7 +23,7 @@
         display: grid;
         grid-template-rows: 2.5rem calc(100% - 6.563rem) 4.063rem;
         top: 100%;
-        transition: all 0.5s linear;
+        transition: all 0.5s ease;
         &.show-filter-popup {
             top: 50%;
         }

@@ -5,33 +5,6 @@
   font-family: Poppins;
   font-size: 16px !important;
   font-weight: 600 !important;
-  /* width */
-  ::-webkit-scrollbar {
-    width: 0px;
-    height: 0px;
-    background: transparent;
-  }
-
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: transparent;
-    width: 0px;
-    height: 0px;
-  }
-
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: transparent;
-    width: 0px;
-    height: 0px;
-  }
-
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: transparent;
-    width: 0px;
-    height: 0px;
-  }
 }
 
 html,
@@ -113,6 +86,26 @@ body,
     margin: 0;
     padding: 0;
     display: unset !important;
+  }
+  /* width */
+  ::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: transparent;
   }
   .app {
     height: 100%;

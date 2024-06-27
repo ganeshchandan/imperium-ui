@@ -55,23 +55,23 @@ export const getPreviousAndNextTopic = (
 };
 
 export const selectedTopicHandler = (
-  timerRef: NodeJS.Timeout,
   topicListRefElement: HTMLElement | null,
   topicIndex: number,
   swipeType: ITopicSelectionType,
   selectTopic: (
     selectedTopicIndex: number,
     selectionType: ITopicSelectionType
-  ) => void
+  ) => void,
+  timerRef?: NodeJS.Timeout
 ) => {
   if (topicListRefElement) {
     topicListRefElement.classList.add(swipeType);
     topicListRefElement.classList.add(`transition`);
-    clearTimeout(timerRef);
+    clearTimeout(timerRef || 0);
     timerRef = setTimeout(() => {
       topicListRefElement.classList.remove("transition");
       topicListRefElement.classList.remove(swipeType);
       selectTopic(topicIndex, swipeType);
-    }, 4000);
+    }, 500);
   }
 };

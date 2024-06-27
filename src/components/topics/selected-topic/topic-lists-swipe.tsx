@@ -11,33 +11,33 @@ const SwipeableTopicLists = SwipeComponent(Topics);
 const SwipeTopicLists: FC<{
   selectedTopic: ISelectedTopic;
 }> = ({ selectedTopic }) => {
-  const timerRef = useRef<NodeJS.Timeout>(null);
+  const swipeTopicListRef = useRef<{ clearTimer?: NodeJS.Timeout }>({});
   const { topicIndex } = selectedTopic;
   const { deselectTopic, selectTopic, openTopicLink } = useSelectTopic();
   const topicListRef = useRef<HTMLDivElement>(null);
 
   const handleSwipeUp = () => {
     const topicListRefElement: HTMLElement | null = topicListRef.current;
-    if (topicListRefElement && timerRef.current) {
+    if (topicListRefElement) {
       selectedTopicHandler(
-        timerRef.current,
         topicListRefElement,
         topicIndex,
         SWIPE_UP,
-        selectTopic
+        selectTopic,
+        swipeTopicListRef.current.clearTimer
       );
     }
   };
 
   const handleSwipeDown = () => {
     const topicListRefElement: HTMLElement | null = topicListRef.current;
-    if (topicListRefElement && timerRef.current) {
+    if (topicListRefElement) {
       selectedTopicHandler(
-        timerRef.current,
         topicListRefElement,
         topicIndex,
         SWIPE_DOWN,
-        selectTopic
+        selectTopic,
+        swipeTopicListRef.current.clearTimer
       );
     }
   };

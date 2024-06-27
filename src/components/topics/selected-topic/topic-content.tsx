@@ -11,11 +11,12 @@ const Topic: FC<{
     topic_title,
     topic_short_description,
     topic_saved_date,
+    topic_id,
   } = selectedTopic;
   return (
     <div className={`selected-topic-content ${className}`}>
       <div className="selected-topic-image">
-        <img src={topic_image} alt="Topic" />
+        <img src={topic_image} alt="Topic" key={topic_id} />
       </div>
       <div className="selected-topic-description">
         <div className="topic-title">{topic_title}</div>

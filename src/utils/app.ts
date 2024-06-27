@@ -54,10 +54,10 @@ export const updateRecentlyviewedTopicList = (
 };
 
 export const isSwipeActionModal = () =>
-  sessionStorage.getItem("hideSwipeActionModal");
+  localStorage.getItem("hideSwipeActionModal");
 
 export const setSwipeActionModal = () =>
-  sessionStorage.setItem("hideSwipeActionModal", "true");
+  localStorage.setItem("hideSwipeActionModal", "true");
 
 export * from "./swipe";
 export * from "./filter";

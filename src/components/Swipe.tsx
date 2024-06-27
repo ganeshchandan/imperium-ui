@@ -9,16 +9,10 @@ const Swipe: FC<{
   swipeLeft: () => void;
 }> = ({ children, swipeRight, swipeUp, swipeDown, swipeLeft }) => {
   const handlers: SwipeableHandlers = useSwipeable({
-    onSwipedLeft: swipeLeft,
-    onSwipedRight: swipeRight,
-    onSwipedUp: swipeUp,
-    onSwipedDown: swipeDown,
-    // onSwiping: (event: any) => {
-    //   // console.log(event.deltaY);
-    //   // const height = event.event.currentTarget.clientHeight;
-    //   // const top = height - event.absY;
-    //   // event.event.currentTarget.children[0].children[0].children[0].style.top = `-${top}px`;
-    // },
+    onSwipedLeft: () => swipeLeft?.(),
+    onSwipedRight: () => swipeRight?.(),
+    onSwipedUp: () => swipeUp?.(),
+    onSwipedDown: () => swipeDown?.(),
     trackMouse: true,
   });
 

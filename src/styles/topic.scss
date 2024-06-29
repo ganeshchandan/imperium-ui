@@ -26,6 +26,7 @@
         height: 100%;
         display: grid;
         grid-template-columns: 100% 100% 100%;
+        grid-template-rows: 100% auto;
         box-sizing: border-box;
         transform: translateX(0%);
         transition: all 0.7s ease-in-out;

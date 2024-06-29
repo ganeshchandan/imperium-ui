@@ -18,7 +18,7 @@
     }
 
     @mixin show-footer-icon {
-        display: grid;
+        // display: grid;
         opacity: 1;
     }
 
@@ -99,7 +99,7 @@
                 z-index: 1;
                 background: linear-gradient(127.68deg, #ff409a 14.19%, #c438ef 101.67%);
                 border-radius: 50%;
-                transition: all 0.5s ease;
+                transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
                 border-radius: 2.688rem;
                 // &:not(.show-menu),
                 // &:not(.hide-menu) {
@@ -120,18 +120,18 @@
                     right: 0px;
                 }
                 .footer-icons {
-                    display: none;
+                    display: grid;
                     grid-template-columns: repeat(4, 1fr) 3.25rem;
                     grid-gap: 0.5rem;
                     grid-template-rows: 3.25rem;
                     overflow: hidden;
                     container-type: inline-size;
                     .footer-category-icon {
-                        display: none;
+                        display: grid;
                         align-items: center;
                         justify-content: center;
                         opacity: 0;
-                        transition: all 0.5s ease;
+                        transition: all 0.3s ease-in-out;
                         .icon-with-name {
                             @include click-effect;
                             color: var(--footer-menu-icon-label);
@@ -191,6 +191,9 @@
                     animation-fill-mode: forwards;
                     .footer-icons {
                         display: grid;
+                        .footer-category-icon {
+                            transition: all 0.3s ease-in-out;
+                        }
                     }
                 }
                 &.hide-menu {
@@ -203,6 +206,9 @@
                     animation-fill-mode: forwards;
                     .footer-icons {
                         display: grid;
+                        .footer-category-icon {
+                            transition: all 0s ease-in-out;
+                        }
                     }
                 }
             }

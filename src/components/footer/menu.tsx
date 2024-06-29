@@ -47,7 +47,7 @@ const Footermenu: FC<ICategoryMenu> = () => {
         classList.add("hide-menu");
         setTimeout(() => {
           classList.remove("hide-menu");
-        }, 500);
+        }, 700);
       }
     }
   }, [showMenu]);

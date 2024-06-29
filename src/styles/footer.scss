@@ -21,6 +21,10 @@
         // display: grid;
         opacity: 1;
     }
+    @mixin hide-footer-icon {
+        // display: grid;
+        opacity: 0;
+    }
 
     .topic-list-footer {
         position: absolute;
@@ -152,33 +156,6 @@
                             }
                         }
                     }
-
-                    @container (min-width: 16.25rem) {
-                        .search-icon,
-                        .pinned-icon,
-                        .filter-icon,
-                        .user-icon {
-                            @include show-footer-icon;
-                        }
-                    }
-                    @container (min-width: 13rem) {
-                        .search-icon,
-                        .pinned-icon,
-                        .filter-icon {
-                            @include show-footer-icon;
-                        }
-                    }
-                    @container (min-width: 9.75rem) {
-                        .search-icon,
-                        .pinned-icon {
-                            @include show-footer-icon;
-                        }
-                    }
-                    @container (min-width: 6.5rem) {
-                        .search-icon {
-                            @include show-footer-icon;
-                        }
-                    }
                 }
                 &.show-menu {
                     z-index: 3;
@@ -186,13 +163,39 @@
                     grid-template-columns: 100%;
                     background: var(--footer-menu-background);
                     animation-name: show-menu-bar;
-                    animation-duration: 0.5s;
-                    animation-timing-function: ease;
+                    animation-duration: 0.7s;
+                    animation-timing-function: linear;
                     animation-fill-mode: forwards;
                     .footer-icons {
                         display: grid;
                         .footer-category-icon {
                             transition: all 0.3s ease-in-out;
+                        }
+                        @container (min-width: 16.25rem) {
+                            .search-icon,
+                            .pinned-icon,
+                            .filter-icon,
+                            .user-icon {
+                                @include show-footer-icon;
+                            }
+                        }
+                        @container (min-width: 13rem) {
+                            .search-icon,
+                            .pinned-icon,
+                            .filter-icon {
+                                @include show-footer-icon;
+                            }
+                        }
+                        @container (min-width: 9.75rem) {
+                            .search-icon,
+                            .pinned-icon {
+                                @include show-footer-icon;
+                            }
+                        }
+                        @container (min-width: 6.5rem) {
+                            .search-icon {
+                                @include show-footer-icon;
+                            }
                         }
                     }
                 }
@@ -201,14 +204,38 @@
                     grid-template-columns: 100%;
                     background: var(--footer-menu-background);
                     animation-name: hide-menu-bar;
-                    animation-duration: 0.5s;
-                    animation-timing-function: ease;
+                    animation-duration: 0.7s;
+                    animation-timing-function: linear;
                     animation-fill-mode: forwards;
                     .footer-icons {
                         display: grid;
                         .footer-category-icon {
-                            transition: all 0s ease-in-out;
+                            opacity: 1;
+                            transition: all 0.2s linear;
                         }
+                        .user-icon {
+                            @include hide-footer-icon;
+                        }
+                        @container (max-width: 19.50rem) {
+                            .filter-icon {
+                                @include hide-footer-icon;
+                            }
+                        }
+                        @container (max-width: 16.25rem) {
+                            .pinned-icon {
+                                @include hide-footer-icon;
+                            }
+                        }
+                        @container (max-width: 13rem) {
+                            .search-icon {
+                                @include hide-footer-icon;
+                            }
+                        }
+                        // @container (max-width: 6.5rem) {
+                        //     .search-icon {
+                        //         @include hide-footer-icon;
+                        //     }
+                        // }
                     }
                 }
             }

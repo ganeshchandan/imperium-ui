@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import TopicList from "./list";
 import SelectedTopic from "./selected-topic";
 import SwipeableLinkPage from "./link/swipeable-link-page";
+import Filter from "../filter";
 
 const Topics = () => {
   const { selectedTopic } = useSelector((state: RootState) => state.topic);
@@ -13,6 +14,7 @@ const Topics = () => {
       <TopicList />
       <SelectedTopic />
       <SwipeableLinkPage />
+      <Filter />
     </div>
   );
 };

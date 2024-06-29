@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 import { RootState } from "@store";
-import Filter from "./filter";
 import Loader from "./common/loader";
 import SearchTopic from "./search";
 import Topics from "./topics";
@@ -15,7 +14,6 @@ const AppSection = () => {
       {isLoading && <Loader />}
       {isSearchBox && <SearchTopic />}
       <Topics />
-      <Filter />
     </>
   );
 };

@@ -164,7 +164,7 @@
                     background: var(--footer-menu-background);
                     animation-name: show-menu-bar;
                     animation-duration: 0.7s;
-                    animation-timing-function: linear;
+                    animation-timing-function: ease-in-out;
                     animation-fill-mode: forwards;
                     .footer-icons {
                         display: grid;
@@ -205,13 +205,13 @@
                     background: var(--footer-menu-background);
                     animation-name: hide-menu-bar;
                     animation-duration: 0.7s;
-                    animation-timing-function: linear;
+                    animation-timing-function: ease-in-out;
                     animation-fill-mode: forwards;
                     .footer-icons {
                         display: grid;
                         .footer-category-icon {
                             opacity: 1;
-                            transition: all 0.2s linear;
+                            transition: all 0.2s ease-in-out;
                         }
                         .user-icon {
                             @include hide-footer-icon;

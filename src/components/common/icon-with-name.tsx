@@ -12,7 +12,7 @@ const IconWithName = ({
   name,
   imageUrl,
   imageAlt,
-  className,
+  className = "",
   onClick,
 }: IIconWithName) => {
   const buttonRef = useRef<HTMLDivElement>(null);

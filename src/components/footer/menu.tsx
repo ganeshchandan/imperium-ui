@@ -54,42 +54,43 @@ const Footermenu: FC<ICategoryMenu> = () => {
 
   return (
     <div ref={showHideMenuRef} className="footer-menu-container">
-      <div className="footer-menu">
-        <div className="footer-category-icons">
-          <div></div>
+      <div className="footer-icons">
+        <div className="footer-category-icon search-icon">
           <IconWithName
             name={SEARCH}
             imageUrl={SearchIcon}
             imageAlt={SEARCH}
             onClick={handleSearchClick}
-            className="footer-category-icon"
           />
+        </div>
+        <div className="footer-category-icon pinned-icon">
           <IconWithName
             name={PINNED}
             imageUrl={PinnedFooter}
             imageAlt={PINNED}
-            className="footer-category-icon"
             onClick={filterBookmark}
           />
+        </div>
+        <div className="footer-category-icon filter-icon">
           <IconWithName
             name={FILTER}
             imageUrl={Filter}
             imageAlt={FILTER}
-            className="footer-category-icon"
             onClick={handleFilterClick}
           />
-          <div className="footer-category-icon">
-            <img src={UserIcon} alt={USER}></img>
-          </div>
         </div>
-        <div className="overlay-div"></div>
-        <div className="footer-menu-icon">
-          <img
-            src={showMenu ? Close : Menu}
-            alt="menu"
-            onClick={handleShowMenu}
-          />
+        <div className="footer-category-icon user-icon">
+          <img src={UserIcon} alt={USER}></img>
         </div>
+        <div></div>
+      </div>
+
+      <div className="footer-menu-icon">
+        <img
+          src={showMenu ? Close : Menu}
+          alt="menu"
+          onClick={handleShowMenu}
+        />
       </div>
     </div>
   );

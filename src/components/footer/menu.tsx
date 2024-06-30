@@ -20,7 +20,6 @@ const Footermenu: FC<ICategoryMenu> = () => {
   const showHideMenuRef = useRef<HTMLDivElement>(null);
   const showMenu = useSelector((state: RootState) => state.filter.showMenu);
   const dispatch = useDispatch();
-
   const { filterBookmark } = useBookmarkAction();
 
   const handleFilterClick = () => {

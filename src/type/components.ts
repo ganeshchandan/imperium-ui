@@ -60,12 +60,18 @@ export interface ICategoryList {
   selectedRelevance: string[];
 }
 
+export interface ICategoryPill {
+  category: string;
+  isSelected: boolean;
+  onSelect: (selectedRelevance: string[]) => void;
+}
+
 export interface ICategoryMenu {
   showMenu: boolean;
 }
 
 export interface ITopicListHeader {
-  selectedCategory: string[];
+  selectedCategory: string;
   viewType: TViewType;
 }
 

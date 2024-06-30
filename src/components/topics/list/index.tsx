@@ -6,13 +6,14 @@ import AppFooter from "../../footer";
 import TopicListheader from "./header";
 import EmptyList from "../empty-list";
 import { getBookmarkTopicId } from "../../../utils/app";
+import { RECENTLY_VIEWED, RECENTLY_VIEWED_LABEL } from "@constants";
 
 const TopicList = () => {
   const listHeaderRef = useRef<HTMLDivElement>(null);
   const { filteredTopics, bookmarkedTopics } = useSelector(
     (state: RootState) => state.topic
   );
-  const { relevanceList, selectedRelavance } = useSelector(
+  const { relevanceList, selectedRelavance, filterType } = useSelector(
     (state: RootState) => state.filter
   );
   const { viewType } = useSelector((state: RootState) => state.appConfig);
@@ -47,13 +48,14 @@ const TopicList = () => {
   return (
     <div className="topic-list-view">
       <TopicListheader
-        selectedCategory={[
-          selectedRelavance.length === 0 ? "All" : selectedRelavance[0],
-        ]}
+        selectedCategory={
+          filterType === RECENTLY_VIEWED
+            ? RECENTLY_VIEWED_LABEL
+            : selectedRelavance[0]
+        }
         viewType={viewType}
         ref={listHeaderRef}
       />
-
       {filteredTopics.length > 0 ? (
         <div className="topic-lists" onScroll={handleOnScroll}>
           {renderTopicLsit()}
@@ -61,7 +63,6 @@ const TopicList = () => {
       ) : (
         <EmptyList />
       )}
-
       <AppFooter
         categories={relevanceList}
         selectedRelevance={selectedRelavance}

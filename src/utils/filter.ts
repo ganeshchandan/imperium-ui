@@ -5,6 +5,7 @@ import {
   TFilterType,
 } from "@types";
 import { searchTopics } from "./search";
+import { ALL } from "@constants";
 
 type ISortTopic = (topics: ITopic[]) => ITopic[];
 type TGetTopicListForFilterTypeMapper = (topics: {
@@ -45,7 +46,7 @@ const categoryFilter = (
 ) =>
   (selectedCategory.length === 0 ||
     selectedCategory.includes(topic_category)) &&
-  (selectedRelavance.length === 0 ||
+  (selectedRelavance.includes(ALL) ||
     selectedRelavance.includes(topic_category));
 
 // /**

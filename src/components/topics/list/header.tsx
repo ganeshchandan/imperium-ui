@@ -16,7 +16,7 @@ const TopicListheader = forwardRef<HTMLDivElement, ITopicListHeader>(
     return (
       <div className="list-header" ref={listHeaderRef}>
         <div className="category-name-image">
-          <label className="category-name">{selectedCategory[0] || ""}</label>
+          <label className="category-name">{selectedCategory}</label>
           <div className="category-image">
             <img
               src={viewType === TOPIC_LIST ? DispalyGrid : ListView}

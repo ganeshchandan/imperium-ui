@@ -1,5 +1,6 @@
 import { TSelectedPage, TViewType } from "@types";
-
+export const ALL = "All";
+export const RECENTLY_VIEWED_LABEL = "Recently Viewed";
 export const TOPIC_IMAGE = "TOPIC_";
 export const SHARE = "Share";
 export const BOOKMARK = "Bookmark";

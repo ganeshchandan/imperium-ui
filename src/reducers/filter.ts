@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { TFilterType } from "@types";
-import { CATEGOTY_FILTER_TYPE, RECENTLY_VIEWED } from "@constants";
+import { ALL, CATEGOTY_FILTER_TYPE, RECENTLY_VIEWED } from "@constants";
 
 export interface FilterState {
   showFilter: boolean;
@@ -15,7 +15,7 @@ const initialState: FilterState = {
   showFilter: false,
   selectedCategory: [],
   relevanceList: [],
-  selectedRelavance: [],
+  selectedRelavance: [ALL],
   showMenu: false,
   filterType: CATEGOTY_FILTER_TYPE,
 };
@@ -36,7 +36,7 @@ export const filterSlice = createSlice({
       state.showMenu = false;
     },
     setSelectedCategory: (state, action: PayloadAction<string[]>) => {
-      state.selectedRelavance = [];
+      state.selectedRelavance = [ALL];
       state.selectedCategory = action.payload;
       state.filterType = CATEGOTY_FILTER_TYPE;
       state.showMenu = false;

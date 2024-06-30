@@ -1,16 +1,11 @@
 import { FC } from "react";
-// import { Menu } from "@assets";
 import {
   CATEGOTY_FILTER_TYPE,
   EMPTY_STRING,
   RECENTLY_VIEWED,
 } from "@constants";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setRecentlyViewFilter,
-  setSelectedRelevance,
-  // setShowMenu,
-} from "@reducers";
+import { setRecentlyViewFilter, setSelectedRelevance } from "@reducers";
 import { useFilterTopic } from "@hooks";
 import { RootState } from "@store";
 import { ICategoryList } from "@types";
@@ -45,10 +40,6 @@ const CategoryList: FC<ICategoryList> = ({ categories, selectedRelevance }) => {
     filterTopics(updatedFilterType, selectedCategory, updateSelectedRelevance);
   };
 
-  // const handleShowMenu = () => {
-  //   dispatch(setShowMenu(true));
-  // };
-
   const handleRecentlyViewed = (event: any) => {
     event.stopPropagation();
     event.target.scrollIntoViewIfNeeded({ behavior: "smooth" });
@@ -56,9 +47,33 @@ const CategoryList: FC<ICategoryList> = ({ categories, selectedRelevance }) => {
     filterTopics(RECENTLY_VIEWED, [], []);
   };
 
+  const handleAllCategory = (event: any) => {
+    event.stopPropagation();
+    event.target.scrollIntoViewIfNeeded({ behavior: "smooth" });
+    const updatedFilterType =
+      filterType === RECENTLY_VIEWED ? CATEGOTY_FILTER_TYPE : filterType;
+    dispatch(
+      setSelectedRelevance({
+        selectedRelavance: [],
+        filterType: updatedFilterType,
+      })
+    );
+    filterTopics(updatedFilterType, selectedCategory, []);
+  };
+
   return (
     <div className="categories-pill-list">
       <div className="categories-pill">
+        <div
+          className={`category-pill ${
+            selectedRelevance.length === 0 && filterType !== RECENTLY_VIEWED
+              ? "category-pill-selected"
+              : ""
+          }`}
+          onClick={handleAllCategory}
+        >
+          All
+        </div>
         <div
           className={`category-pill ${
             filterType === RECENTLY_VIEWED ? "category-pill-selected" : ""

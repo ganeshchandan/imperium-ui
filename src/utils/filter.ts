@@ -33,7 +33,7 @@ const bookmarkFilter = (
   { topic_category }: ITopic,
   { selectedRelavance = [] }: IGetFilteredTopics
 ) =>
-  selectedRelavance.length === 0 || selectedRelavance.includes(topic_category);
+  selectedRelavance.includes(ALL) || selectedRelavance.includes(topic_category);
 
 /**
  * returns true when the passed topic category is part of the seleceted categories.
@@ -48,18 +48,6 @@ const categoryFilter = (
     selectedCategory.includes(topic_category)) &&
   (selectedRelavance.includes(ALL) ||
     selectedRelavance.includes(topic_category));
-
-// /**
-//  * returns true when the passed topic value is recently Viewed.
-//  * @param Topic as a input
-//  * @param selectedRelavance as input
-//  */
-// const recentlyViewed = (
-//   { topic_title }: ITopic,
-//   { recentlyViewedTopics = [] }: IGetFilteredTopics
-// ) => {
-//   return recentlyViewedTopics.includes(topic_title);
-// };
 
 /**
  * Filter function mapper, key will be type fiter and value will be corresponding filter condition logic method

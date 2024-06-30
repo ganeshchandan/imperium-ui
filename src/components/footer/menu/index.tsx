@@ -1,18 +1,11 @@
-import {
-  SearchIcon,
-  Filter,
-  Close,
-  UserIcon,
-  PinnedFooter,
-  Menu,
-} from "@assets";
+import { Close, UserIcon, Menu } from "@assets";
 import { useBookmarkAction } from "@hooks";
 import { setShowFilter, setShowMenu, setSearchBox } from "@reducers";
 import { FC, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store";
-import { SEARCH, FILTER, USER, PINNED } from "../../constants";
-import IconWithName from "../common/icon-with-name";
+import { RootState } from "../../../store";
+import { SEARCH, FILTER, USER, PINNED } from "../../../constants";
+import MenuIcon from "./icon";
 
 interface ICategoryMenu {}
 
@@ -54,36 +47,26 @@ const Footermenu: FC<ICategoryMenu> = () => {
   return (
     <div ref={showHideMenuRef} className="footer-menu-container">
       <div className="footer-icons">
-        <div className="footer-category-icon search-icon">
-          <IconWithName
-            name={SEARCH}
-            imageUrl={SearchIcon}
-            imageAlt={SEARCH}
-            onClick={handleSearchClick}
-          />
-        </div>
-        <div className="footer-category-icon pinned-icon">
-          <IconWithName
-            name={PINNED}
-            imageUrl={PinnedFooter}
-            imageAlt={PINNED}
-            onClick={filterBookmark}
-          />
-        </div>
-        <div className="footer-category-icon filter-icon">
-          <IconWithName
-            name={FILTER}
-            imageUrl={Filter}
-            imageAlt={FILTER}
-            onClick={handleFilterClick}
-          />
-        </div>
+        <MenuIcon
+          className="search-icon"
+          name={SEARCH}
+          onClick={handleSearchClick}
+        />
+        <MenuIcon
+          className="pinned-icon"
+          name={PINNED}
+          onClick={filterBookmark}
+        />
+        <MenuIcon
+          className="filter-icon"
+          name={FILTER}
+          onClick={handleFilterClick}
+        />
         <div className="footer-category-icon user-icon">
           <img src={UserIcon} alt={USER}></img>
         </div>
         <div></div>
       </div>
-
       <div className="footer-menu-icon">
         <img
           src={showMenu ? Close : Menu}

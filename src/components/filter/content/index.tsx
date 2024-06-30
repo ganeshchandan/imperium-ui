@@ -1,5 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import { CATEGORY_TAB, CATEGOTY_FILTER_TYPE, RELEVANCE_TAB } from "@constants";
+import {
+  ALL,
+  CATEGORY_TAB,
+  CATEGOTY_FILTER_TYPE,
+  RELEVANCE_TAB,
+} from "@constants";
 import { setSelectedCategory, setRelevanceList } from "@reducers";
 import { RootState } from "@store";
 import { FC } from "react";
@@ -26,7 +31,7 @@ const FilterRelevanceContent: FC<IFilterRelevanceContent> = ({
 
   const handleCategorySelection = (selectedItem: string[]) => {
     dispatch(setSelectedCategory(selectedItem));
-    filterTopics(CATEGOTY_FILTER_TYPE, selectedItem, []);
+    filterTopics(CATEGOTY_FILTER_TYPE, selectedItem, [ALL]);
   };
 
   const handleSelectedRelevance = (selectedItem: string[]) =>

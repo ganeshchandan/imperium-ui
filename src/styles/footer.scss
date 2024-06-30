@@ -164,12 +164,12 @@
                     background: var(--footer-menu-background);
                     animation-name: show-menu-bar;
                     animation-duration: 0.7s;
-                    animation-timing-function: linear;
+                    animation-timing-function: ease-in-out;
                     animation-fill-mode: forwards;
                     .footer-icons {
                         display: grid;
                         .footer-category-icon {
-                            transition: all 0.3s linear;
+                            transition: all 0.5s ease-in-out;
                         }
                         @container (min-width: 16.25rem) {
                             .search-icon,

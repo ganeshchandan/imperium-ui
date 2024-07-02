@@ -4,6 +4,7 @@ import { ITopicListHeader } from "@types";
 import { TOPIC_LIST, VIEW_TYPE_SWITCH } from "@constants";
 import { updateApplicationView } from "@reducers";
 import { DispalyGrid, ListView } from "@assets";
+import IconWithName from "../../common/icon-with-name";
 
 const TopicListheader = forwardRef<HTMLDivElement, ITopicListHeader>(
   ({ selectedCategory, viewType }, listHeaderRef) => {
@@ -17,13 +18,12 @@ const TopicListheader = forwardRef<HTMLDivElement, ITopicListHeader>(
       <div className="list-header" ref={listHeaderRef}>
         <div className="category-name-image">
           <label className="category-name">{selectedCategory}</label>
-          <div className="category-image">
-            <img
-              src={viewType === TOPIC_LIST ? DispalyGrid : ListView}
-              alt="dispaly-type"
-              onClick={viewTypeSwitch}
-            />
-          </div>
+          <IconWithName
+            className="category-image"
+            imageUrl={viewType === TOPIC_LIST ? DispalyGrid : ListView}
+            imageAlt="dispaly-type"
+            onClick={viewTypeSwitch}
+          />
         </div>
       </div>
     );

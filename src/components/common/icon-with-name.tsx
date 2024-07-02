@@ -1,7 +1,7 @@
 import { SyntheticEvent, useRef } from "react";
 
 interface IIconWithName {
-  name: string;
+  name?: string;
   imageUrl: string;
   imageAlt: string;
   className?: string;
@@ -36,7 +36,7 @@ const IconWithName = ({
       ref={buttonRef}
     >
       <img src={imageUrl} alt={imageAlt}></img>
-      <label>{name}</label>
+      {name && <label>{name}</label>}
     </div>
   );
 };

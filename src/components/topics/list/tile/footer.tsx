@@ -14,14 +14,19 @@ const TopicTileFooter: FC<ITopicTileFooter> = ({ topic, bookmarkDetails }) => {
   };
 
   const onTouchStart = (event: SyntheticEvent<HTMLDivElement>) => {
+    event.isPersistent();
     event.stopPropagation();
+    event.preventDefault();
   };
 
   return (
     <div className="topic-metadata">
       <div className="saved-date-read-time">{`${topic_saved_date}`}</div>
       {isLoading ? (
-        <div onClick={onTouchStart} onTouchStart={onTouchStart}>
+        <div
+          onClick={onTouchStart}
+          onTouchStart={onTouchStart.bind({ passive: false })}
+        >
           <div className="dot-loader">
             <div className="dot dot-1" />
             <div className="dot dot-2" />
@@ -31,9 +36,9 @@ const TopicTileFooter: FC<ITopicTileFooter> = ({ topic, bookmarkDetails }) => {
       ) : (
         <div
           className="favorite-icon"
-          onClick={onTouchStart}
-          onTouchEnd={handleBookmark}
-          onTouchStart={onTouchStart}
+          onClick={onTouchStart.bind({ passive: false })}
+          onTouchEnd={handleBookmark.bind({ passive: false })}
+          onTouchStart={onTouchStart.bind({ passive: false })}
         >
           <img
             src={bookmark_id ? PinnedIconSaved : PinnedIcon}

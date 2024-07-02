@@ -122,6 +122,24 @@ body,
     }
   }
 
+  @keyframes icon-click {
+    0% {
+      transform: rotate(10deg) scale(1);
+    }
+    25% {
+      transform: rotate(-10deg) scale(1.05);
+    }
+    50% {
+      transform: rotate(10deg) scale(1.1);
+    }
+    75% {
+      transform: rotate(-10deg) scale(1.05);
+    }
+    100% {
+      transform: rotate(0deg) scale(1);
+    }
+  }
+
   .app {
     height: 100%;
     width: 100%;
@@ -134,16 +152,30 @@ body,
         z-index: 2;
       }
       &.button-clicked {
-        &::before {
-          content: "";
-          position: absolute;
-          border-radius: 50%;
-          z-index: 1;
-          animation-name: button-click-css;
-          animation-duration: 0.5s;
-          animation-timing-function: ease;
-          aspect-ratio: 1;
-        }
+        animation-name: icon-click;
+        animation-duration: 0.5s;
+        animation-timing-function: ease;
+        // &::before {
+        //   content: "";
+        //   position: absolute;
+        //   border-radius: 50%;
+        //   z-index: 1;
+        //   aspect-ratio: 1;
+        // }
+      }
+    }
+    .category-image {
+      &.button-clicked {
+        animation-name: icon-click;
+        animation-duration: 0.5s;
+        animation-timing-function: ease;
+        // &::before {
+        //   content: "";
+        //   position: absolute;
+        //   border-radius: 50%;
+        //   z-index: 1;
+        //   aspect-ratio: 1;
+        // }
       }
     }
     .app-loading {

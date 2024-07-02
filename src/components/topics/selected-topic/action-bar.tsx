@@ -22,11 +22,17 @@ const ActionBar = ({
 
   return (
     <div className="selected-topic-actionbar">
-      <img
+      {/* <img
         src={BackArrow}
         alt="Back to topic List"
         onClick={backToTopicList}
         // onTouchEnd={backToTopicList}
+        className="back-to-topic-list"
+      /> */}
+      <IconWithName
+        imageUrl={BackArrow}
+        imageAlt={"Back to topic List"}
+        onClick={backToTopicList}
         className="back-to-topic-list"
       />
       {enableBookmarkAndShare && (

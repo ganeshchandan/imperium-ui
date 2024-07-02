@@ -16,7 +16,10 @@ const IconWithName = ({
   onClick,
 }: IIconWithName) => {
   const buttonRef = useRef<HTMLDivElement>(null);
-  const buttonClickRef = useRef<{ timer?: NodeJS.Timeout }>({});
+  const buttonClickRef = useRef<{
+    timer?: NodeJS.Timeout;
+    clickTimeOut?: NodeJS.Timeout;
+  }>({});
 
   const handleOnClick = (event: SyntheticEvent<HTMLDivElement>) => {
     if (buttonRef.current) {
@@ -26,7 +29,9 @@ const IconWithName = ({
         clearTimeout(buttonClickRef.current.timer);
       }, 1000);
     }
-    onClick?.(event);
+    buttonClickRef.current.clickTimeOut = setTimeout(() => {
+      onClick?.(event);
+    }, 100);
   };
 
   return (

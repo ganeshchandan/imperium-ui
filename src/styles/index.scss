@@ -139,6 +139,15 @@ body,
       transform: rotate(0deg) scale(1);
     }
   }
+  @keyframes back-arrow-click {
+    from {
+      transform: translate3d(0px, 0px, 0px) scale(1);
+    }
+
+    to {
+      transform: translate3d(-10px, 0px, 0px) scale(1.1);
+    }
+  }
 
   .app {
     height: 100%;
@@ -151,17 +160,33 @@ body,
       label {
         z-index: 2;
       }
-      &.button-clicked {
-        animation-name: icon-click;
-        animation-duration: 0.5s;
-        animation-timing-function: ease;
-        // &::before {
-        //   content: "";
-        //   position: absolute;
-        //   border-radius: 50%;
-        //   z-index: 1;
-        //   aspect-ratio: 1;
-        // }
+      &:not(.back-to-topic-list) {
+        &.button-clicked {
+          animation-name: icon-click;
+          animation-duration: 0.5s;
+          animation-timing-function: ease;
+          // &::before {
+          //   content: "";
+          //   position: absolute;
+          //   border-radius: 50%;
+          //   z-index: 1;
+          //   aspect-ratio: 1;
+          // }
+        }
+      }
+      &.back-to-topic-list {
+        &.button-clicked {
+          animation-name: back-arrow-click;
+          animation-duration: 0.5s;
+          animation-timing-function: ease;
+          // &::before {
+          //   content: "";
+          //   position: absolute;
+          //   border-radius: 50%;
+          //   z-index: 1;
+          //   aspect-ratio: 1;
+          // }
+        }
       }
     }
     .category-image {

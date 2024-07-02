@@ -14,7 +14,6 @@ const TopicTileFooter: FC<ITopicTileFooter> = ({ topic, bookmarkDetails }) => {
   };
 
   const onTouchStart = (event: SyntheticEvent<HTMLDivElement>) => {
-    event.isPersistent();
     event.stopPropagation();
     event.preventDefault();
   };

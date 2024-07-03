@@ -10,7 +10,6 @@ export interface TopicState {
   filteredTopics: ITopic[];
   selectedTopic: ISelectedTopic;
   categories: string[];
-  isSearchBox: boolean;
   bookmarkedTopics: IBookmarkedTopics;
   recentlyViewedTopics: ITopic[];
 }
@@ -37,7 +36,7 @@ const initialState: TopicState = {
     bookmark_id: null,
     topic_link: "",
   },
-  isSearchBox: false,
+
   bookmarkedTopics: {},
   recentlyViewedTopics: [],
 };
@@ -49,9 +48,7 @@ export const topicSlice = createSlice({
     setLoading: (state, action: PayloadAction<boolean>) => {
       state.isLoading = action.payload;
     },
-    setSearchBox: (state, action: PayloadAction<boolean>) => {
-      state.isSearchBox = action.payload;
-    },
+
     loadTopcis: (
       state,
       action: PayloadAction<{
@@ -105,7 +102,6 @@ export const {
   setFilteredTopics,
   updateTopicsBookmarkId,
   setLoading,
-  setSearchBox,
 } = topicSlice.actions;
 
 export default topicSlice.reducer;

@@ -1,4 +1,3 @@
-// import { SwipeArrow } from "@assets";
 import { isSwipeActionModal, setSwipeActionModal } from "../../../utils/app";
 import { useEffect, useState } from "react";
 

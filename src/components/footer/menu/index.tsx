@@ -1,11 +1,12 @@
-import { Close, UserIcon, Menu } from "@assets";
+import { Close, Menu } from "@assets";
 import { useBookmarkAction } from "@hooks";
 import { setShowFilter, setShowMenu, setSearchBox } from "@reducers";
 import { FC, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../store";
-import { SEARCH, FILTER, USER, PINNED } from "../../../constants";
+import { SEARCH, FILTER, PINNED } from "../../../constants";
 import MenuIcon from "./icon";
+import FooteruserIcon from "./user-icon";
 
 interface ICategoryMenu {}
 
@@ -62,9 +63,7 @@ const Footermenu: FC<ICategoryMenu> = () => {
           name={FILTER}
           onClick={handleFilterClick}
         />
-        <div className="footer-category-icon user-icon">
-          <img src={UserIcon} alt={USER}></img>
-        </div>
+        <FooteruserIcon />
         <div></div>
       </div>
       <div className="footer-menu-icon">

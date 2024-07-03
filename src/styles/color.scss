@@ -13,6 +13,7 @@ $gray_2: #717171;
 $gray_3: #737373;
 $gray_4: #8e8e8e;
 $gray_5: #303d68;
+$gray_6: #7f8bb0;
 
 :root {
     --app-background-color: #{$blue};
@@ -75,4 +76,10 @@ $gray_5: #303d68;
     --search-box-clear-text-color: #{$bule_04};
     --search-box-clear-diable-text: #{$gray_5};
     --swipe-action-color: #{$white};
+
+    --user-profile-back-ground: #{$blue};
+    --user-profile-name: #{$white};
+    --user-profile-action-test-color: #{$white};
+    --user-profile-app-version: #{$gray_6};
+    --user-profile-close-icon-background: linear-gradient(127.68deg, #ff409a 14.19%, #c438ef 101.67%);
 }

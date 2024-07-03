@@ -14,14 +14,33 @@ const TopicList = ({
 }: ITopicList) => {
   const topicTileRef = useRef({ isViewScrolling: false });
   const { selectTopic } = useSelectTopic();
+  const topicListRef = useRef<HTMLDivElement>(null);
+  const topicTimerRef = useRef<{
+    clickTrigger?: NodeJS.Timeout;
+    restoreAnimation?: NodeJS.Timeout;
+  }>({});
 
   const { topic_title, topic_short_description, topic_image, topic_id } = topic;
 
   const handleTopicSelect = () => {
-    if (!topicTileRef.current.isViewScrolling) {
-      selectTopic(topicIndex, CLICK);
+    if (topicListRef.current) {
+      topicListRef.current.classList.add("list-seleceted");
+      topicTimerRef.current.clickTrigger = setTimeout(() => {
+        clearTimeout(topicTimerRef.current.clickTrigger);
+        if (!topicTileRef.current.isViewScrolling) {
+          selectTopic(topicIndex, CLICK);
+        }
+        topicTileRef.current.isViewScrolling = false;
+        restoreAnimation();
+      }, 200);
     }
-    topicTileRef.current.isViewScrolling = false;
+  };
+
+  const restoreAnimation = () => {
+    topicTimerRef.current.restoreAnimation = setTimeout(() => {
+      topicListRef.current?.classList.remove("list-seleceted");
+      clearTimeout(topicTimerRef.current.restoreAnimation);
+    }, 300);
   };
 
   const handleTouchMove = () => {
@@ -35,6 +54,7 @@ const TopicList = ({
       onTouchEnd={handleTopicSelect}
       onTouchMove={handleTouchMove}
       key={topic_id}
+      ref={topicListRef}
     >
       <div className="topic-details">
         <TopicImage topic_image={topic_image} />

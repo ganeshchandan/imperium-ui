@@ -107,6 +107,11 @@
                     animation-timing-function: ease-in-out;
                     cursor: pointer;
                     transition: all 0.5s ease-in-out;
+                    scale: 1;
+
+                    &.list-seleceted {
+                        scale: 1.1;
+                    }
 
                     .topic-details {
                         display: grid;

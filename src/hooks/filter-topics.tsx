@@ -1,16 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@store";
-import {
-  setFilteredTopics,
-  setSearchBox,
-  setSearchFilterType,
-} from "@reducers";
+import { setFilteredTopics, setSearchBox, setFilterType } from "@reducers";
 import {
   getFilteredTopics,
   getSortedTopics,
   getTopicListForFilterType,
 } from "../utils/app";
 import { TFilterType, TSearchByColumn } from "@types";
+import { SEARCH_FILTER_TYPE } from "@constants";
 
 export const useFilterTopic = () => {
   const { topics, bookmarkedTopics, recentlyViewedTopics } = useSelector(
@@ -44,7 +41,7 @@ export const useFilterTopic = () => {
     searchBy: TSearchByColumn
   ) => {
     dispatch(setSearchBox(false));
-    dispatch(setSearchFilterType());
+    dispatch(setFilterType({ filterType: SEARCH_FILTER_TYPE }));
     dispatch(
       setFilteredTopics(
         getFilteredTopics(filterType, topics, {

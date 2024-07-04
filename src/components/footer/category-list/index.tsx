@@ -6,7 +6,7 @@ import {
   RECENTLY_VIEWED_LABEL,
 } from "@constants";
 import { useDispatch, useSelector } from "react-redux";
-import { setRecentlyViewFilter, setSelectedRelevance } from "@reducers";
+import { setFilterType, setSelectedRelevance } from "@reducers";
 import { useFilterTopic } from "@hooks";
 import { RootState } from "@store";
 import { ICategoryList } from "@types";
@@ -21,7 +21,7 @@ const CategoryList: FC<ICategoryList> = ({ categories, selectedRelevance }) => {
   );
 
   const handleRecentlyViewed = () => {
-    dispatch(setRecentlyViewFilter());
+    dispatch(setFilterType({ filterType: RECENTLY_VIEWED }));
     filterTopics(RECENTLY_VIEWED, [], []);
   };
 

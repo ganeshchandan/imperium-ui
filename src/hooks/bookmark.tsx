@@ -96,7 +96,7 @@ export const useBookmarkAction = () => {
       []
     );
 
-    dispatch(setFilterType(updateFilter));
+    dispatch(setFilterType({ filterType: updateFilter }));
     dispatch(
       setFilteredTopics(
         getFilteredTopics(updateFilter, topicLists, {

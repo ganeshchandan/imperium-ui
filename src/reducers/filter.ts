@@ -1,11 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { TFilterType } from "@types";
-import {
-  ALL,
-  CATEGOTY_FILTER_TYPE,
-  RECENTLY_VIEWED,
-  SEARCH_FILTER_TYPE,
-} from "@constants";
+import { ALL, CATEGOTY_FILTER_TYPE } from "@constants";
 
 export interface FilterState {
   showFilter: boolean;
@@ -29,8 +24,14 @@ export const filterSlice = createSlice({
   name: "filter",
   initialState,
   reducers: {
-    setFilterType: (state, action: PayloadAction<TFilterType>) => {
-      state.filterType = action.payload;
+    setFilterType: (
+      state,
+      action: PayloadAction<{ filterType: TFilterType }>
+    ) => {
+      const { filterType } = action.payload;
+      state.selectedRelavance = [];
+      state.filterType = filterType;
+      state.showMenu = false;
     },
     setShowFilter: (state, action: PayloadAction<boolean>) => {
       state.showFilter = action.payload;
@@ -44,16 +45,6 @@ export const filterSlice = createSlice({
       state.selectedRelavance = [ALL];
       state.selectedCategory = action.payload;
       state.filterType = CATEGOTY_FILTER_TYPE;
-      state.showMenu = false;
-    },
-    setRecentlyViewFilter: (state) => {
-      state.selectedRelavance = [];
-      state.filterType = RECENTLY_VIEWED;
-      state.showMenu = false;
-    },
-    setSearchFilterType: (state) => {
-      state.selectedRelavance = [];
-      state.filterType = SEARCH_FILTER_TYPE;
       state.showMenu = false;
     },
     setRelevanceList: (state, action: PayloadAction<string[]>) => {
@@ -85,8 +76,6 @@ export const {
   setShowMenu,
   setInitialDetails,
   setFilterType,
-  setRecentlyViewFilter,
-  setSearchFilterType,
 } = filterSlice.actions;
 
 export default filterSlice.reducer;

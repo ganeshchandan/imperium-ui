@@ -6,12 +6,12 @@ import {
   getBookmarkTopicId,
   getFilteredTopics,
   getTopicListForFilterType,
-  updateBookmarkedTopics,
 } from "../utils/app";
 import {
   setFilteredTopics,
-  updateTopicsBookmarkId,
+  initiateBookmarkAction,
   setFilterType,
+  completeBookMarkAction,
 } from "@reducers";
 import {
   ADD_ACTION,
@@ -22,7 +22,7 @@ import {
 } from "@constants";
 
 export const useBookmarkAction = () => {
-  const { topics, bookmarkedTopics, filteredTopics } = useSelector(
+  const { topics, bookmarkedTopics } = useSelector(
     (state: RootState) => state.topic
   );
   const { selectedCategory, selectedRelavance, filterType } = useSelector(
@@ -36,17 +36,14 @@ export const useBookmarkAction = () => {
     bookmarkedTopic: IBookmarkedTopic
   ) => {
     dispatch(
-      updateTopicsBookmarkId(
-        updateBookmarkedTopics(actionType, {
-          filterType,
-          topicTitle,
-          bookmarkedTopics,
-          filteredTopics,
-          selectedCategory,
-          selectedRelavance,
-          bookmarkedTopic,
-        })
-      )
+      completeBookMarkAction({
+        actionType,
+        filterType,
+        topicTitle,
+        selectedCategory,
+        selectedRelavance,
+        bookmarkedTopic,
+      })
     );
   };
 
@@ -57,11 +54,9 @@ export const useBookmarkAction = () => {
       topic_title
     );
 
-    // dispatch(setLoading(true));
     dispatch(
-      updateTopicsBookmarkId({
+      initiateBookmarkAction({
         bookmarkedTopics: {
-          ...bookmarkedTopics,
           [topic_title]: {
             ...topic,
             isLoading: true,
@@ -69,6 +64,7 @@ export const useBookmarkAction = () => {
         },
       })
     );
+
     if (bookmarkId) {
       deleteBookmark(bookmarkId).then(() => {
         handleUpdateBookmarkId(

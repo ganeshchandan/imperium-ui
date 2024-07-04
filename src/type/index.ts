@@ -59,3 +59,4 @@ export type TViewType = "topic-grid" | "topic-list";
 export type TSearchResults = { searchBy: TSearchByColumn; searchvalue: string };
 
 export * from "./components";
+export * from "./reducers";

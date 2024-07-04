@@ -1,4 +1,4 @@
-import { ISelectedTopic, TSelectedPage, TViewType } from "@types";
+import { ISelectedTopic, TSelectedPage, TViewType, TopicState } from "@types";
 export const ALL = "All";
 export const RECENTLY_VIEWED_LABEL = "Recently Viewed";
 export const SEARCH_RESULTS = "Search results";
@@ -65,4 +65,14 @@ export const DEFAULT_SELECTED_TOPIC: ISelectedTopic = {
   author: "",
   bookmark_id: null,
   topic_link: "",
+};
+export const DEFAULT_TOPIC_STATE: TopicState = {
+  isLoading: false,
+  isAppLoaded: false,
+  topics: [],
+  filteredTopics: [],
+  categories: [],
+  selectedTopic: DEFAULT_SELECTED_TOPIC,
+  bookmarkedTopics: {},
+  recentlyViewedTopics: [],
 };

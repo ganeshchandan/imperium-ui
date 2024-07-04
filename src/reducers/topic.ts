@@ -1,33 +1,19 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { ITopic, ISelectedTopic, IBookmarkedTopics } from "@types";
-import { updateRecentlyviewedTopicList } from "../utils/app";
-import { DEFAULT_SELECTED_TOPIC } from "@constants";
-
-export interface TopicState {
-  isLoading: boolean;
-  isAppLoaded: boolean;
-  topics: ITopic[];
-  filteredTopics: ITopic[];
-  selectedTopic: ISelectedTopic;
-  categories: string[];
-  bookmarkedTopics: IBookmarkedTopics;
-  recentlyViewedTopics: ITopic[];
-}
-
-const initialState: TopicState = {
-  isLoading: false,
-  isAppLoaded: false,
-  topics: [],
-  filteredTopics: [],
-  categories: [],
-  selectedTopic: DEFAULT_SELECTED_TOPIC,
-  bookmarkedTopics: {},
-  recentlyViewedTopics: [],
-};
+import {
+  ITopic,
+  ISelectedTopic,
+  IBookmarkedTopics,
+  ICompleteBookMarkAction,
+} from "@types";
+import {
+  updateBookmarkedTopics,
+  updateRecentlyviewedTopicList,
+} from "../utils/app";
+import { DEFAULT_TOPIC_STATE } from "@constants";
 
 export const topicSlice = createSlice({
   name: "topic",
-  initialState,
+  initialState: DEFAULT_TOPIC_STATE,
   reducers: {
     setLoading: (state, action: PayloadAction<boolean>) => {
       state.isLoading = action.payload;
@@ -48,7 +34,7 @@ export const topicSlice = createSlice({
       state.categories = categories;
       state.bookmarkedTopics = bookmarked;
     },
-    updateTopicsBookmarkId: (
+    initiateBookmarkAction: (
       state,
       action: PayloadAction<{
         bookmarkedTopics: IBookmarkedTopics;
@@ -56,7 +42,10 @@ export const topicSlice = createSlice({
       }>
     ) => {
       const { bookmarkedTopics, filteredTopics } = action.payload;
-      state.bookmarkedTopics = bookmarkedTopics;
+      state.bookmarkedTopics = {
+        ...state.bookmarkedTopics,
+        ...bookmarkedTopics,
+      };
       if (filteredTopics) {
         state.filteredTopics = filteredTopics;
       }
@@ -89,6 +78,23 @@ export const topicSlice = createSlice({
       }
       state.filteredTopics = filteredTopics;
     },
+    completeBookMarkAction: (
+      state,
+      action: PayloadAction<ICompleteBookMarkAction>
+    ) => {
+      const { actionType } = action.payload;
+
+      const { filteredTopics, bookmarkedTopics } = updateBookmarkedTopics(
+        actionType,
+        {
+          bookmarkedTopics: state.bookmarkedTopics,
+          filteredTopics: state.filteredTopics,
+          ...action.payload,
+        }
+      );
+      state.bookmarkedTopics = bookmarkedTopics;
+      state.filteredTopics = filteredTopics;
+    },
   },
 });
 
@@ -97,7 +103,8 @@ export const {
   loadTopcis,
   setSelectedTopic,
   setFilteredTopics,
-  updateTopicsBookmarkId,
+  initiateBookmarkAction,
+  completeBookMarkAction,
   setLoading,
 } = topicSlice.actions;
 

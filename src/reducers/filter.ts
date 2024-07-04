@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { TFilterType } from "@types";
-import { ALL, CATEGOTY_FILTER_TYPE } from "@constants";
+import { ALL, CATEGOTY_FILTER_TYPE, RECENTLY_VIEWED } from "@constants";
 
 export interface FilterState {
   showFilter: boolean;
@@ -29,7 +29,7 @@ export const filterSlice = createSlice({
       action: PayloadAction<{ filterType: TFilterType }>
     ) => {
       const { filterType } = action.payload;
-      state.selectedRelavance = [ALL];
+      state.selectedRelavance = filterType === RECENTLY_VIEWED ? [] : [ALL];
       state.filterType = filterType;
       state.showMenu = false;
     },

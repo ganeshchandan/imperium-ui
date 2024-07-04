@@ -1,5 +1,3 @@
-import { ITopicSelectionType } from "../utils/swipe";
-
 export interface ITopic {
   author: string;
   topic_id: number;
@@ -57,6 +55,8 @@ export type TSearchByColumn = "topic_short_description" | "topic_title" | "";
 export type TViewType = "topic-grid" | "topic-list";
 
 export type TSearchResults = { searchBy: TSearchByColumn; searchvalue: string };
+
+export type ITopicSelectionType = "click" | "swipe_up" | "swipe_down";
 
 export * from "./components";
 export * from "./reducers";

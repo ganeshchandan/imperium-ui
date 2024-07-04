@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedTopic } from "@reducers";
 import { RootState } from "@store";
-import { getTopicIndex, ITopicSelectionType } from "../utils/swipe";
+import { getTopicIndex, ITopicSelectionType } from "@utils";
 import {
   BACK_PAGE_MAPPER,
   DETAILS_PAGE_SELECT,

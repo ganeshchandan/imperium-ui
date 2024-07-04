@@ -2,7 +2,7 @@ import { FC } from "react";
 import { RootState } from "@store";
 import { useSelector } from "react-redux";
 import { useSelectTopic } from "@hooks";
-import { getBookmarkTopicId } from "../../../utils/app";
+import { getBookmarkTopicId } from "@utils";
 import ActionBar from "./action-bar";
 import SwipeActions from "./swipe-actions";
 import SwipeTopicLists from "./topic-lists-swipe";

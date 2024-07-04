@@ -64,8 +64,3 @@ export const getTopicListHeader = (
   filterType: TFilterType,
   selectedRelavance: string[]
 ) => FILTER_TYPE_HEADER_MAP[filterType] || selectedRelavance?.[0] || "";
-
-export * from "./swipe";
-export * from "./filter";
-export * from "./bookmark";
-export * from "./search";

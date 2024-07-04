@@ -5,7 +5,7 @@ import { ReactNode, useCallback, useRef } from "react";
 import AppFooter from "../../footer";
 import TopicListheader from "./header";
 import EmptyList from "../empty-list";
-import { getBookmarkTopicId, getTopicListHeader } from "../../../utils/app";
+import { getBookmarkTopicId, getTopicListHeader } from "@utils";
 
 const TopicList = () => {
   const listHeaderRef = useRef<HTMLDivElement>(null);

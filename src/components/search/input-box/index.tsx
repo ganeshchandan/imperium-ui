@@ -5,7 +5,7 @@ import { RootState } from "@store";
 import { SearchIcon, Close } from "@assets";
 import { useFilterTopic } from "@hooks";
 import SearchBoxIcons from "../icons";
-import { getSearchResults } from "../../../utils/app";
+import { getSearchResults } from "@utils";
 import { SEARCH_FILTER_TYPE } from "@constants";
 import ClearButton from "./clear-button";
 

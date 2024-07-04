@@ -4,7 +4,7 @@ import { useSelectTopic } from "@hooks";
 import { SWIPE_DOWN, SWIPE_UP } from "@constants";
 import SwipeComponent from "../../Swipe";
 import Topics from "./topics";
-import { ITopicSelectionType, selectedTopicHandler } from "../../../utils/app";
+import { ITopicSelectionType, selectedTopicHandler } from "@utils";
 import { useSelector } from "react-redux";
 import { RootState } from "@store";
 

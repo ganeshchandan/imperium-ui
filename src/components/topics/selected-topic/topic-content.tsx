@@ -1,6 +1,6 @@
 import { ISelectedTopic } from "@types";
 import { FC } from "react";
-import { formatDescription } from "../../../utils/app";
+import { formatDescription } from "@utils";
 
 const Topic: FC<{
   selectedTopic: ISelectedTopic;

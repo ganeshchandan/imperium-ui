@@ -5,10 +5,7 @@ import {
   IBookmarkedTopics,
   ICompleteBookMarkAction,
 } from "@types";
-import {
-  updateBookmarkedTopics,
-  updateRecentlyviewedTopicList,
-} from "../utils/app";
+import { updateRecentlyviewedTopicList, updateBookmarkedTopics } from "@utils";
 import { DEFAULT_TOPIC_STATE } from "@constants";
 
 export const topicSlice = createSlice({

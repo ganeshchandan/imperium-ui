@@ -12,6 +12,7 @@ export default defineConfig({
       { find: "@store", replacement: "/src/store" },
       { find: "@reducers", replacement: "/src/reducers" },
       { find: "@assets", replacement: "/src/assets" },
+      { find: "@utils", replacement: "/src/utils" },
     ],
   },
   plugins: [

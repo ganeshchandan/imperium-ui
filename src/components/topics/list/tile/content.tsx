@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { formatDescription } from "../../../../utils/app";
+import { formatDescription } from "@utils";
 import { ITopicTileContent } from "@types";
 
 const TopicTileContent: FC<ITopicTileContent> = ({

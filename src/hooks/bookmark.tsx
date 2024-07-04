@@ -6,7 +6,7 @@ import {
   getBookmarkTopicId,
   getFilteredTopics,
   getTopicListForFilterType,
-} from "../utils/app";
+} from "@utils";
 import {
   setFilteredTopics,
   initiateBookmarkAction,

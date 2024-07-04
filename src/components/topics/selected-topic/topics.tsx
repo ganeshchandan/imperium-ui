@@ -1,5 +1,5 @@
 import { RootState } from "@store";
-import { getPreviousAndNextTopic } from "../../../utils/app";
+import { getPreviousAndNextTopic } from "@utils";
 import Topic from "./topic-content";
 import { useSelector } from "react-redux";
 import { ISelectedTopic } from "@types";

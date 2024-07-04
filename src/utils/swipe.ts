@@ -1,4 +1,4 @@
-import { ITopic, TSwipeIndesFinder } from "@types";
+import { ITopic, ITopicSelectionType, TSwipeIndesFinder } from "@types";
 
 export const swipeDownTopicId: TSwipeIndesFinder = (
   topicIndex,
@@ -34,8 +34,6 @@ export const TOPIC_INDEX_GETTER: {
   swipe_up: swipeUpTopicId,
   swipe_down: swipeDownTopicId,
 };
-
-export type ITopicSelectionType = "click" | "swipe_up" | "swipe_down";
 
 export const getTopicIndex = (
   topicIndex: number,

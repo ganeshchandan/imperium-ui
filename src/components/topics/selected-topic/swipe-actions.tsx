@@ -1,4 +1,4 @@
-import { isSwipeActionModal, setSwipeActionModal } from "../../../utils/app";
+import { isSwipeActionModal, setSwipeActionModal } from "@utils";
 import { useEffect, useState } from "react";
 
 const SwipeAction = ({

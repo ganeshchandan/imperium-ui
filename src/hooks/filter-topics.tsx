@@ -5,7 +5,7 @@ import {
   getFilteredTopics,
   getSortedTopics,
   getTopicListForFilterType,
-} from "../utils/app";
+} from "@utils";
 import { ISelectedTopic, TFilterType, TSearchByColumn } from "@types";
 import { DETAILS_PAGE_SELECT, SEARCH_FILTER_TYPE } from "@constants";
 

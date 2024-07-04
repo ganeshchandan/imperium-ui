@@ -47,7 +47,7 @@ const ActionBar = ({
           ) : (
             <IconWithName
               name={PINNED}
-              imageUrl={bookmark_id ? PinnedFooter : PinnedIconSaved}
+              imageUrl={bookmark_id ? PinnedIconSaved : PinnedFooter}
               imageAlt={BOOKMARK}
               onClick={handleBookmark}
             />

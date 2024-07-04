@@ -1,7 +1,7 @@
 import { ICategoryPill } from "@types";
 import { FC } from "react";
 
-const CategoryPill: FC<ICategoryPill> = ({
+const RelevancePill: FC<ICategoryPill> = ({
   category,
   isSelected,
   onSelect,
@@ -13,7 +13,9 @@ const CategoryPill: FC<ICategoryPill> = ({
   };
   return (
     <div
-      className={`category-pill ${isSelected ? "category-pill-selected" : ""}`}
+      className={`relevance-pill ${
+        isSelected ? "relevance-pill-selected" : ""
+      }`}
       onClick={handleCategoryPillSelect}
     >
       {category}
@@ -21,4 +23,4 @@ const CategoryPill: FC<ICategoryPill> = ({
   );
 };
 
-export default CategoryPill;
+export default RelevancePill;

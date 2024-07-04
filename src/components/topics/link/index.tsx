@@ -11,9 +11,7 @@ const TopicLink = () => {
   const { topic_link } = selectedTopic;
   const { deselectTopic } = useSelectTopic();
 
-  useEffect(() => {
-    // readLinkData();
-  }, [topic_link]);
+  useEffect(() => {}, [topic_link]);
 
   // const readLinkData = async () => {
   //   if (topic_link !== "") {

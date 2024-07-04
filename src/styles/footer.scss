@@ -26,6 +26,19 @@
         opacity: 0;
     }
 
+    @mixin footer-menu-home-icon {
+        @include click-effect;
+        transition: all 0.5s ease-in-out;
+        height: 3.25rem;
+        width: 3.25rem;
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        border-radius: inherit;
+        position: absolute;
+        right: 0px;
+    }
+
     .topic-list-footer {
         position: absolute;
         width: 100%;
@@ -44,7 +57,7 @@
             height: 30px;
             top: -30px;
         }
-        .categories-pill-list {
+        .menu-bar {
             width: 100%;
             height: 3.25rem;
             box-sizing: border-box;
@@ -54,7 +67,16 @@
             justify-content: space-between;
             margin: auto;
             position: relative;
-            .categories-pill {
+            .search-home-icon {
+                @include footer-menu-home-icon;
+                justify-items: center;
+                border-radius: 50%;
+                background: var(--search-footer-home-icon-background);
+                > img {
+                    width: 50%;
+                }
+            }
+            .relevance-pills {
                 display: flex;
                 grid-gap: 0.625rem;
                 overflow: auto;
@@ -70,7 +92,7 @@
                     right: 3.25rem;
                 }
 
-                .category-pill {
+                .relevance-pill {
                     flex-shrink: 0;
                     display: grid;
                     align-items: center;
@@ -85,7 +107,7 @@
                     color: var(--category-pill-text);
                     transition: all 0.5s ease-in-out;
                     width: max-content;
-                    &.category-pill-selected {
+                    &.relevance-pill-selected {
                         background-color: var(--category-pill-selected-background);
                         color: var(--category-pill-selected-text);
                     }
@@ -106,16 +128,7 @@
                 transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
                 border-radius: 2.688rem;
                 .footer-menu-icon {
-                    @include click-effect;
-                    transition: all 0.5s ease-in-out;
-                    height: 3.25rem;
-                    width: 3.25rem;
-                    display: grid;
-                    align-items: center;
-                    justify-content: center;
-                    border-radius: inherit;
-                    position: absolute;
-                    right: 0px;
+                    @include footer-menu-home-icon;
                 }
                 .footer-icons {
                     display: grid;

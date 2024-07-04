@@ -60,7 +60,6 @@ export const topicSlice = createSlice({
       if (filteredTopics) {
         state.filteredTopics = filteredTopics;
       }
-      // state.isLoading = false;
     },
     setSelectedTopic: (
       state,

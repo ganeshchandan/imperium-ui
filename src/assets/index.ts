@@ -30,6 +30,7 @@ import PinnedIconImg from "./pinned.svg";
 import BackArrowImg from "./arrow-right.svg";
 import ShareIconImg from "./share.svg";
 import ArrowImg from "./arrow.svg";
+import HomeImg from "./home.svg";
 
 export const AppLogo = AppLogoImg;
 export const CheckboxSelected = CheckboxSelectedImg;
@@ -47,3 +48,4 @@ export const PinnedIcon = PinnedIconImg;
 export const BackArrow = BackArrowImg;
 export const ShareIcon = ShareIconImg;
 export const Arrow = ArrowImg;
+export const Home = HomeImg;

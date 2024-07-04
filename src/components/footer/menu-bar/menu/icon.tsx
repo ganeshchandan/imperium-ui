@@ -1,7 +1,7 @@
 import { FC } from "react";
-import IconWithName from "../../common/icon-with-name";
 import { Filter, PinnedFooter, SearchIcon } from "@assets";
 import { FILTER, PINNED, SEARCH } from "@constants";
+import IconWithName from "../../../common/icon-with-name";
 
 const NAME_IMAGE_RUL: { [key: string]: string } = {
   [SEARCH]: SearchIcon,

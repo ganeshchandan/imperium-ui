@@ -3,8 +3,8 @@ import { useBookmarkAction } from "@hooks";
 import { setShowFilter, setShowMenu, setSearchBox } from "@reducers";
 import { FC, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../../store";
-import { SEARCH, FILTER, PINNED } from "../../../constants";
+import { RootState } from "@store";
+import { SEARCH, FILTER, PINNED } from "@constants";
 import MenuIcon from "./icon";
 import FooteruserIcon from "./user-icon";
 

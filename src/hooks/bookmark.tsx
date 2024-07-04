@@ -97,13 +97,14 @@ export const useBookmarkAction = () => {
     );
 
     dispatch(setFilterType({ filterType: updateFilter }));
+    const filteredTopics = getFilteredTopics(updateFilter, topicLists, {
+      selectedCategory,
+      selectedRelavance,
+    });
     dispatch(
-      setFilteredTopics(
-        getFilteredTopics(updateFilter, topicLists, {
-          selectedCategory,
-          selectedRelavance,
-        })
-      )
+      setFilteredTopics({
+        filteredTopics,
+      })
     );
   };
 

@@ -9,7 +9,7 @@ const SearchMenuBar = () => {
 
   const handleOnClick = () => {
     dispatch(setSelectedCategory(categories));
-    dispatch(setFilteredTopics(topics));
+    dispatch(setFilteredTopics({ filteredTopics: topics }));
   };
 
   return (

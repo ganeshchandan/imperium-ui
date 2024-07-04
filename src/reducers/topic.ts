@@ -72,8 +72,22 @@ export const topicSlice = createSlice({
       );
       state.selectedTopic = selectedTopic;
     },
-    setFilteredTopics: (state, action: PayloadAction<ITopic[]>) => {
-      state.filteredTopics = action.payload;
+    setFilteredTopics: (
+      state,
+      action: PayloadAction<{
+        filteredTopics: ITopic[];
+        selectedTopic?: ISelectedTopic | null;
+      }>
+    ) => {
+      const { selectedTopic, filteredTopics } = action.payload;
+      if (selectedTopic) {
+        state.recentlyViewedTopics = updateRecentlyviewedTopicList(
+          state.recentlyViewedTopics,
+          selectedTopic
+        );
+        state.selectedTopic = selectedTopic;
+      }
+      state.filteredTopics = filteredTopics;
     },
   },
 });

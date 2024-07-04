@@ -1,12 +1,7 @@
+import { ISearchBoxIcons } from "@types";
 import { SyntheticEvent } from "react";
 
-const SearchBoxIcons = ({
-  src,
-  onClick,
-}: {
-  src: string;
-  onClick?: (event: SyntheticEvent<HTMLDivElement>) => void;
-}) => {
+const SearchBoxIcons = ({ src, onClick }: ISearchBoxIcons) => {
   const handleIconClick = (event: SyntheticEvent<HTMLDivElement>) => {
     onClick?.(event);
   };

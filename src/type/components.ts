@@ -86,3 +86,4 @@ export interface IActionBar {
   bookmarkDetails?: IBookmarkedTopic;
   enableBookmarkAndShare: boolean;
 }
+export * from "./search-input";

@@ -1,6 +1,6 @@
-import { ChangeEvent, useRef, KeyboardEvent, SyntheticEvent } from "react";
+import { ChangeEvent, useRef, KeyboardEvent } from "react";
 import { useSelector } from "react-redux";
-import { TSearchResults } from "@types";
+import { ISearchInput } from "@types";
 import { RootState } from "@store";
 import { SearchIcon, Close } from "@assets";
 import { useFilterTopic } from "@hooks";
@@ -14,12 +14,7 @@ const SearchInput = ({
   onCloseSearchBox,
   setSearchValue,
   setSearchResults,
-}: {
-  searchValue: string;
-  onCloseSearchBox: (event: SyntheticEvent<HTMLDivElement, Event>) => void;
-  setSearchValue: React.Dispatch<React.SetStateAction<string>>;
-  setSearchResults: React.Dispatch<React.SetStateAction<TSearchResults[]>>;
-}) => {
+}: ISearchInput) => {
   const { filterTopicsBySearch } = useFilterTopic();
 
   const searchRef = useRef<{ searchBoxTimer?: NodeJS.Timeout }>({});

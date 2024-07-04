@@ -5,8 +5,7 @@ import { ReactNode, useCallback, useRef } from "react";
 import AppFooter from "../../footer";
 import TopicListheader from "./header";
 import EmptyList from "../empty-list";
-import { getBookmarkTopicId } from "../../../utils/app";
-import { RECENTLY_VIEWED, RECENTLY_VIEWED_LABEL } from "@constants";
+import { getBookmarkTopicId, getTopicListHeader } from "../../../utils/app";
 
 const TopicList = () => {
   const listHeaderRef = useRef<HTMLDivElement>(null);
@@ -48,11 +47,7 @@ const TopicList = () => {
   return (
     <div className="topic-list-view">
       <TopicListheader
-        selectedCategory={
-          filterType === RECENTLY_VIEWED
-            ? RECENTLY_VIEWED_LABEL
-            : selectedRelavance[0]
-        }
+        selectedCategory={getTopicListHeader(filterType, selectedRelavance)}
         viewType={viewType}
         ref={listHeaderRef}
       />

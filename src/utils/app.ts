@@ -1,4 +1,5 @@
-import { IBookmarkedTopics, ITopic } from "@types";
+import { FILTER_TYPE_HEADER_MAP } from "@constants";
+import { IBookmarkedTopics, ITopic, TFilterType } from "@types";
 
 export const formatDescription = (html: string) => {
   const doc = new DOMParser().parseFromString(html, "text/html");
@@ -58,6 +59,11 @@ export const isSwipeActionModal = () =>
 
 export const setSwipeActionModal = () =>
   localStorage.setItem("hideSwipeActionModal", "true");
+
+export const getTopicListHeader = (
+  filterType: TFilterType,
+  selectedRelavance: string[]
+) => FILTER_TYPE_HEADER_MAP[filterType] || selectedRelavance?.[0] || "";
 
 export * from "./swipe";
 export * from "./filter";

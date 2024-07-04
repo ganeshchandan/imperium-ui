@@ -1,14 +1,10 @@
-import { TSearchResults } from "@types";
+import { ISearchClearButton } from "@types";
 
 const ClearButton = ({
   searchValue,
   setSearchValue,
   setSearchResults,
-}: {
-  searchValue: string;
-  setSearchValue: React.Dispatch<React.SetStateAction<string>>;
-  setSearchResults: React.Dispatch<React.SetStateAction<TSearchResults[]>>;
-}) => {
+}: ISearchClearButton) => {
   const resetSearchResult = (event: any) => {
     event.stopPropagation();
     setSearchValue("");

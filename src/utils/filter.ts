@@ -5,7 +5,7 @@ import {
   TFilterType,
 } from "@types";
 import { searchTopics } from "./search";
-import { ALL } from "@constants";
+import { ALL, RECENTLY_VIEWED } from "@constants";
 
 type ISortTopic = (topics: ITopic[]) => ITopic[];
 type TGetTopicListForFilterTypeMapper = (topics: {
@@ -58,7 +58,6 @@ const filterTypeFunctionMapper: {
   bookmark: bookmarkFilter,
   category: categoryFilter,
   search: searchTopics,
-  recentlyViewed: bookmarkFilter,
 };
 
 /**
@@ -81,6 +80,9 @@ export const getFilteredTopics = (
   topics: ITopic[],
   filterDetails: IGetFilteredTopics
 ) => {
+  if (filterType === RECENTLY_VIEWED) {
+    return topics;
+  }
   const filteredTopic = topics.filter((topic) => {
     return filterTypeFunctionMapper[filterType](topic, filterDetails);
   });

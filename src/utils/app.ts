@@ -50,7 +50,7 @@ export const updateRecentlyviewedTopicList = (
     ...recentlyViewedTopics,
   ];
 
-  return recentlyViewedTopics.splice(0, 20);
+  return recentlyViewedTopics.splice(0, 10);
 };
 
 export const isSwipeActionModal = () =>

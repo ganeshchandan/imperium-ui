@@ -1,4 +1,4 @@
-import { TSelectedPage, TViewType } from "@types";
+import { ISelectedTopic, TSelectedPage, TViewType } from "@types";
 export const ALL = "All";
 export const RECENTLY_VIEWED_LABEL = "Recently Viewed";
 export const TOPIC_IMAGE = "TOPIC_";
@@ -44,4 +44,22 @@ export const LINK_PAGE_SELECT = "link-page";
 export const BACK_PAGE_MAPPER: { [key: string]: TSelectedPage } = {
   [DETAILS_PAGE_SELECT]: LIST_PAGE_SELECT,
   [LINK_PAGE_SELECT]: DETAILS_PAGE_SELECT,
+};
+export const TOPIC_TITLE = "topic_title";
+export const TOPIC_DESCRIPTION = "topic_short_description";
+export const DEFAULT_SELECTED_TOPIC: ISelectedTopic = {
+  topicIndex: -1,
+  swipeType: "click",
+  selectedPage: LIST_PAGE_SELECT,
+  topic_id: 0,
+  topic_title: "",
+  topic_short_description: "",
+  topic_saved_date: "",
+  topic_read_time: "",
+  topic_category: "",
+  topic_image: "",
+  bookmarked_date: "",
+  author: "",
+  bookmark_id: null,
+  topic_link: "",
 };

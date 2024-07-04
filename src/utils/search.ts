@@ -1,3 +1,4 @@
+import { TOPIC_DESCRIPTION, TOPIC_TITLE } from "@constants";
 import { IGetFilteredTopics, ITopic, TSearchResults } from "@types";
 
 const searchHandler = (searchInput: string, searchValue: string) =>
@@ -29,10 +30,10 @@ export const getSearchResults = (topics: ITopic[], searchValue: string) => {
   const searchResults: TSearchResults[] = [];
   topics.forEach(({ topic_short_description, topic_title }) => {
     if (searchHandler(topic_title, searchValue)) {
-      searchResults.push({ searchBy: "topic_title", searchvalue: topic_title });
+      searchResults.push({ searchBy: TOPIC_TITLE, searchvalue: topic_title });
     } else if (searchHandler(topic_short_description, searchValue)) {
       searchResults.push({
-        searchBy: "topic_short_description",
+        searchBy: TOPIC_DESCRIPTION,
         searchvalue: topic_short_description,
       });
     }

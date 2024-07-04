@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { ITopic, ISelectedTopic, IBookmarkedTopics } from "@types";
 import { updateRecentlyviewedTopicList } from "../utils/app";
-import { LIST_PAGE_SELECT } from "@constants";
+import { DEFAULT_SELECTED_TOPIC } from "@constants";
 
 export interface TopicState {
   isLoading: boolean;
@@ -20,23 +20,7 @@ const initialState: TopicState = {
   topics: [],
   filteredTopics: [],
   categories: [],
-  selectedTopic: {
-    topicIndex: -1,
-    swipeType: "click",
-    selectedPage: LIST_PAGE_SELECT,
-    topic_id: 0,
-    topic_title: "",
-    topic_short_description: "",
-    topic_saved_date: "",
-    topic_read_time: "",
-    topic_category: "",
-    topic_image: "",
-    bookmarked_date: "",
-    author: "",
-    bookmark_id: null,
-    topic_link: "",
-  },
-
+  selectedTopic: DEFAULT_SELECTED_TOPIC,
   bookmarkedTopics: {},
   recentlyViewedTopics: [],
 };

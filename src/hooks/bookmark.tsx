@@ -15,6 +15,7 @@ import {
 } from "@reducers";
 import {
   ADD_ACTION,
+  ALL,
   BOOKMARK_FILTER_TYPE,
   CATEGOTY_FILTER_TYPE,
   DELETE_ACTION,
@@ -89,6 +90,7 @@ export const useBookmarkAction = () => {
       filterType !== BOOKMARK_FILTER_TYPE
         ? BOOKMARK_FILTER_TYPE
         : CATEGOTY_FILTER_TYPE;
+
     const topicLists = getTopicListForFilterType(
       updateFilter,
       topics,
@@ -97,10 +99,12 @@ export const useBookmarkAction = () => {
     );
 
     dispatch(setFilterType({ filterType: updateFilter }));
+
     const filteredTopics = getFilteredTopics(updateFilter, topicLists, {
       selectedCategory,
-      selectedRelavance,
+      selectedRelavance: [ALL],
     });
+
     dispatch(
       setFilteredTopics({
         filteredTopics,

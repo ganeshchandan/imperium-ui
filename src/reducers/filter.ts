@@ -29,7 +29,7 @@ export const filterSlice = createSlice({
       action: PayloadAction<{ filterType: TFilterType }>
     ) => {
       const { filterType } = action.payload;
-      state.selectedRelavance = [];
+      state.selectedRelavance = [ALL];
       state.filterType = filterType;
       state.showMenu = false;
     },

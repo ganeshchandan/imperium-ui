@@ -1,12 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedTopic } from "@reducers";
 import { RootState } from "@store";
-import { getTopicIndex, ITopicSelectionType } from "@utils";
+import { getTopicIndex } from "@utils";
 import {
   BACK_PAGE_MAPPER,
   DETAILS_PAGE_SELECT,
   LINK_PAGE_SELECT,
 } from "@constants";
+import { ITopicSelectionType } from "@types";
 
 export const useSelectTopic = () => {
   const dispatch = useDispatch();

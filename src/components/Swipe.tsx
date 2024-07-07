@@ -10,7 +10,10 @@ const Swipe: FC<{
 }> = ({ children, swipeRight, swipeUp, swipeDown, swipeLeft }) => {
   const handlers: SwipeableHandlers = useSwipeable({
     onSwipedLeft: () => swipeLeft?.(),
-    onSwipedRight: () => swipeRight?.(),
+    onSwipedRight: () => {
+      console.log("ganesh here");
+      swipeRight?.();
+    },
     onSwipedUp: () => swipeUp?.(),
     onSwipedDown: () => swipeDown?.(),
     trackMouse: true,

@@ -1,14 +1,14 @@
 import TopicLink from ".";
-import { useSelectTopic } from "../../../hooks/select-topic";
-import SwipeComponent from "../../Swipe";
+// import { useSelectTopic } from "../../../hooks/select-topic";
+// import SwipeComponent from "../../Swipe";
 
-const SwipeableLinkTopic = SwipeComponent(TopicLink);
+// const SwipeableLinkTopic = SwipeComponent(TopicLink);
 
 const SwipeableLinkPage = () => {
-  const { deselectTopic } = useSelectTopic();
+  // const { deselectTopic } = useSelectTopic();
   return (
     <div className="topic-link-content">
-      <SwipeableLinkTopic swipeRight={deselectTopic} />
+      <TopicLink />
     </div>
   );
 };

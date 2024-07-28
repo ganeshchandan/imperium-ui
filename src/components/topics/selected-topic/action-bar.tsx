@@ -1,7 +1,7 @@
 import { BOOKMARK, PINNED, SHARE } from "@constants";
 import { useBookmarkAction } from "@hooks";
 import { IActionBar } from "@types";
-import { BackArrow, ShareIcon, PinnedFooter, PinnedIconSaved } from "@assets";
+import { BackArrow, ShareIcon, PinnedFooter, PinSolid } from "@assets";
 import IconWithName from "../../common/icon-with-name";
 
 const ActionBar = ({
@@ -47,7 +47,7 @@ const ActionBar = ({
           ) : (
             <IconWithName
               name={PINNED}
-              imageUrl={bookmark_id ? PinnedIconSaved : PinnedFooter}
+              imageUrl={bookmark_id ? PinSolid : PinnedFooter}
               imageAlt={BOOKMARK}
               onClick={handleBookmark}
             />

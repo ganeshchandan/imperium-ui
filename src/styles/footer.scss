@@ -57,6 +57,13 @@
             height: 30px;
             top: -30px;
         }
+        &.search-filter {
+            &::before {
+                display: none;
+            }
+            background: transparent;
+            backdrop-filter: blur(3px);
+        }
         .menu-bar {
             width: 100%;
             height: 3.25rem;

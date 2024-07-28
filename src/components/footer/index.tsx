@@ -12,7 +12,7 @@ interface IAppFooter {
 const AppFooter: FC<IAppFooter> = ({ categories, selectedRelevance }) => {
   const filterType = useSelector((state: RootState) => state.filter.filterType);
   return (
-    <div className="topic-list-footer">
+    <div className={`topic-list-footer ${filterType}-filter`}>
       <div className="menu-bar">
         {filterType !== SEARCH_FILTER_TYPE ? (
           <CategoryList

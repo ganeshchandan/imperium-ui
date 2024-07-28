@@ -1,10 +1,10 @@
 import { FC, useRef } from "react";
-import { ISelectedTopic } from "@types";
+import { ISelectedTopic, ITopicSelectionType } from "@types";
 import { useSelectTopic } from "@hooks";
 import { SWIPE_DOWN, SWIPE_UP } from "@constants";
 import SwipeComponent from "../../Swipe";
 import Topics from "./topics";
-import { ITopicSelectionType, selectedTopicHandler } from "@utils";
+import { selectedTopicHandler } from "@utils";
 import { useSelector } from "react-redux";
 import { RootState } from "@store";
 

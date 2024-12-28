@@ -1,7 +1,6 @@
 import { FC, SyntheticEvent } from "react";
+import { CheckboxSelected, CheckBox } from "@assets";
 import "./checkbox.scss";
-import CheckboxSelected from "../../../assets/checkbox_selected.svg";
-import CheckBox from "../../../assets/checkbox.svg";
 
 interface ICheckBox {
   isSelected: boolean;

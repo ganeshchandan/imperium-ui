@@ -1,5 +1,5 @@
-import { ADD_ACTION, BOOKMARK_FILTER_TYPE, DELETE_ACTION } from "../constants";
-import { IBookmarkedTopic, IBookmarkedTopics, ITopic } from "../type";
+import { ADD_ACTION, BOOKMARK_FILTER_TYPE, DELETE_ACTION } from "@constants";
+import { IBookmarkedTopic, IBookmarkedTopics, ITopic } from "@types";
 import { getFilteredTopics, getTopicListForFilterType } from "./filter";
 
 interface IUpdateBookmarkedTopics {
@@ -44,7 +44,8 @@ const deleteBookmarkedTopic: TAddBookmarkedTopic = ({
     const topicLists = getTopicListForFilterType(
       filterType,
       filteredTopics,
-      updatedBookmarkedTopics
+      updatedBookmarkedTopics,
+      []
     );
 
     updatedFilteredTopics = getFilteredTopics(filterType, topicLists, {

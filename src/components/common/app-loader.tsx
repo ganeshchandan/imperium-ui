@@ -1,4 +1,4 @@
-import AppLogo from "../../assets/app_logo.gif";
+import { AppLogo } from "@assets";
 
 const AppLoader = () => {
   return (

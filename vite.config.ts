@@ -4,6 +4,17 @@ import { VitePWA } from "vite-plugin-pwa";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  resolve: {
+    alias: [
+      { find: "@constants", replacement: "/src/constants" },
+      { find: "@types", replacement: "/src/type" },
+      { find: "@hooks", replacement: "/src/hooks" },
+      { find: "@store", replacement: "/src/store" },
+      { find: "@reducers", replacement: "/src/reducers" },
+      { find: "@assets", replacement: "/src/assets" },
+      { find: "@utils", replacement: "/src/utils" },
+    ],
+  },
   plugins: [
     react(),
     VitePWA({
@@ -23,7 +34,7 @@ export default defineConfig({
         description: "",
         theme_color: "#ffffff",
         start_url: "/?fullscreen=true",
-        orientation: "portrait-primary",
+        orientation: "portrait",
         display: "fullscreen",
         icons: [
           {

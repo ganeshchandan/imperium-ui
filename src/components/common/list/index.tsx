@@ -1,7 +1,7 @@
 import { FC, SyntheticEvent } from "react";
 import RadioButton from "../radio-button";
 import "./list.scss";
-import { EMPTY_STRING } from "../../../constants";
+import { EMPTY_STRING } from "@constants";
 import Checkbox from "../checkbox";
 
 interface IList {

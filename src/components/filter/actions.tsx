@@ -1,10 +1,7 @@
 import { FC, SyntheticEvent } from "react";
-import { APPLY, CANCEL, EMPTY_STRING, RESET } from "../../constants";
+import { APPLY, CANCEL, EMPTY_STRING, RESET } from "@constants";
 import Button from "../common/button";
-
-interface IFilterRelevanceAction {
-  handleActionButtonClick: (action: string) => void;
-}
+import { IFilterRelevanceAction } from "@types";
 
 const FilterRelevanceAction: FC<IFilterRelevanceAction> = ({
   handleActionButtonClick,

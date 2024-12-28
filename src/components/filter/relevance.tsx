@@ -1,6 +1,6 @@
 import { FC, SyntheticEvent } from "react";
-import { IFilterByCategory } from "./content/container";
-import { EMPTY_STRING } from "../../constants";
+import { EMPTY_STRING } from "@constants";
+import { IFilterByCategory } from "@types";
 
 const Relevance: FC<IFilterByCategory> = ({
   listItems,

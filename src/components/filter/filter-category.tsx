@@ -1,6 +1,6 @@
 import { FC } from "react";
 import List from "../common/list";
-import { IFilterByCategory } from "./content/container";
+import { IFilterByCategory } from "@types";
 
 const FilterByCategory: FC<IFilterByCategory> = ({
   listItems,

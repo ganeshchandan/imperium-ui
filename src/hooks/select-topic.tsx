@@ -1,7 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectedTopic } from "../reducers/topic";
-import { RootState } from "../store";
-import { getTopicIndex, ITopicSelectionType } from "../utils/swipe";
+import { setSelectedTopic } from "@reducers";
+import { RootState } from "@store";
+import { getTopicIndex } from "@utils";
+import {
+  BACK_PAGE_MAPPER,
+  DETAILS_PAGE_SELECT,
+  LINK_PAGE_SELECT,
+} from "@constants";
+import { ITopicSelectionType } from "@types";
 
 export const useSelectTopic = () => {
   const dispatch = useDispatch();
@@ -12,10 +18,15 @@ export const useSelectTopic = () => {
   const selectedTopic = useSelector(
     (state: RootState) => state.topic.selectedTopic
   );
+  const { selectedPage } = selectedTopic;
+
   const deselectTopic = () => {
     dispatch(
       setSelectedTopic({
-        selectedTopic: { ...selectedTopic, isSelected: false },
+        selectedTopic: {
+          ...selectedTopic,
+          selectedPage: BACK_PAGE_MAPPER[selectedPage],
+        },
       })
     );
   };
@@ -32,7 +43,7 @@ export const useSelectTopic = () => {
     dispatch(
       setSelectedTopic({
         selectedTopic: {
-          isSelected: true,
+          selectedPage: DETAILS_PAGE_SELECT,
           topicIndex,
           swipeType: selectionType,
           ...filteredTopics[topicIndex],
@@ -41,5 +52,13 @@ export const useSelectTopic = () => {
     );
   };
 
-  return { selectTopic, deselectTopic };
+  const openTopicLink = () => {
+    dispatch(
+      setSelectedTopic({
+        selectedTopic: { ...selectedTopic, selectedPage: LINK_PAGE_SELECT },
+      })
+    );
+  };
+
+  return { selectTopic, deselectTopic, openTopicLink };
 };

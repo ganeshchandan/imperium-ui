@@ -1,5 +1,5 @@
 import { FC, useEffect, useMemo, useState } from "react";
-import { EMPTY_STRING } from "../../../constants";
+import { EMPTY_STRING } from "@constants";
 import "./tab.scss";
 
 interface ITabs {

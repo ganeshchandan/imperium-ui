@@ -1,24 +1,28 @@
-import { IBookmarkedTopic, ITopic } from "../type";
+import { IBookmarkedTopic, ITopic } from "@types";
 import { bookmarkTopic, deleteBookmark } from "../actions/topic";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../store";
+import { RootState } from "@store";
 import {
   getBookmarkTopicId,
   getFilteredTopics,
   getTopicListForFilterType,
-  updateBookmarkedTopics,
-} from "../utils/app";
-import { setFilteredTopics, updateTopicsBookmarkId } from "../reducers/topic";
+} from "@utils";
+import {
+  setFilteredTopics,
+  initiateBookmarkAction,
+  setFilterType,
+  completeBookMarkAction,
+} from "@reducers";
 import {
   ADD_ACTION,
+  ALL,
   BOOKMARK_FILTER_TYPE,
   CATEGOTY_FILTER_TYPE,
   DELETE_ACTION,
-} from "../constants";
-import { setFilterType } from "../reducers/filter";
+} from "@constants";
 
 export const useBookmarkAction = () => {
-  const { topics, bookmarkedTopics, filteredTopics } = useSelector(
+  const { topics, bookmarkedTopics } = useSelector(
     (state: RootState) => state.topic
   );
   const { selectedCategory, selectedRelavance, filterType } = useSelector(
@@ -32,17 +36,14 @@ export const useBookmarkAction = () => {
     bookmarkedTopic: IBookmarkedTopic
   ) => {
     dispatch(
-      updateTopicsBookmarkId(
-        updateBookmarkedTopics(actionType, {
-          filterType,
-          topicTitle,
-          bookmarkedTopics,
-          filteredTopics,
-          selectedCategory,
-          selectedRelavance,
-          bookmarkedTopic,
-        })
-      )
+      completeBookMarkAction({
+        actionType,
+        filterType,
+        topicTitle,
+        selectedCategory,
+        selectedRelavance,
+        bookmarkedTopic,
+      })
     );
   };
 
@@ -53,11 +54,9 @@ export const useBookmarkAction = () => {
       topic_title
     );
 
-    // dispatch(setLoading(true));
     dispatch(
-      updateTopicsBookmarkId({
+      initiateBookmarkAction({
         bookmarkedTopics: {
-          ...bookmarkedTopics,
           [topic_title]: {
             ...topic,
             isLoading: true,
@@ -65,6 +64,7 @@ export const useBookmarkAction = () => {
         },
       })
     );
+
     if (bookmarkId) {
       deleteBookmark(bookmarkId).then(() => {
         handleUpdateBookmarkId(
@@ -86,20 +86,25 @@ export const useBookmarkAction = () => {
       filterType !== BOOKMARK_FILTER_TYPE
         ? BOOKMARK_FILTER_TYPE
         : CATEGOTY_FILTER_TYPE;
+
     const topicLists = getTopicListForFilterType(
       updateFilter,
       topics,
-      bookmarkedTopics
+      bookmarkedTopics,
+      []
     );
 
-    dispatch(setFilterType(updateFilter));
+    dispatch(setFilterType({ filterType: updateFilter }));
+
+    const filteredTopics = getFilteredTopics(updateFilter, topicLists, {
+      selectedCategory,
+      selectedRelavance: [ALL],
+    });
+
     dispatch(
-      setFilteredTopics(
-        getFilteredTopics(updateFilter, topicLists, {
-          selectedCategory,
-          selectedRelavance,
-        })
-      )
+      setFilteredTopics({
+        filteredTopics,
+      })
     );
   };
 

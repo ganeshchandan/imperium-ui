@@ -1,42 +1,40 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { TFilterType } from "../type";
-import { CATEGOTY_FILTER_TYPE } from "../constants";
+import { TFilterType } from "@types";
+import { ALL, CATEGOTY_FILTER_TYPE, RECENTLY_VIEWED } from "@constants";
 
 export interface FilterState {
   showFilter: boolean;
   selectedCategory: string[];
-  selectedFilterBy: string[];
   relevanceList: string[];
   selectedRelavance: string[];
   showMenu: boolean;
   filterType: TFilterType;
-  recentViewedTopics: string[];
 }
 
 const initialState: FilterState = {
   showFilter: false,
-  selectedFilterBy: ["Recent"],
   selectedCategory: [],
   relevanceList: [],
-  selectedRelavance: [],
+  selectedRelavance: [ALL],
   showMenu: false,
   filterType: CATEGOTY_FILTER_TYPE,
-  recentViewedTopics: [],
 };
 
 export const filterSlice = createSlice({
   name: "filter",
   initialState,
   reducers: {
-    setFilterType: (state, action: PayloadAction<TFilterType>) => {
-      state.filterType = action.payload;
+    setFilterType: (
+      state,
+      action: PayloadAction<{ filterType: TFilterType }>
+    ) => {
+      const { filterType } = action.payload;
+      state.selectedRelavance = filterType === RECENTLY_VIEWED ? [] : [ALL];
+      state.filterType = filterType;
+      state.showMenu = false;
     },
     setShowFilter: (state, action: PayloadAction<boolean>) => {
       state.showFilter = action.payload;
-    },
-    setFilterBy: (state, action: PayloadAction<string[]>) => {
-      state.selectedFilterBy = action.payload;
-      state.showMenu = false;
     },
     setInitialDetails: (state, action: PayloadAction<string[]>) => {
       state.relevanceList = action.payload;
@@ -44,8 +42,7 @@ export const filterSlice = createSlice({
       state.showMenu = false;
     },
     setSelectedCategory: (state, action: PayloadAction<string[]>) => {
-      state.selectedFilterBy = [];
-      state.selectedRelavance = [];
+      state.selectedRelavance = [ALL];
       state.selectedCategory = action.payload;
       state.filterType = CATEGOTY_FILTER_TYPE;
       state.showMenu = false;
@@ -54,28 +51,31 @@ export const filterSlice = createSlice({
       state.relevanceList = action.payload;
       state.showMenu = false;
     },
-    setSelectedRelevance: (state, action: PayloadAction<string[]>) => {
-      state.selectedRelavance = action.payload;
+    setSelectedRelevance: (
+      state,
+      action: PayloadAction<{
+        selectedRelavance: string[];
+        filterType: TFilterType;
+      }>
+    ) => {
+      const { selectedRelavance, filterType } = action.payload;
+      state.selectedRelavance = selectedRelavance;
+      state.filterType = filterType;
     },
     setShowMenu: (state, action: PayloadAction<boolean>) => {
       state.showMenu = action.payload;
-    },
-    setLastViewdTopics: (state, action: PayloadAction<string[]>) => {
-      state.recentViewedTopics = action.payload;
     },
   },
 });
 
 export const {
   setShowFilter,
-  setFilterBy,
   setSelectedCategory,
   setRelevanceList,
   setSelectedRelevance,
   setShowMenu,
   setInitialDetails,
   setFilterType,
-  setLastViewdTopics,
 } = filterSlice.actions;
 
 export default filterSlice.reducer;

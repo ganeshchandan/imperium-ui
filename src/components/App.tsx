@@ -1,11 +1,10 @@
 import { useEffect } from "react";
 import { getTopicLists } from "../actions/topic";
-import { loadTopcis } from "../reducers/topic";
+import { loadTopcis, setInitialDetails } from "@reducers";
 import { useDispatch, useSelector } from "react-redux";
 import AppSection from "./app-section";
 import AppLoader from "./common/app-loader";
-import { RootState } from "../store";
-import { setInitialDetails } from "../reducers/filter";
+import { RootState } from "@store";
 
 const App = () => {
   const dispatch = useDispatch();

@@ -1,0 +1,121 @@
+* {
+    .search-box-overlay {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        box-sizing: border-box;
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
+        z-index: 100;
+        overflow: hidden;
+        touch-action: none;
+
+        .search-box-container {
+            width: calc(100% - 2rem);
+            box-sizing: border-box;
+            box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.3490196078);
+            border-radius: 43px;
+            border: 0px;
+            margin: 0.875rem auto;
+            font-size: 0.75rem;
+            color: var(--search-box-text-color);
+            height: 52px;
+            background: var(--search-box-background);
+            &.show-search-result {
+                height: auto;
+                border-radius: 20px;
+                .search-box {
+                    border-radius: 20px 20px 0 0;
+                    background: var(--search-box-background);
+                }
+                .search-results {
+                    padding: 0.725rem 0;
+                    display: block;
+                    border-radius: 0 0 20px 20px;
+                    max-height: 300px;
+                    height: auto;
+                }
+                .separator {
+                    display: block;
+                }
+            }
+            .separator {
+                width: calc(100% - 2rem);
+                border-top: 1px solid var(--search-box-result-border-top);
+                display: none;
+                margin: auto;
+            }
+            .search-box {
+                height: 52px;
+                display: grid;
+                grid-template-columns: 50px auto 60px;
+                -webkit-tap-highlight-color: transparent;
+                cursor: pointer;
+                box-sizing: border-box;
+                cursor: pointer;
+                background: var(--search-box-not-input-background);
+                border-radius: 43px;
+                .search-box-input {
+                    height: 100%;
+                    box-sizing: border-box;
+                    border: none;
+                    cursor: inherit;
+                    outline: none;
+                    background: transparent;
+                    color: inherit;
+                    font-size: 0.875rem;
+                }
+                .search-box-close,
+                .search-box-icon {
+                    outline: none;
+                    display: grid;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .search-clear {
+                    font-size: 0.75rem;
+                    font-weight: 400;
+                    display: flex;
+                    align-items: center;
+                    color: var(--search-box-clear-text-color);
+                    &.disable-clear {
+                        pointer-events: none;
+                        color: var(--search-box-clear-diable-text);
+                    }
+                }
+            }
+            .search-results {
+                width: 100%;
+                color: inherit;
+                margin: auto;
+                height: 0px;
+                overflow: auto;
+                box-sizing: border-box;
+                transition: all 0.5s ease-in-out;
+                max-height: 0px;
+                .search-result {
+                    padding: 0.625rem 0;
+                    color: inherit;
+                    width: calc(100% - 3rem);
+                    margin: auto;
+                    cursor: pointer;
+                    > span {
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                    }
+
+                    &:hover {
+                        font-weight: bold;
+                    }
+                    .highlight-searched-value {
+                        color: #e8e8e8;
+                        background: none;
+                    }
+                }
+            }
+        }
+    }
+}

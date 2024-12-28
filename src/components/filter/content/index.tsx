@@ -1,28 +1,21 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
+  ALL,
   CATEGORY_TAB,
   CATEGOTY_FILTER_TYPE,
-  FILTERBY_TAB,
   RELEVANCE_TAB,
-} from "../../../constants";
-import {
-  setSelectedCategory,
-  setFilterBy,
-  setRelevanceList,
-} from "../../../reducers/filter";
-import { RootState } from "../../../store";
+} from "@constants";
+import { setSelectedCategory, setRelevanceList } from "@reducers";
+import { RootState } from "@store";
 import { FC } from "react";
 import Relevance from "../relevance";
 import FilterByCategory from "../filter-category";
 import ContentContainer from "./container";
-import { useFilterTopic } from "../../../hooks";
+import { useFilterTopic } from "@hooks";
+import { IFilterRelevanceContent } from "@types";
 
 const CategoryAndFilter = ContentContainer(FilterByCategory);
 const RelevanceHoc = ContentContainer(Relevance);
-
-interface IFilterRelevanceContent {
-  selectedTab: string;
-}
 
 const FilterRelevanceContent: FC<IFilterRelevanceContent> = ({
   selectedTab,
@@ -30,20 +23,15 @@ const FilterRelevanceContent: FC<IFilterRelevanceContent> = ({
   const dispatch = useDispatch();
   const { filterTopics } = useFilterTopic();
 
-  const { filterByList, categories } = useSelector(
-    (state: RootState) => state.topic
-  );
+  const { categories } = useSelector((state: RootState) => state.topic);
 
-  const { selectedFilterBy, selectedCategory, relevanceList } = useSelector(
+  const { selectedCategory, relevanceList } = useSelector(
     (state: RootState) => state.filter
   );
 
-  const handleFilterBySelected = (selectedItem: string[]) =>
-    dispatch(setFilterBy(selectedItem));
-
   const handleCategorySelection = (selectedItem: string[]) => {
     dispatch(setSelectedCategory(selectedItem));
-    filterTopics(CATEGOTY_FILTER_TYPE, selectedItem, []);
+    filterTopics(CATEGOTY_FILTER_TYPE, selectedItem, [ALL]);
   };
 
   const handleSelectedRelevance = (selectedItem: string[]) =>
@@ -58,15 +46,6 @@ const FilterRelevanceContent: FC<IFilterRelevanceContent> = ({
             selectedItems={selectedCategory}
             handleSelected={handleCategorySelection}
             isMultipleSelection={true}
-          />
-        );
-      case FILTERBY_TAB:
-        return (
-          <CategoryAndFilter
-            isMultipleSelection={false}
-            listItems={filterByList}
-            selectedItems={selectedFilterBy}
-            handleSelected={handleFilterBySelected}
           />
         );
       case RELEVANCE_TAB:

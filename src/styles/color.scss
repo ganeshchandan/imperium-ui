@@ -2,6 +2,8 @@ $blue: #162143;
 $blue_01: #192757;
 $blue_02: #7284c4;
 $bule_03: #2a59e0;
+$bule_04: #8091c8;
+$bule_05: #22326a;
 $white_01: #e8e8e8;
 $white_02: #d9d9d9;
 $white: #fff;
@@ -10,8 +12,10 @@ $gray_1: #303131;
 $gray_2: #717171;
 $gray_3: #737373;
 $gray_4: #8e8e8e;
+$gray_5: #303d68;
+$gray_6: #7f8bb0;
 
-* {
+:root {
     --app-background-color: #{$blue};
     --app-name-color: #{$white};
     --app-tag-name-color: #{$purple};
@@ -55,4 +59,29 @@ $gray_4: #8e8e8e;
     --relevance-info-text-color: #{$gray_3};
     --filter-popup-drawer-bg: #{$blue_01};
     --empty-topic-list-color: #9559a4;
+
+    --search-box-not-input-background: linear-gradient(
+        90deg,
+        #192757 0%,
+        #1b2756 69.6%,
+        #2c2754 78.09%,
+        #512a6f 86.95%,
+        #d63bd7 98.79%,
+        #712d82 101.81%
+    );
+    --search-box-background: #{$blue_01};
+    --search-box-shadow: 0px 0px 5px 0px rgba(204, 58, 207, 0.3490196078);
+    --search-box-text-color: #{$bule_04};
+    --search-box-result-border-top: #{$bule_05};
+    --search-box-clear-text-color: #{$bule_04};
+    --search-box-clear-diable-text: #{$gray_5};
+    --swipe-action-color: #{$white};
+
+    --user-profile-back-ground: #{$blue};
+    --user-profile-name: #{$white};
+    --user-profile-action-test-color: #{$white};
+    --user-profile-app-version: #{$gray_6};
+    --user-profile-close-icon-background: linear-gradient(127.68deg, #ff409a 14.19%, #c438ef 101.67%);
+
+    --search-footer-home-icon-background: linear-gradient(127.68deg, #ff409a 14.19%, #c438ef 101.67%);
 }

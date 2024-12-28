@@ -1,55 +1,21 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { ITopic, ISelectedTopic, IBookmarkedTopics } from "../type";
-import { FILTER_BY_LIST } from "../constants";
-
-export interface TopicState {
-  isLoading: boolean;
-  isAppLoaded: boolean;
-  topics: ITopic[];
-  filteredTopics: ITopic[];
-  selectedTopic: ISelectedTopic;
-  categories: string[];
-  filterByList: string[];
-  isSearchBox: boolean;
-  bookmarkedTopics: IBookmarkedTopics;
-}
-
-const initialState: TopicState = {
-  isLoading: false,
-  isAppLoaded: false,
-  topics: [],
-  filteredTopics: [],
-  categories: [],
-  selectedTopic: {
-    topicIndex: -1,
-    swipeType: "click",
-    isSelected: false,
-    topic_id: 0,
-    topic_title: "",
-    topic_short_description: "",
-    topic_saved_date: "",
-    topic_read_time: "",
-    topic_category: "",
-    topic_image: "",
-    bookmarked_date: "",
-    author: "",
-    bookmark_id: null,
-  },
-  filterByList: FILTER_BY_LIST,
-  isSearchBox: false,
-  bookmarkedTopics: {},
-};
+import {
+  ITopic,
+  ISelectedTopic,
+  IBookmarkedTopics,
+  ICompleteBookMarkAction,
+} from "@types";
+import { updateRecentlyviewedTopicList, updateBookmarkedTopics } from "@utils";
+import { DEFAULT_TOPIC_STATE } from "@constants";
 
 export const topicSlice = createSlice({
   name: "topic",
-  initialState,
+  initialState: DEFAULT_TOPIC_STATE,
   reducers: {
     setLoading: (state, action: PayloadAction<boolean>) => {
       state.isLoading = action.payload;
     },
-    setSearchBox: (state, action: PayloadAction<boolean>) => {
-      state.isSearchBox = action.payload;
-    },
+
     loadTopcis: (
       state,
       action: PayloadAction<{
@@ -65,7 +31,7 @@ export const topicSlice = createSlice({
       state.categories = categories;
       state.bookmarkedTopics = bookmarked;
     },
-    updateTopicsBookmarkId: (
+    initiateBookmarkAction: (
       state,
       action: PayloadAction<{
         bookmarkedTopics: IBookmarkedTopics;
@@ -73,21 +39,58 @@ export const topicSlice = createSlice({
       }>
     ) => {
       const { bookmarkedTopics, filteredTopics } = action.payload;
-      state.bookmarkedTopics = bookmarkedTopics;
+      state.bookmarkedTopics = {
+        ...state.bookmarkedTopics,
+        ...bookmarkedTopics,
+      };
       if (filteredTopics) {
         state.filteredTopics = filteredTopics;
       }
-      // state.isLoading = false;
     },
     setSelectedTopic: (
       state,
       action: PayloadAction<{ selectedTopic: ISelectedTopic }>
     ) => {
       const { selectedTopic } = action.payload;
+      state.recentlyViewedTopics = updateRecentlyviewedTopicList(
+        state.recentlyViewedTopics,
+        selectedTopic
+      );
       state.selectedTopic = selectedTopic;
     },
-    setFilteredTopics: (state, action: PayloadAction<ITopic[]>) => {
-      state.filteredTopics = action.payload;
+    setFilteredTopics: (
+      state,
+      action: PayloadAction<{
+        filteredTopics: ITopic[];
+        selectedTopic?: ISelectedTopic | null;
+      }>
+    ) => {
+      const { selectedTopic, filteredTopics } = action.payload;
+      if (selectedTopic) {
+        state.recentlyViewedTopics = updateRecentlyviewedTopicList(
+          state.recentlyViewedTopics,
+          selectedTopic
+        );
+        state.selectedTopic = selectedTopic;
+      }
+      state.filteredTopics = filteredTopics;
+    },
+    completeBookMarkAction: (
+      state,
+      action: PayloadAction<ICompleteBookMarkAction>
+    ) => {
+      const { actionType } = action.payload;
+
+      const { filteredTopics, bookmarkedTopics } = updateBookmarkedTopics(
+        actionType,
+        {
+          bookmarkedTopics: state.bookmarkedTopics,
+          filteredTopics: state.filteredTopics,
+          ...action.payload,
+        }
+      );
+      state.bookmarkedTopics = bookmarkedTopics;
+      state.filteredTopics = filteredTopics;
     },
   },
 });
@@ -97,9 +100,9 @@ export const {
   loadTopcis,
   setSelectedTopic,
   setFilteredTopics,
-  updateTopicsBookmarkId,
+  initiateBookmarkAction,
+  completeBookMarkAction,
   setLoading,
-  setSearchBox,
 } = topicSlice.actions;
 
 export default topicSlice.reducer;

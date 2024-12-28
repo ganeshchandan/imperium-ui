@@ -1,30 +1,22 @@
 import { useSelector } from "react-redux";
-import { RootState } from "../store";
-import Filter from "./filter";
-import TopicList from "./topic/list";
-import SelectedTopic from "./topic/selected-topic";
+import { RootState } from "@store";
 import Loader from "./common/loader";
-// import SearchTopic from "./common/search";
+import SearchTopic from "./search";
+import Topics from "./topics";
+import UserProfile from "./user-profile";
 
 const AppSection = () => {
-  const { selectedTopic, isLoading } = useSelector(
-    (state: RootState) => state.topic
+  const { isLoading } = useSelector((state: RootState) => state.topic);
+  const { isSearchBox, showUserProfile } = useSelector(
+    (state: RootState) => state.appConfig
   );
-  const { isSelected } = selectedTopic;
 
   return (
     <>
       {isLoading && <Loader />}
-      <div
-        className={`list-selected-topic-container ${
-          isSelected ? "topic-selected" : ""
-        }`}
-      >
-        <TopicList />
-        <SelectedTopic />
-        <Filter />
-        {/* {isSearchBox && <SearchTopic />} */}
-      </div>
+      {isSearchBox && <SearchTopic />}
+      {showUserProfile && <UserProfile />}
+      <Topics />
     </>
   );
 };

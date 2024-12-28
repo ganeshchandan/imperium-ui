@@ -1,4 +1,4 @@
-import { TSwipeIndesFinder } from "../type";
+import { ITopic, ITopicSelectionType, TSwipeIndesFinder } from "@types";
 
 export const swipeDownTopicId: TSwipeIndesFinder = (
   topicIndex,
@@ -35,10 +35,41 @@ export const TOPIC_INDEX_GETTER: {
   swipe_down: swipeDownTopicId,
 };
 
-export type ITopicSelectionType = "click" | "swipe_up" | "swipe_down";
-
 export const getTopicIndex = (
   topicIndex: number,
   selectionType: ITopicSelectionType,
   topicsCount: number
 ) => TOPIC_INDEX_GETTER[selectionType](topicIndex, topicsCount);
+
+export const getPreviousAndNextTopic = (
+  topicIndex: number,
+  topicsCount: number,
+  topics: ITopic[]
+) => {
+  return {
+    previousTopic: topics[swipeDownTopicId(topicIndex, topicsCount)],
+    nextTopic: topics[swipeUpTopicId(topicIndex, topicsCount)],
+  };
+};
+
+export const selectedTopicHandler = (
+  topicListRefElement: HTMLElement | null,
+  topicIndex: number,
+  swipeType: ITopicSelectionType,
+  selectTopic: (
+    selectedTopicIndex: number,
+    selectionType: ITopicSelectionType
+  ) => void,
+  timerRef?: NodeJS.Timeout
+) => {
+  if (topicListRefElement) {
+    topicListRefElement.classList.add(swipeType);
+    topicListRefElement.classList.add(`transition`);
+    clearTimeout(timerRef || 0);
+    timerRef = setTimeout(() => {
+      topicListRefElement.classList.remove("transition");
+      topicListRefElement.classList.remove(swipeType);
+      selectTopic(topicIndex, swipeType);
+    }, 500);
+  }
+};

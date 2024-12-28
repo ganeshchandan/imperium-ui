@@ -1,17 +1,9 @@
 import { FC, useEffect, useState } from "react";
 import FilterRelevanceAction from "../../actions";
-import { APPLY, CANCEL, RESET } from "../../../../constants";
-import { IFilterByCategory } from ".";
-import { setShowFilter } from "../../../../reducers/filter";
+import { APPLY, CANCEL, RESET } from "@constants";
+import { setShowFilter } from "@reducers";
 import { useDispatch } from "react-redux";
-
-interface ICategoryAndFilterByList {
-  listItems: string[];
-  selectedItems: string[];
-  handleSelected: (selectedItems: string[]) => void;
-  isMultipleSelection: boolean;
-  Component: FC<IFilterByCategory>;
-}
+import { ICategoryAndFilterByList } from "@types";
 
 const CategoryAndFilterByList: FC<ICategoryAndFilterByList> = ({
   listItems,
@@ -36,7 +28,6 @@ const CategoryAndFilterByList: FC<ICategoryAndFilterByList> = ({
 
   const handleActionButtonClick = (action: string) => {
     if (action === RESET) {
-      // handleSelected(selectedItems);
       setUpdatedSelectedItems([...selectedItems]);
     } else if (action === APPLY) {
       handleSelected(updatedSelectedItems);
